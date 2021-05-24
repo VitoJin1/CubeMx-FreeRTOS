@@ -1,0 +1,481 @@
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"freertos.c"
+  14              		.section	.rodata.str1.4,"aMS",%progbits,1
+  15              		.align	2
+  16              	.LC0:
+  17 0000 64656661 		.ascii	"defaultTask\000"
+  17      756C7454 
+  17      61736B00 
+  18              		.align	2
+  19              	.LC2:
+  20 000c 4C45445F 		.ascii	"LED_Blink\000"
+  20      426C696E 
+  20      6B00
+  21              		.text
+  22              	.Ltext0:
+  23              		.cfi_sections	.debug_frame
+  24              		.section	.text.StartDefaultTask,"ax",%progbits
+  25              		.align	1
+  26              		.global	StartDefaultTask
+  27              		.arch armv7e-m
+  28              		.syntax unified
+  29              		.thumb
+  30              		.thumb_func
+  31              		.fpu fpv4-sp-d16
+  33              	StartDefaultTask:
+  34              	.LFB137:
+  35              		.file 1 "Src/freertos.c"
+   1:Src/freertos.c **** /* USER CODE BEGIN Header */
+   2:Src/freertos.c **** /**
+   3:Src/freertos.c ****   ******************************************************************************
+   4:Src/freertos.c ****   * File Name          : freertos.c
+   5:Src/freertos.c ****   * Description        : Code for freertos applications
+   6:Src/freertos.c ****   ******************************************************************************
+   7:Src/freertos.c ****   * @attention
+   8:Src/freertos.c ****   *
+   9:Src/freertos.c ****   * <h2><center>&copy; Copyright (c) 2021 STMicroelectronics.
+  10:Src/freertos.c ****   * All rights reserved.</center></h2>
+  11:Src/freertos.c ****   *
+  12:Src/freertos.c ****   * This software component is licensed by ST under Ultimate Liberty license
+  13:Src/freertos.c ****   * SLA0044, the "License"; You may not use this file except in compliance with
+  14:Src/freertos.c ****   * the License. You may obtain a copy of the License at:
+  15:Src/freertos.c ****   *                             www.st.com/SLA0044
+  16:Src/freertos.c ****   *
+  17:Src/freertos.c ****   ******************************************************************************
+  18:Src/freertos.c ****   */
+  19:Src/freertos.c **** /* USER CODE END Header */
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s 			page 2
+
+
+  20:Src/freertos.c **** 
+  21:Src/freertos.c **** /* Includes ------------------------------------------------------------------*/
+  22:Src/freertos.c **** #include "FreeRTOS.h"
+  23:Src/freertos.c **** #include "task.h"
+  24:Src/freertos.c **** #include "main.h"
+  25:Src/freertos.c **** #include "cmsis_os.h"
+  26:Src/freertos.c **** 
+  27:Src/freertos.c **** /* Private includes ----------------------------------------------------------*/
+  28:Src/freertos.c **** /* USER CODE BEGIN Includes */
+  29:Src/freertos.c **** 
+  30:Src/freertos.c **** /* USER CODE END Includes */
+  31:Src/freertos.c **** 
+  32:Src/freertos.c **** /* Private typedef -----------------------------------------------------------*/
+  33:Src/freertos.c **** /* USER CODE BEGIN PTD */
+  34:Src/freertos.c **** 
+  35:Src/freertos.c **** /* USER CODE END PTD */
+  36:Src/freertos.c **** 
+  37:Src/freertos.c **** /* Private define ------------------------------------------------------------*/
+  38:Src/freertos.c **** /* USER CODE BEGIN PD */
+  39:Src/freertos.c **** 
+  40:Src/freertos.c **** /* USER CODE END PD */
+  41:Src/freertos.c **** 
+  42:Src/freertos.c **** /* Private macro -------------------------------------------------------------*/
+  43:Src/freertos.c **** /* USER CODE BEGIN PM */
+  44:Src/freertos.c **** 
+  45:Src/freertos.c **** /* USER CODE END PM */
+  46:Src/freertos.c **** 
+  47:Src/freertos.c **** /* Private variables ---------------------------------------------------------*/
+  48:Src/freertos.c **** /* USER CODE BEGIN Variables */
+  49:Src/freertos.c **** 
+  50:Src/freertos.c **** /* USER CODE END Variables */
+  51:Src/freertos.c **** osThreadId defaultTaskHandle;
+  52:Src/freertos.c **** osThreadId LED_BlinkHandle;
+  53:Src/freertos.c **** 
+  54:Src/freertos.c **** /* Private function prototypes -----------------------------------------------*/
+  55:Src/freertos.c **** /* USER CODE BEGIN FunctionPrototypes */
+  56:Src/freertos.c **** 
+  57:Src/freertos.c **** /* USER CODE END FunctionPrototypes */
+  58:Src/freertos.c **** 
+  59:Src/freertos.c **** void StartDefaultTask(void const * argument);
+  60:Src/freertos.c **** void TaskLEDBlink(void const * argument);
+  61:Src/freertos.c **** 
+  62:Src/freertos.c **** void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
+  63:Src/freertos.c **** 
+  64:Src/freertos.c **** /* GetIdleTaskMemory prototype (linked to static allocation support) */
+  65:Src/freertos.c **** void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskS
+  66:Src/freertos.c **** 
+  67:Src/freertos.c **** /* USER CODE BEGIN GET_IDLE_TASK_MEMORY */
+  68:Src/freertos.c **** static StaticTask_t xIdleTaskTCBBuffer;
+  69:Src/freertos.c **** static StackType_t xIdleStack[configMINIMAL_STACK_SIZE];
+  70:Src/freertos.c **** 
+  71:Src/freertos.c **** void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskS
+  72:Src/freertos.c **** {
+  73:Src/freertos.c ****   *ppxIdleTaskTCBBuffer = &xIdleTaskTCBBuffer;
+  74:Src/freertos.c ****   *ppxIdleTaskStackBuffer = &xIdleStack[0];
+  75:Src/freertos.c ****   *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
+  76:Src/freertos.c ****   /* place for user code */
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s 			page 3
+
+
+  77:Src/freertos.c **** }
+  78:Src/freertos.c **** /* USER CODE END GET_IDLE_TASK_MEMORY */
+  79:Src/freertos.c **** 
+  80:Src/freertos.c **** /**
+  81:Src/freertos.c ****   * @brief  FreeRTOS initialization
+  82:Src/freertos.c ****   * @param  None
+  83:Src/freertos.c ****   * @retval None
+  84:Src/freertos.c ****   */
+  85:Src/freertos.c **** void MX_FREERTOS_Init(void) {
+  86:Src/freertos.c ****   /* USER CODE BEGIN Init */
+  87:Src/freertos.c **** 
+  88:Src/freertos.c ****   /* USER CODE END Init */
+  89:Src/freertos.c **** 
+  90:Src/freertos.c ****   /* USER CODE BEGIN RTOS_MUTEX */
+  91:Src/freertos.c ****   /* add mutexes, ... */
+  92:Src/freertos.c ****   /* USER CODE END RTOS_MUTEX */
+  93:Src/freertos.c **** 
+  94:Src/freertos.c ****   /* USER CODE BEGIN RTOS_SEMAPHORES */
+  95:Src/freertos.c ****   /* add semaphores, ... */
+  96:Src/freertos.c ****   /* USER CODE END RTOS_SEMAPHORES */
+  97:Src/freertos.c **** 
+  98:Src/freertos.c ****   /* USER CODE BEGIN RTOS_TIMERS */
+  99:Src/freertos.c ****   /* start timers, add new ones, ... */
+ 100:Src/freertos.c ****   /* USER CODE END RTOS_TIMERS */
+ 101:Src/freertos.c **** 
+ 102:Src/freertos.c ****   /* USER CODE BEGIN RTOS_QUEUES */
+ 103:Src/freertos.c ****   /* add queues, ... */
+ 104:Src/freertos.c ****   /* USER CODE END RTOS_QUEUES */
+ 105:Src/freertos.c **** 
+ 106:Src/freertos.c ****   /* Create the thread(s) */
+ 107:Src/freertos.c ****   /* definition and creation of defaultTask */
+ 108:Src/freertos.c ****   osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
+ 109:Src/freertos.c ****   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
+ 110:Src/freertos.c **** 
+ 111:Src/freertos.c ****   /* definition and creation of LED_Blink */
+ 112:Src/freertos.c ****   osThreadDef(LED_Blink, TaskLEDBlink, osPriorityIdle, 0, 128);
+ 113:Src/freertos.c ****   LED_BlinkHandle = osThreadCreate(osThread(LED_Blink), NULL);
+ 114:Src/freertos.c **** 
+ 115:Src/freertos.c ****   /* USER CODE BEGIN RTOS_THREADS */
+ 116:Src/freertos.c ****   /* add threads, ... */
+ 117:Src/freertos.c ****   /* USER CODE END RTOS_THREADS */
+ 118:Src/freertos.c **** 
+ 119:Src/freertos.c **** }
+ 120:Src/freertos.c **** 
+ 121:Src/freertos.c **** /* USER CODE BEGIN Header_StartDefaultTask */
+ 122:Src/freertos.c **** /**
+ 123:Src/freertos.c ****   * @brief  Function implementing the defaultTask thread.
+ 124:Src/freertos.c ****   * @param  argument: Not used
+ 125:Src/freertos.c ****   * @retval None
+ 126:Src/freertos.c ****   */
+ 127:Src/freertos.c **** /* USER CODE END Header_StartDefaultTask */
+ 128:Src/freertos.c **** void StartDefaultTask(void const * argument)
+ 129:Src/freertos.c **** {
+  36              		.loc 1 129 1 view -0
+  37              		.cfi_startproc
+  38              		@ Volatile: function does not return.
+  39              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s 			page 4
+
+
+  40              		@ frame_needed = 0, uses_anonymous_args = 0
+  41              	.LVL0:
+  42              		.loc 1 129 1 is_stmt 0 view .LVU1
+  43 0000 08B5     		push	{r3, lr}
+  44              	.LCFI0:
+  45              		.cfi_def_cfa_offset 8
+  46              		.cfi_offset 3, -8
+  47              		.cfi_offset 14, -4
+  48              	.LVL1:
+  49              	.L2:
+ 130:Src/freertos.c ****   /* USER CODE BEGIN StartDefaultTask */
+ 131:Src/freertos.c ****   /* Infinite loop */
+ 132:Src/freertos.c ****   for(;;)
+  50              		.loc 1 132 3 is_stmt 1 discriminator 1 view .LVU2
+ 133:Src/freertos.c ****   {
+ 134:Src/freertos.c ****     osDelay(1);
+  51              		.loc 1 134 5 discriminator 1 view .LVU3
+  52 0002 0120     		movs	r0, #1
+  53 0004 FFF7FEFF 		bl	osDelay
+  54              	.LVL2:
+ 132:Src/freertos.c ****   {
+  55              		.loc 1 132 8 discriminator 1 view .LVU4
+  56 0008 FBE7     		b	.L2
+  57              		.cfi_endproc
+  58              	.LFE137:
+  60              		.section	.text.TaskLEDBlink,"ax",%progbits
+  61              		.align	1
+  62              		.global	TaskLEDBlink
+  63              		.syntax unified
+  64              		.thumb
+  65              		.thumb_func
+  66              		.fpu fpv4-sp-d16
+  68              	TaskLEDBlink:
+  69              	.LFB138:
+ 135:Src/freertos.c ****   }
+ 136:Src/freertos.c ****   /* USER CODE END StartDefaultTask */
+ 137:Src/freertos.c **** }
+ 138:Src/freertos.c **** 
+ 139:Src/freertos.c **** /* USER CODE BEGIN Header_TaskLEDBlink */
+ 140:Src/freertos.c **** /**
+ 141:Src/freertos.c **** * @brief Function implementing the LED_Blink thread.
+ 142:Src/freertos.c **** * @param argument: Not used
+ 143:Src/freertos.c **** * @retval None
+ 144:Src/freertos.c **** */
+ 145:Src/freertos.c **** /* USER CODE END Header_TaskLEDBlink */
+ 146:Src/freertos.c **** void TaskLEDBlink(void const * argument)
+ 147:Src/freertos.c **** {
+  70              		.loc 1 147 1 view -0
+  71              		.cfi_startproc
+  72              		@ Volatile: function does not return.
+  73              		@ args = 0, pretend = 0, frame = 0
+  74              		@ frame_needed = 0, uses_anonymous_args = 0
+  75              	.LVL3:
+  76              		.loc 1 147 1 is_stmt 0 view .LVU6
+  77 0000 08B5     		push	{r3, lr}
+  78              	.LCFI1:
+  79              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s 			page 5
+
+
+  80              		.cfi_offset 3, -8
+  81              		.cfi_offset 14, -4
+  82              	.LVL4:
+  83              	.L5:
+ 148:Src/freertos.c ****   /* USER CODE BEGIN TaskLEDBlink */
+ 149:Src/freertos.c ****   /* Infinite loop */
+ 150:Src/freertos.c ****   for(;;)
+  84              		.loc 1 150 3 is_stmt 1 discriminator 1 view .LVU7
+ 151:Src/freertos.c ****   {
+ 152:Src/freertos.c ****     osDelay(1);
+  85              		.loc 1 152 5 discriminator 1 view .LVU8
+  86 0002 0120     		movs	r0, #1
+  87 0004 FFF7FEFF 		bl	osDelay
+  88              	.LVL5:
+ 150:Src/freertos.c ****   {
+  89              		.loc 1 150 8 discriminator 1 view .LVU9
+  90 0008 FBE7     		b	.L5
+  91              		.cfi_endproc
+  92              	.LFE138:
+  94              		.section	.text.vApplicationGetIdleTaskMemory,"ax",%progbits
+  95              		.align	1
+  96              		.global	vApplicationGetIdleTaskMemory
+  97              		.syntax unified
+  98              		.thumb
+  99              		.thumb_func
+ 100              		.fpu fpv4-sp-d16
+ 102              	vApplicationGetIdleTaskMemory:
+ 103              	.LVL6:
+ 104              	.LFB135:
+  72:Src/freertos.c ****   *ppxIdleTaskTCBBuffer = &xIdleTaskTCBBuffer;
+ 105              		.loc 1 72 1 view -0
+ 106              		.cfi_startproc
+ 107              		@ args = 0, pretend = 0, frame = 0
+ 108              		@ frame_needed = 0, uses_anonymous_args = 0
+ 109              		@ link register save eliminated.
+  73:Src/freertos.c ****   *ppxIdleTaskStackBuffer = &xIdleStack[0];
+ 110              		.loc 1 73 3 view .LVU11
+  73:Src/freertos.c ****   *ppxIdleTaskStackBuffer = &xIdleStack[0];
+ 111              		.loc 1 73 25 is_stmt 0 view .LVU12
+ 112 0000 034B     		ldr	r3, .L8
+ 113 0002 0360     		str	r3, [r0]
+  74:Src/freertos.c ****   *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
+ 114              		.loc 1 74 3 is_stmt 1 view .LVU13
+  74:Src/freertos.c ****   *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
+ 115              		.loc 1 74 27 is_stmt 0 view .LVU14
+ 116 0004 034B     		ldr	r3, .L8+4
+ 117 0006 0B60     		str	r3, [r1]
+  75:Src/freertos.c ****   /* place for user code */
+ 118              		.loc 1 75 3 is_stmt 1 view .LVU15
+  75:Src/freertos.c ****   /* place for user code */
+ 119              		.loc 1 75 25 is_stmt 0 view .LVU16
+ 120 0008 8023     		movs	r3, #128
+ 121 000a 1360     		str	r3, [r2]
+  77:Src/freertos.c **** /* USER CODE END GET_IDLE_TASK_MEMORY */
+ 122              		.loc 1 77 1 view .LVU17
+ 123 000c 7047     		bx	lr
+ 124              	.L9:
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s 			page 6
+
+
+ 125 000e 00BF     		.align	2
+ 126              	.L8:
+ 127 0010 00000000 		.word	.LANCHOR0
+ 128 0014 00000000 		.word	.LANCHOR1
+ 129              		.cfi_endproc
+ 130              	.LFE135:
+ 132              		.section	.text.MX_FREERTOS_Init,"ax",%progbits
+ 133              		.align	1
+ 134              		.global	MX_FREERTOS_Init
+ 135              		.syntax unified
+ 136              		.thumb
+ 137              		.thumb_func
+ 138              		.fpu fpv4-sp-d16
+ 140              	MX_FREERTOS_Init:
+ 141              	.LFB136:
+  85:Src/freertos.c ****   /* USER CODE BEGIN Init */
+ 142              		.loc 1 85 29 is_stmt 1 view -0
+ 143              		.cfi_startproc
+ 144              		@ args = 0, pretend = 0, frame = 56
+ 145              		@ frame_needed = 0, uses_anonymous_args = 0
+ 146 0000 10B5     		push	{r4, lr}
+ 147              	.LCFI2:
+ 148              		.cfi_def_cfa_offset 8
+ 149              		.cfi_offset 4, -8
+ 150              		.cfi_offset 14, -4
+ 151 0002 8EB0     		sub	sp, sp, #56
+ 152              	.LCFI3:
+ 153              		.cfi_def_cfa_offset 64
+ 108:Src/freertos.c ****   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
+ 154              		.loc 1 108 3 view .LVU19
+ 155 0004 124C     		ldr	r4, .L12
+ 156 0006 0DF11C0C 		add	ip, sp, #28
+ 157 000a A646     		mov	lr, r4
+ 158 000c BEE80F00 		ldmia	lr!, {r0, r1, r2, r3}
+ 159 0010 ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 160 0014 9EE80700 		ldm	lr, {r0, r1, r2}
+ 161 0018 8CE80700 		stm	ip, {r0, r1, r2}
+ 109:Src/freertos.c **** 
+ 162              		.loc 1 109 3 view .LVU20
+ 109:Src/freertos.c **** 
+ 163              		.loc 1 109 23 is_stmt 0 view .LVU21
+ 164 001c 0021     		movs	r1, #0
+ 165 001e 07A8     		add	r0, sp, #28
+ 166 0020 FFF7FEFF 		bl	osThreadCreate
+ 167              	.LVL7:
+ 109:Src/freertos.c **** 
+ 168              		.loc 1 109 21 view .LVU22
+ 169 0024 0B4B     		ldr	r3, .L12+4
+ 170 0026 1860     		str	r0, [r3]
+ 112:Src/freertos.c ****   LED_BlinkHandle = osThreadCreate(osThread(LED_Blink), NULL);
+ 171              		.loc 1 112 3 is_stmt 1 view .LVU23
+ 172 0028 EE46     		mov	lr, sp
+ 173 002a 04F11C0C 		add	ip, r4, #28
+ 174 002e BCE80F00 		ldmia	ip!, {r0, r1, r2, r3}
+ 175 0032 AEE80F00 		stmia	lr!, {r0, r1, r2, r3}
+ 176 0036 9CE80700 		ldm	ip, {r0, r1, r2}
+ 177 003a 8EE80700 		stm	lr, {r0, r1, r2}
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s 			page 7
+
+
+ 113:Src/freertos.c **** 
+ 178              		.loc 1 113 3 view .LVU24
+ 113:Src/freertos.c **** 
+ 179              		.loc 1 113 21 is_stmt 0 view .LVU25
+ 180 003e 0021     		movs	r1, #0
+ 181 0040 6846     		mov	r0, sp
+ 182 0042 FFF7FEFF 		bl	osThreadCreate
+ 183              	.LVL8:
+ 113:Src/freertos.c **** 
+ 184              		.loc 1 113 19 view .LVU26
+ 185 0046 044B     		ldr	r3, .L12+8
+ 186 0048 1860     		str	r0, [r3]
+ 119:Src/freertos.c **** 
+ 187              		.loc 1 119 1 view .LVU27
+ 188 004a 0EB0     		add	sp, sp, #56
+ 189              	.LCFI4:
+ 190              		.cfi_def_cfa_offset 8
+ 191              		@ sp needed
+ 192 004c 10BD     		pop	{r4, pc}
+ 193              	.L13:
+ 194 004e 00BF     		.align	2
+ 195              	.L12:
+ 196 0050 00000000 		.word	.LANCHOR2
+ 197 0054 00000000 		.word	.LANCHOR3
+ 198 0058 00000000 		.word	.LANCHOR4
+ 199              		.cfi_endproc
+ 200              	.LFE136:
+ 202              		.global	LED_BlinkHandle
+ 203              		.global	defaultTaskHandle
+ 204              		.section	.rodata
+ 205              		.align	2
+ 206              		.set	.LANCHOR2,. + 0
+ 207              	.LC4:
+ 208 0000 00000000 		.word	.LC0
+ 209 0004 00000000 		.word	StartDefaultTask
+ 210 0008 0000     		.short	0
+ 211 000a 0000     		.space	2
+ 212 000c 00000000 		.word	0
+ 213 0010 80000000 		.word	128
+ 214 0014 00000000 		.word	0
+ 215 0018 00000000 		.word	0
+ 216              	.LC5:
+ 217 001c 0C000000 		.word	.LC2
+ 218 0020 00000000 		.word	TaskLEDBlink
+ 219 0024 FDFF     		.short	-3
+ 220 0026 0000     		.space	2
+ 221 0028 00000000 		.word	0
+ 222 002c 80000000 		.word	128
+ 223 0030 00000000 		.word	0
+ 224 0034 00000000 		.word	0
+ 225              		.section	.bss.LED_BlinkHandle,"aw",%nobits
+ 226              		.align	2
+ 227              		.set	.LANCHOR4,. + 0
+ 230              	LED_BlinkHandle:
+ 231 0000 00000000 		.space	4
+ 232              		.section	.bss.defaultTaskHandle,"aw",%nobits
+ 233              		.align	2
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s 			page 8
+
+
+ 234              		.set	.LANCHOR3,. + 0
+ 237              	defaultTaskHandle:
+ 238 0000 00000000 		.space	4
+ 239              		.section	.bss.xIdleStack,"aw",%nobits
+ 240              		.align	2
+ 241              		.set	.LANCHOR1,. + 0
+ 244              	xIdleStack:
+ 245 0000 00000000 		.space	512
+ 245      00000000 
+ 245      00000000 
+ 245      00000000 
+ 245      00000000 
+ 246              		.section	.bss.xIdleTaskTCBBuffer,"aw",%nobits
+ 247              		.align	2
+ 248              		.set	.LANCHOR0,. + 0
+ 251              	xIdleTaskTCBBuffer:
+ 252 0000 00000000 		.space	84
+ 252      00000000 
+ 252      00000000 
+ 252      00000000 
+ 252      00000000 
+ 253              		.text
+ 254              	.Letext0:
+ 255              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2020-q4-major\\arm-none-eabi\\inc
+ 256              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2020-q4-major\\arm-none-eabi\\inc
+ 257              		.file 4 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h"
+ 258              		.file 5 "Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h"
+ 259              		.file 6 "Middlewares/Third_Party/FreeRTOS/Source/include/task.h"
+ 260              		.file 7 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 freertos.c
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s:15     .rodata.str1.4:00000000 $d
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s:25     .text.StartDefaultTask:00000000 $t
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s:33     .text.StartDefaultTask:00000000 StartDefaultTask
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s:61     .text.TaskLEDBlink:00000000 $t
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s:68     .text.TaskLEDBlink:00000000 TaskLEDBlink
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s:95     .text.vApplicationGetIdleTaskMemory:00000000 $t
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s:102    .text.vApplicationGetIdleTaskMemory:00000000 vApplicationGetIdleTaskMemory
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s:127    .text.vApplicationGetIdleTaskMemory:00000010 $d
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s:133    .text.MX_FREERTOS_Init:00000000 $t
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s:140    .text.MX_FREERTOS_Init:00000000 MX_FREERTOS_Init
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s:196    .text.MX_FREERTOS_Init:00000050 $d
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s:230    .bss.LED_BlinkHandle:00000000 LED_BlinkHandle
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s:237    .bss.defaultTaskHandle:00000000 defaultTaskHandle
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s:205    .rodata:00000000 $d
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s:226    .bss.LED_BlinkHandle:00000000 $d
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s:233    .bss.defaultTaskHandle:00000000 $d
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s:240    .bss.xIdleStack:00000000 $d
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s:244    .bss.xIdleStack:00000000 xIdleStack
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s:247    .bss.xIdleTaskTCBBuffer:00000000 $d
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccF3xFZM.s:251    .bss.xIdleTaskTCBBuffer:00000000 xIdleTaskTCBBuffer
+
+UNDEFINED SYMBOLS
+osDelay
+osThreadCreate
