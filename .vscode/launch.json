@@ -1,0 +1,22 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+    {
+        "cwd": "${workspaceRoot}",
+        "executable": "./build/WallRobotMainBoard.elf",
+        "name": "Debug Microcontroller",
+        "request": "launch",
+        "type": "cortex-debug",
+        "servertype": "openocd",
+        "configFiles": [
+            "C:/openocd-0.10.0/scripts/interface/stlink-V2.cfg",
+            "C:/openocd-0.10.0/scripts/target/stm32f4x.cfg"
+        ]
+    }
+    ],
+    
+    
+}
