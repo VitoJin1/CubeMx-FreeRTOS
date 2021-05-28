@@ -2,6 +2,21 @@
     "files.associations": {
         "gpio.h": "c",
         "cmsis_os.h": "c",
-        "freertos.h": "c"
-    }
+        "freertos.h": "c",
+        "led.h": "c",
+        "mosfet.h": "c",
+        "usart.h": "c",
+        "dma.h": "c",
+        "main.h": "c",
+        "stm32f4xx_hal_uart.h": "c",
+        "task.h": "c",
+        "remoter.h": "c",
+        "imu.h": "c",
+        "common.h": "c",
+        "string.h": "c",
+        "stdint.h": "c",
+        "stdio.h": "c",
+        "stm32f4xx_it.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }

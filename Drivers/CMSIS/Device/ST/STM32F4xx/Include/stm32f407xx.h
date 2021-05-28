@@ -12472,7 +12472,7 @@ typedef struct
 #define USART_SR_IDLE_Msk             (0x1UL << USART_SR_IDLE_Pos)              /*!< 0x00000010 */
 #define USART_SR_IDLE                 USART_SR_IDLE_Msk                        /*!<IDLE line detected           */
 #define USART_SR_RXNE_Pos             (5U)                                     
-#define USART_SR_RXNE_Msk             (0x1UL << USART_SR_RXNE_Pos)              /*!< 0x00000020 */
+#define USART_SR_RXNE_Msk             (0x1UL << USART_SR_RXNE_Pos)              /*!</ 0x00000020 */
 #define USART_SR_RXNE                 USART_SR_RXNE_Msk                        /*!<Read Data Register Not Empty */
 #define USART_SR_TC_Pos               (6U)                                     
 #define USART_SR_TC_Msk               (0x1UL << USART_SR_TC_Pos)                /*!< 0x00000040 */

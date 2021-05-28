@@ -28,7 +28,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "semphr.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -53,7 +53,11 @@ void MemManage_Handler(void);
 void BusFault_Handler(void);
 void UsageFault_Handler(void);
 void DebugMon_Handler(void);
+void DMA1_Stream1_IRQHandler(void);
+void DMA1_Stream2_IRQHandler(void);
 void TIM1_UP_TIM10_IRQHandler(void);
+void USART3_IRQHandler(void);
+void UART4_IRQHandler(void);
 /* USER CODE BEGIN EFP */
 
 /* USER CODE END EFP */

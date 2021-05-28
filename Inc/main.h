@@ -32,12 +32,14 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "FreeRTOS.h"
+#include "semphr.h"
+#include "stdio.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
-
+extern SemaphoreHandle_t IMUReadyToRECEIVE_Semaphore;
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
@@ -58,6 +60,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define ValveSwitch_Pin GPIO_PIN_3
+#define ValveSwitch_GPIO_Port GPIOE
 #define LEDR_Pin GPIO_PIN_0
 #define LEDR_GPIO_Port GPIOC
 #define LEDG_Pin GPIO_PIN_1
@@ -66,6 +70,16 @@ void Error_Handler(void);
 #define LEDB_GPIO_Port GPIOC
 #define LEDY_Pin GPIO_PIN_3
 #define LEDY_GPIO_Port GPIOC
+#define PutterIn1_Pin GPIO_PIN_0
+#define PutterIn1_GPIO_Port GPIOA
+#define PutterIn2_Pin GPIO_PIN_1
+#define PutterIn2_GPIO_Port GPIOA
+#define RollerSwitch_Pin GPIO_PIN_4
+#define RollerSwitch_GPIO_Port GPIOC
+#define PropLSwitch_Pin GPIO_PIN_5
+#define PropLSwitch_GPIO_Port GPIOC
+#define PropRSwitch_Pin GPIO_PIN_6
+#define PropRSwitch_GPIO_Port GPIOC
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

@@ -20,11 +20,14 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "cmsis_os.h"
+#include "dma.h"
 #include "usart.h"
 #include "gpio.h"
-#include "stdio.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "imu.h"
+#include "remoter.h"
 
 /* USER CODE END Includes */
 
@@ -35,6 +38,42 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define START_TASK_PIRO 1// smaller the number is lower the piority is
+#define START_STACK_SIZE 128
+TaskHandle_t Start_Task_Handler;
+void start_task(void *pvParameters);
+
+#define LED_TASK_PIRO 2
+#define LED_STACK_SZIE 64
+TaskHandle_t LED_TASK_Handler;
+void led_task(void *pvParameters);
+
+#define MOSFET_TASK_PIRO 3
+#define MOSFET_STACK_SIZE 64
+TaskHandle_t MOSFET_TASK_Handler;
+void mosfet_task(void *pvParameters);
+
+#define VALVE_TASK_PIRO 4
+#define VALVE_STACK_SIZE 64
+TaskHandle_t VALVE_TASK_Handler;
+void valve_task(void *pvParameters);
+
+#define PRINT_TASK_PIRO 5
+#define PRINT_STACK_SIZE 64
+TaskHandle_t PRINT_TASK_Handler;
+void print_task(void * pvParameters);
+
+#define IMU_RECEIVE_TASK_PRIO 6
+#define IMU_RECEIVE_STACK_SIZE 1024
+TaskHandle_t IMU_RECEIVE_TASK_Handler;
+void imu_receive_task(void *pvParameters);
+
+#define LORA_RECEIVE_TASK_PRIO 7
+#define LORA_RECEIVE_STACK_SIZE 512
+TaskHandle_t LORA_RECEIVE_TASK_Handler;
+void lora_receive_task(void *pvParameters);
+
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -45,12 +84,13 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+SemaphoreHandle_t IMUReadyToRECEIVE_Semaphore;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 void MX_FREERTOS_Init(void);
+static void MX_NVIC_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -88,30 +128,33 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_USART1_UART_Init();
-  /* USER CODE BEGIN 2 */
+  MX_UART4_Init();
+  MX_USART3_UART_Init();
 
+  /* Initialize interrupts */
+  MX_NVIC_Init();
+  /* USER CODE BEGIN 2 */
+  xTaskCreate((TaskFunction_t)start_task,
+              (const char *)"start_task",
+              (uint16_t)START_STACK_SIZE,
+              (void*)NULL,
+              (UBaseType_t)START_TASK_PIRO,
+              (TaskHandle_t *)&Start_Task_Handler);
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
-  //MX_FREERTOS_Init();
+  MX_FREERTOS_Init();
   /* Start scheduler */
-  //osKernelStart();
+  osKernelStart();
 
   /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    HAL_GPIO_TogglePin(GPIOC,LEDR_Pin);
-    HAL_Delay(500);
-    HAL_GPIO_TogglePin(GPIOC,LEDG_Pin);
-    HAL_Delay(500);
-     HAL_GPIO_TogglePin(GPIOC,LEDB_Pin);
-    HAL_Delay(500);
-    HAL_GPIO_TogglePin(GPIOC,LEDY_Pin);
-    HAL_Delay(500);
-    printf("hello world\r\n");
+    
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -162,8 +205,46 @@ void SystemClock_Config(void)
   }
 }
 
-/* USER CODE BEGIN 4 */
+/**
+  * @brief NVIC Configuration.
+  * @retval None
+  */
+static void MX_NVIC_Init(void)
+{
+  /* DMA1_Stream2_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream2_IRQn, 6, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream2_IRQn);
+  /* UART4_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(UART4_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(UART4_IRQn);
+}
 
+/* USER CODE BEGIN 4 */
+void start_task(void *pvParameters){
+  taskENTER_CRITICAL();
+  IMUReadyToRECEIVE_Semaphore=xSemaphoreCreateBinary();
+  xTaskCreate((TaskFunction_t)led_task,
+              (const char *)"led_task",
+              (uint16_t)LED_STACK_SZIE,
+              (void *)NULL,
+              (UBaseType_t)LED_TASK_PIRO,
+              (TaskHandle_t*)&LED_TASK_Handler);
+  xTaskCreate((TaskFunction_t)imu_receive_task,
+              (const char*)"imu_receive_task",
+              (uint16_t)IMU_RECEIVE_STACK_SIZE,
+              (void *)NULL,
+              (UBaseType_t)IMU_RECEIVE_TASK_PRIO,
+              (TaskHandle_t *)&IMU_RECEIVE_TASK_Handler);
+              /*
+  xTaskCreate((TaskFunction_t)lora_receive_task,
+          (const char *)"lora_receive_task",
+          (uint16_t)LOTA_RECEIVE_STACK_SIZE,
+          (void * )NULL,
+          (UBaseType_t)LORA_RECEIVE_TASK_PRIO,
+          (TaskHandle_t)&LORA_RECEIVE_TASK_Handler);*/
+  vTaskDelete(Start_Task_Handler);
+  taskEXIT_CRITICAL();
+}
 /* USER CODE END 4 */
 
  /**

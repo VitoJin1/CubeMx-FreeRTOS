@@ -25,7 +25,6 @@ build/main.o: Src/main.c Inc/main.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  Inc/FreeRTOSConfig.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
@@ -33,16 +32,18 @@ build/main.o: Src/main.c Inc/main.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
  Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
+ Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/timers.h Inc/usart.h \
- Inc/main.h Inc/gpio.h
+ Middlewares/Third_Party/FreeRTOS/Source/include/timers.h Inc/dma.h \
+ Inc/main.h Inc/usart.h Inc/gpio.h Inc/imu.h Inc/common.h Inc/usart.h \
+ Inc/stm32f4xx_it.h Inc/remoter.h
 Inc/main.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 Inc/stm32f4xx_hal_conf.h:
@@ -72,7 +73,6 @@ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
-Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 Inc/FreeRTOSConfig.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
@@ -80,15 +80,22 @@ Middlewares/Third_Party/FreeRTOS/Source/include/portable.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h:
 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
-Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
+Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
-Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
-Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
-Inc/usart.h:
+Inc/dma.h:
 Inc/main.h:
+Inc/usart.h:
 Inc/gpio.h:
+Inc/imu.h:
+Inc/common.h:
+Inc/usart.h:
+Inc/stm32f4xx_it.h:
+Inc/remoter.h:

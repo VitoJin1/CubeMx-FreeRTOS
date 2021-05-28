@@ -4,7 +4,8 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F"
+                "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F",
+                "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc"
             ],
             "defines": [
                 "_DEBUG",
