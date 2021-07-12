@@ -35,16 +35,31 @@ extern "C" {
 #include "FreeRTOS.h"
 #include "semphr.h"
 #include "stdio.h"
+#include "unlock.h"
+#include "imu.h"
+#include "remoter.h"
+#include "dma.h"
+#include "tim.h"
+#include "usart.h"
+#include "gpio.h"
+#include "taskstatedisplay.h"
+#include "modbus.h"
+#include "balance.h"
+#include "timers.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
 extern SemaphoreHandle_t IMUReadyToRECEIVE_Semaphore;
+extern SemaphoreHandle_t LORARedyToRECEIVE_Semaphore;
+extern SemaphoreHandle_t MODBUSReadyToRECEIVE_Semaphore;
+extern TimerHandle_t FiveSecModbusProtectTimer;
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
-
+extern TaskHandle_t ESC_TASK_Handler;
+extern TaskHandle_t Start_Task_Handler;
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
@@ -78,10 +93,16 @@ void Error_Handler(void);
 #define RollerSwitch_GPIO_Port GPIOC
 #define PropLSwitch_Pin GPIO_PIN_5
 #define PropLSwitch_GPIO_Port GPIOC
+#define Left_Dir_Pin GPIO_PIN_13
+#define Left_Dir_GPIO_Port GPIOB
+#define Right_Dir_Pin GPIO_PIN_14
+#define Right_Dir_GPIO_Port GPIOB
 #define PropRSwitch_Pin GPIO_PIN_6
 #define PropRSwitch_GPIO_Port GPIOC
 /* USER CODE BEGIN Private defines */
-
+#define MANUAL_MODE 0
+#define AUTO_MODE 1
+#define CALI_MODE 2
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

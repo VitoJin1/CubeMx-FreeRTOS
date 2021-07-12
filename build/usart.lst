@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 1
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 1
   27:Src/usart.c   **** #ifdef __GNUC__
   28:Src/usart.c   **** 	#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
   29:Src/usart.c   **** #else
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 2
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 2
 
 
   30:Src/usart.c   **** 	#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 1
   78              		.thumb_func
   79              		.fpu fpv4-sp-d16
   81              	_write:
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 3
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 3
 
 
   82              	.LVL4:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 1
   45:Src/usart.c   **** }
  124              		.loc 1 45 1 is_stmt 0 view .LVU23
  125 0018 3046     		mov	r0, r6
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 4
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 4
 
 
  126 001a 70BD     		pop	{r4, r5, r6, pc}
@@ -200,14 +200,16 @@ ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 1
   49:Src/usart.c   **** 
   50:Src/usart.c   **** UART_HandleTypeDef huart4;
   51:Src/usart.c   **** UART_HandleTypeDef huart1;
-  52:Src/usart.c   **** UART_HandleTypeDef huart3;
-  53:Src/usart.c   **** DMA_HandleTypeDef hdma_uart4_rx;
-  54:Src/usart.c   **** DMA_HandleTypeDef hdma_usart3_rx;
-  55:Src/usart.c   **** 
-  56:Src/usart.c   **** /* UART4 init function */
-  57:Src/usart.c   **** void MX_UART4_Init(void)
-  58:Src/usart.c   **** {
- 141              		.loc 1 58 1 is_stmt 1 view -0
+  52:Src/usart.c   **** UART_HandleTypeDef huart2;
+  53:Src/usart.c   **** UART_HandleTypeDef huart3;
+  54:Src/usart.c   **** DMA_HandleTypeDef hdma_uart4_rx;
+  55:Src/usart.c   **** DMA_HandleTypeDef hdma_usart2_rx;
+  56:Src/usart.c   **** DMA_HandleTypeDef hdma_usart3_rx;
+  57:Src/usart.c   **** 
+  58:Src/usart.c   **** /* UART4 init function */
+  59:Src/usart.c   **** void MX_UART4_Init(void)
+  60:Src/usart.c   **** {
+ 141              		.loc 1 60 1 is_stmt 1 view -0
  142              		.cfi_startproc
  143              		@ args = 0, pretend = 0, frame = 0
  144              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -216,78 +218,78 @@ ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 1
  147              		.cfi_def_cfa_offset 8
  148              		.cfi_offset 3, -8
  149              		.cfi_offset 14, -4
-  59:Src/usart.c   **** 
-  60:Src/usart.c   ****   /* USER CODE BEGIN UART4_Init 0 */
   61:Src/usart.c   **** 
-  62:Src/usart.c   ****   /* USER CODE END UART4_Init 0 */
+  62:Src/usart.c   ****   /* USER CODE BEGIN UART4_Init 0 */
   63:Src/usart.c   **** 
-  64:Src/usart.c   ****   /* USER CODE BEGIN UART4_Init 1 */
+  64:Src/usart.c   ****   /* USER CODE END UART4_Init 0 */
   65:Src/usart.c   **** 
-  66:Src/usart.c   ****   /* USER CODE END UART4_Init 1 */
-  67:Src/usart.c   ****   huart4.Instance = UART4;
- 150              		.loc 1 67 3 view .LVU26
- 151              		.loc 1 67 19 is_stmt 0 view .LVU27
+  66:Src/usart.c   ****   /* USER CODE BEGIN UART4_Init 1 */
+  67:Src/usart.c   **** 
+  68:Src/usart.c   ****   /* USER CODE END UART4_Init 1 */
+  69:Src/usart.c   ****   huart4.Instance = UART4;
+ 150              		.loc 1 69 3 view .LVU26
+ 151              		.loc 1 69 19 is_stmt 0 view .LVU27
  152 0002 0A48     		ldr	r0, .L13
  153 0004 0A4B     		ldr	r3, .L13+4
  154 0006 0360     		str	r3, [r0]
-  68:Src/usart.c   ****   huart4.Init.BaudRate = 115200;
- 155              		.loc 1 68 3 is_stmt 1 view .LVU28
- 156              		.loc 1 68 24 is_stmt 0 view .LVU29
+  70:Src/usart.c   ****   huart4.Init.BaudRate = 115200;
+ 155              		.loc 1 70 3 is_stmt 1 view .LVU28
+ 156              		.loc 1 70 24 is_stmt 0 view .LVU29
  157 0008 4FF4E133 		mov	r3, #115200
  158 000c 4360     		str	r3, [r0, #4]
-  69:Src/usart.c   ****   huart4.Init.WordLength = UART_WORDLENGTH_8B;
- 159              		.loc 1 69 3 is_stmt 1 view .LVU30
- 160              		.loc 1 69 26 is_stmt 0 view .LVU31
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 5
+  71:Src/usart.c   ****   huart4.Init.WordLength = UART_WORDLENGTH_8B;
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 5
 
 
+ 159              		.loc 1 71 3 is_stmt 1 view .LVU30
+ 160              		.loc 1 71 26 is_stmt 0 view .LVU31
  161 000e 0023     		movs	r3, #0
  162 0010 8360     		str	r3, [r0, #8]
-  70:Src/usart.c   ****   huart4.Init.StopBits = UART_STOPBITS_1;
- 163              		.loc 1 70 3 is_stmt 1 view .LVU32
- 164              		.loc 1 70 24 is_stmt 0 view .LVU33
+  72:Src/usart.c   ****   huart4.Init.StopBits = UART_STOPBITS_1;
+ 163              		.loc 1 72 3 is_stmt 1 view .LVU32
+ 164              		.loc 1 72 24 is_stmt 0 view .LVU33
  165 0012 C360     		str	r3, [r0, #12]
-  71:Src/usart.c   ****   huart4.Init.Parity = UART_PARITY_NONE;
- 166              		.loc 1 71 3 is_stmt 1 view .LVU34
- 167              		.loc 1 71 22 is_stmt 0 view .LVU35
+  73:Src/usart.c   ****   huart4.Init.Parity = UART_PARITY_NONE;
+ 166              		.loc 1 73 3 is_stmt 1 view .LVU34
+ 167              		.loc 1 73 22 is_stmt 0 view .LVU35
  168 0014 0361     		str	r3, [r0, #16]
-  72:Src/usart.c   ****   huart4.Init.Mode = UART_MODE_RX;
- 169              		.loc 1 72 3 is_stmt 1 view .LVU36
- 170              		.loc 1 72 20 is_stmt 0 view .LVU37
+  74:Src/usart.c   ****   huart4.Init.Mode = UART_MODE_RX;
+ 169              		.loc 1 74 3 is_stmt 1 view .LVU36
+ 170              		.loc 1 74 20 is_stmt 0 view .LVU37
  171 0016 0422     		movs	r2, #4
  172 0018 4261     		str	r2, [r0, #20]
-  73:Src/usart.c   ****   huart4.Init.HwFlowCtl = UART_HWCONTROL_NONE;
- 173              		.loc 1 73 3 is_stmt 1 view .LVU38
- 174              		.loc 1 73 25 is_stmt 0 view .LVU39
+  75:Src/usart.c   ****   huart4.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 173              		.loc 1 75 3 is_stmt 1 view .LVU38
+ 174              		.loc 1 75 25 is_stmt 0 view .LVU39
  175 001a 8361     		str	r3, [r0, #24]
-  74:Src/usart.c   ****   huart4.Init.OverSampling = UART_OVERSAMPLING_16;
- 176              		.loc 1 74 3 is_stmt 1 view .LVU40
- 177              		.loc 1 74 28 is_stmt 0 view .LVU41
+  76:Src/usart.c   ****   huart4.Init.OverSampling = UART_OVERSAMPLING_16;
+ 176              		.loc 1 76 3 is_stmt 1 view .LVU40
+ 177              		.loc 1 76 28 is_stmt 0 view .LVU41
  178 001c C361     		str	r3, [r0, #28]
-  75:Src/usart.c   ****   if (HAL_UART_Init(&huart4) != HAL_OK)
- 179              		.loc 1 75 3 is_stmt 1 view .LVU42
- 180              		.loc 1 75 7 is_stmt 0 view .LVU43
+  77:Src/usart.c   ****   if (HAL_UART_Init(&huart4) != HAL_OK)
+ 179              		.loc 1 77 3 is_stmt 1 view .LVU42
+ 180              		.loc 1 77 7 is_stmt 0 view .LVU43
  181 001e FFF7FEFF 		bl	HAL_UART_Init
  182              	.LVL10:
- 183              		.loc 1 75 6 view .LVU44
+ 183              		.loc 1 77 6 view .LVU44
  184 0022 00B9     		cbnz	r0, .L12
  185              	.L9:
-  76:Src/usart.c   ****   {
-  77:Src/usart.c   ****     Error_Handler();
-  78:Src/usart.c   ****   }
-  79:Src/usart.c   ****   /* USER CODE BEGIN UART4_Init 2 */
-  80:Src/usart.c   **** 
-  81:Src/usart.c   ****   /* USER CODE END UART4_Init 2 */
+  78:Src/usart.c   ****   {
+  79:Src/usart.c   ****     Error_Handler();
+  80:Src/usart.c   ****   }
+  81:Src/usart.c   ****   /* USER CODE BEGIN UART4_Init 2 */
   82:Src/usart.c   **** 
-  83:Src/usart.c   **** }
- 186              		.loc 1 83 1 view .LVU45
+  83:Src/usart.c   ****   /* USER CODE END UART4_Init 2 */
+  84:Src/usart.c   **** 
+  85:Src/usart.c   **** }
+ 186              		.loc 1 85 1 view .LVU45
  187 0024 08BD     		pop	{r3, pc}
  188              	.L12:
-  77:Src/usart.c   ****   }
- 189              		.loc 1 77 5 is_stmt 1 view .LVU46
+  79:Src/usart.c   ****   }
+ 189              		.loc 1 79 5 is_stmt 1 view .LVU46
  190 0026 FFF7FEFF 		bl	Error_Handler
  191              	.LVL11:
- 192              		.loc 1 83 1 is_stmt 0 view .LVU47
+ 192              		.loc 1 85 1 is_stmt 0 view .LVU47
  193 002a FBE7     		b	.L9
  194              	.L14:
  195              		.align	2
@@ -296,11 +298,11 @@ ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 1
  198 0030 004C0040 		.word	1073761280
  199              		.cfi_endproc
  200              	.LFE140:
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 6
+
+
  202              		.section	.text.MX_USART1_UART_Init,"ax",%progbits
  203              		.align	1
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 6
-
-
  204              		.global	MX_USART1_UART_Init
  205              		.syntax unified
  206              		.thumb
@@ -308,11 +310,11 @@ ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 1
  208              		.fpu fpv4-sp-d16
  210              	MX_USART1_UART_Init:
  211              	.LFB141:
-  84:Src/usart.c   **** /* USART1 init function */
-  85:Src/usart.c   **** 
-  86:Src/usart.c   **** void MX_USART1_UART_Init(void)
-  87:Src/usart.c   **** {
- 212              		.loc 1 87 1 is_stmt 1 view -0
+  86:Src/usart.c   **** /* USART1 init function */
+  87:Src/usart.c   **** 
+  88:Src/usart.c   **** void MX_USART1_UART_Init(void)
+  89:Src/usart.c   **** {
+ 212              		.loc 1 89 1 is_stmt 1 view -0
  213              		.cfi_startproc
  214              		@ args = 0, pretend = 0, frame = 0
  215              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -321,78 +323,78 @@ ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 1
  218              		.cfi_def_cfa_offset 8
  219              		.cfi_offset 3, -8
  220              		.cfi_offset 14, -4
-  88:Src/usart.c   **** 
-  89:Src/usart.c   ****   /* USER CODE BEGIN USART1_Init 0 */
   90:Src/usart.c   **** 
-  91:Src/usart.c   ****   /* USER CODE END USART1_Init 0 */
+  91:Src/usart.c   ****   /* USER CODE BEGIN USART1_Init 0 */
   92:Src/usart.c   **** 
-  93:Src/usart.c   ****   /* USER CODE BEGIN USART1_Init 1 */
+  93:Src/usart.c   ****   /* USER CODE END USART1_Init 0 */
   94:Src/usart.c   **** 
-  95:Src/usart.c   ****   /* USER CODE END USART1_Init 1 */
-  96:Src/usart.c   ****   huart1.Instance = USART1;
- 221              		.loc 1 96 3 view .LVU49
- 222              		.loc 1 96 19 is_stmt 0 view .LVU50
+  95:Src/usart.c   ****   /* USER CODE BEGIN USART1_Init 1 */
+  96:Src/usart.c   **** 
+  97:Src/usart.c   ****   /* USER CODE END USART1_Init 1 */
+  98:Src/usart.c   ****   huart1.Instance = USART1;
+ 221              		.loc 1 98 3 view .LVU49
+ 222              		.loc 1 98 19 is_stmt 0 view .LVU50
  223 0002 0A48     		ldr	r0, .L19
  224 0004 0A4B     		ldr	r3, .L19+4
  225 0006 0360     		str	r3, [r0]
-  97:Src/usart.c   ****   huart1.Init.BaudRate = 115200;
- 226              		.loc 1 97 3 is_stmt 1 view .LVU51
- 227              		.loc 1 97 24 is_stmt 0 view .LVU52
+  99:Src/usart.c   ****   huart1.Init.BaudRate = 115200;
+ 226              		.loc 1 99 3 is_stmt 1 view .LVU51
+ 227              		.loc 1 99 24 is_stmt 0 view .LVU52
  228 0008 4FF4E133 		mov	r3, #115200
  229 000c 4360     		str	r3, [r0, #4]
-  98:Src/usart.c   ****   huart1.Init.WordLength = UART_WORDLENGTH_8B;
- 230              		.loc 1 98 3 is_stmt 1 view .LVU53
- 231              		.loc 1 98 26 is_stmt 0 view .LVU54
+ 100:Src/usart.c   ****   huart1.Init.WordLength = UART_WORDLENGTH_8B;
+ 230              		.loc 1 100 3 is_stmt 1 view .LVU53
+ 231              		.loc 1 100 26 is_stmt 0 view .LVU54
  232 000e 0023     		movs	r3, #0
  233 0010 8360     		str	r3, [r0, #8]
-  99:Src/usart.c   ****   huart1.Init.StopBits = UART_STOPBITS_1;
- 234              		.loc 1 99 3 is_stmt 1 view .LVU55
- 235              		.loc 1 99 24 is_stmt 0 view .LVU56
+ 101:Src/usart.c   ****   huart1.Init.StopBits = UART_STOPBITS_1;
+ 234              		.loc 1 101 3 is_stmt 1 view .LVU55
+ 235              		.loc 1 101 24 is_stmt 0 view .LVU56
  236 0012 C360     		str	r3, [r0, #12]
- 100:Src/usart.c   ****   huart1.Init.Parity = UART_PARITY_NONE;
- 237              		.loc 1 100 3 is_stmt 1 view .LVU57
- 238              		.loc 1 100 22 is_stmt 0 view .LVU58
+ 102:Src/usart.c   ****   huart1.Init.Parity = UART_PARITY_NONE;
+ 237              		.loc 1 102 3 is_stmt 1 view .LVU57
+ 238              		.loc 1 102 22 is_stmt 0 view .LVU58
  239 0014 0361     		str	r3, [r0, #16]
- 101:Src/usart.c   ****   huart1.Init.Mode = UART_MODE_TX_RX;
- 240              		.loc 1 101 3 is_stmt 1 view .LVU59
- 241              		.loc 1 101 20 is_stmt 0 view .LVU60
+ 103:Src/usart.c   ****   huart1.Init.Mode = UART_MODE_TX_RX;
+ 240              		.loc 1 103 3 is_stmt 1 view .LVU59
+ 241              		.loc 1 103 20 is_stmt 0 view .LVU60
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 7
+
+
  242 0016 0C22     		movs	r2, #12
  243 0018 4261     		str	r2, [r0, #20]
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 7
-
-
- 102:Src/usart.c   ****   huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
- 244              		.loc 1 102 3 is_stmt 1 view .LVU61
- 245              		.loc 1 102 25 is_stmt 0 view .LVU62
+ 104:Src/usart.c   ****   huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 244              		.loc 1 104 3 is_stmt 1 view .LVU61
+ 245              		.loc 1 104 25 is_stmt 0 view .LVU62
  246 001a 8361     		str	r3, [r0, #24]
- 103:Src/usart.c   ****   huart1.Init.OverSampling = UART_OVERSAMPLING_16;
- 247              		.loc 1 103 3 is_stmt 1 view .LVU63
- 248              		.loc 1 103 28 is_stmt 0 view .LVU64
+ 105:Src/usart.c   ****   huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+ 247              		.loc 1 105 3 is_stmt 1 view .LVU63
+ 248              		.loc 1 105 28 is_stmt 0 view .LVU64
  249 001c C361     		str	r3, [r0, #28]
- 104:Src/usart.c   ****   if (HAL_UART_Init(&huart1) != HAL_OK)
- 250              		.loc 1 104 3 is_stmt 1 view .LVU65
- 251              		.loc 1 104 7 is_stmt 0 view .LVU66
+ 106:Src/usart.c   ****   if (HAL_UART_Init(&huart1) != HAL_OK)
+ 250              		.loc 1 106 3 is_stmt 1 view .LVU65
+ 251              		.loc 1 106 7 is_stmt 0 view .LVU66
  252 001e FFF7FEFF 		bl	HAL_UART_Init
  253              	.LVL12:
- 254              		.loc 1 104 6 view .LVU67
+ 254              		.loc 1 106 6 view .LVU67
  255 0022 00B9     		cbnz	r0, .L18
  256              	.L15:
- 105:Src/usart.c   ****   {
- 106:Src/usart.c   ****     Error_Handler();
- 107:Src/usart.c   ****   }
- 108:Src/usart.c   ****   /* USER CODE BEGIN USART1_Init 2 */
- 109:Src/usart.c   **** 
- 110:Src/usart.c   ****   /* USER CODE END USART1_Init 2 */
+ 107:Src/usart.c   ****   {
+ 108:Src/usart.c   ****     Error_Handler();
+ 109:Src/usart.c   ****   }
+ 110:Src/usart.c   ****   /* USER CODE BEGIN USART1_Init 2 */
  111:Src/usart.c   **** 
- 112:Src/usart.c   **** }
- 257              		.loc 1 112 1 view .LVU68
+ 112:Src/usart.c   ****   /* USER CODE END USART1_Init 2 */
+ 113:Src/usart.c   **** 
+ 114:Src/usart.c   **** }
+ 257              		.loc 1 114 1 view .LVU68
  258 0024 08BD     		pop	{r3, pc}
  259              	.L18:
- 106:Src/usart.c   ****   }
- 260              		.loc 1 106 5 is_stmt 1 view .LVU69
+ 108:Src/usart.c   ****   }
+ 260              		.loc 1 108 5 is_stmt 1 view .LVU69
  261 0026 FFF7FEFF 		bl	Error_Handler
  262              	.LVL13:
- 263              		.loc 1 112 1 is_stmt 0 view .LVU70
+ 263              		.loc 1 114 1 is_stmt 0 view .LVU70
  264 002a FBE7     		b	.L15
  265              	.L20:
  266              		.align	2
@@ -401,1077 +403,1515 @@ ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 1
  269 0030 00100140 		.word	1073811456
  270              		.cfi_endproc
  271              	.LFE141:
- 273              		.section	.text.MX_USART3_UART_Init,"ax",%progbits
+ 273              		.section	.text.MX_USART2_UART_Init,"ax",%progbits
  274              		.align	1
- 275              		.global	MX_USART3_UART_Init
+ 275              		.global	MX_USART2_UART_Init
  276              		.syntax unified
  277              		.thumb
  278              		.thumb_func
  279              		.fpu fpv4-sp-d16
- 281              	MX_USART3_UART_Init:
+ 281              	MX_USART2_UART_Init:
  282              	.LFB142:
- 113:Src/usart.c   **** /* USART3 init function */
- 114:Src/usart.c   **** 
- 115:Src/usart.c   **** void MX_USART3_UART_Init(void)
- 116:Src/usart.c   **** {
- 283              		.loc 1 116 1 is_stmt 1 view -0
+ 115:Src/usart.c   **** /* USART2 init function */
+ 116:Src/usart.c   **** 
+ 117:Src/usart.c   **** void MX_USART2_UART_Init(void)
+ 118:Src/usart.c   **** {
+ 283              		.loc 1 118 1 is_stmt 1 view -0
  284              		.cfi_startproc
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 8
+
+
  285              		@ args = 0, pretend = 0, frame = 0
  286              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 8
-
-
  287 0000 08B5     		push	{r3, lr}
  288              	.LCFI6:
  289              		.cfi_def_cfa_offset 8
  290              		.cfi_offset 3, -8
  291              		.cfi_offset 14, -4
- 117:Src/usart.c   **** 
- 118:Src/usart.c   ****   /* USER CODE BEGIN USART3_Init 0 */
  119:Src/usart.c   **** 
- 120:Src/usart.c   ****   /* USER CODE END USART3_Init 0 */
+ 120:Src/usart.c   ****   /* USER CODE BEGIN USART2_Init 0 */
  121:Src/usart.c   **** 
- 122:Src/usart.c   ****   /* USER CODE BEGIN USART3_Init 1 */
+ 122:Src/usart.c   ****   /* USER CODE END USART2_Init 0 */
  123:Src/usart.c   **** 
- 124:Src/usart.c   ****   /* USER CODE END USART3_Init 1 */
- 125:Src/usart.c   ****   huart3.Instance = USART3;
- 292              		.loc 1 125 3 view .LVU72
- 293              		.loc 1 125 19 is_stmt 0 view .LVU73
+ 124:Src/usart.c   ****   /* USER CODE BEGIN USART2_Init 1 */
+ 125:Src/usart.c   **** 
+ 126:Src/usart.c   ****   /* USER CODE END USART2_Init 1 */
+ 127:Src/usart.c   ****   huart2.Instance = USART2;
+ 292              		.loc 1 127 3 view .LVU72
+ 293              		.loc 1 127 19 is_stmt 0 view .LVU73
  294 0002 0A48     		ldr	r0, .L25
  295 0004 0A4B     		ldr	r3, .L25+4
  296 0006 0360     		str	r3, [r0]
- 126:Src/usart.c   ****   huart3.Init.BaudRate = 115200;
- 297              		.loc 1 126 3 is_stmt 1 view .LVU74
- 298              		.loc 1 126 24 is_stmt 0 view .LVU75
+ 128:Src/usart.c   ****   huart2.Init.BaudRate = 115200;
+ 297              		.loc 1 128 3 is_stmt 1 view .LVU74
+ 298              		.loc 1 128 24 is_stmt 0 view .LVU75
  299 0008 4FF4E133 		mov	r3, #115200
  300 000c 4360     		str	r3, [r0, #4]
- 127:Src/usart.c   ****   huart3.Init.WordLength = UART_WORDLENGTH_8B;
- 301              		.loc 1 127 3 is_stmt 1 view .LVU76
- 302              		.loc 1 127 26 is_stmt 0 view .LVU77
+ 129:Src/usart.c   ****   huart2.Init.WordLength = UART_WORDLENGTH_8B;
+ 301              		.loc 1 129 3 is_stmt 1 view .LVU76
+ 302              		.loc 1 129 26 is_stmt 0 view .LVU77
  303 000e 0023     		movs	r3, #0
  304 0010 8360     		str	r3, [r0, #8]
- 128:Src/usart.c   ****   huart3.Init.StopBits = UART_STOPBITS_1;
- 305              		.loc 1 128 3 is_stmt 1 view .LVU78
- 306              		.loc 1 128 24 is_stmt 0 view .LVU79
+ 130:Src/usart.c   ****   huart2.Init.StopBits = UART_STOPBITS_1;
+ 305              		.loc 1 130 3 is_stmt 1 view .LVU78
+ 306              		.loc 1 130 24 is_stmt 0 view .LVU79
  307 0012 C360     		str	r3, [r0, #12]
- 129:Src/usart.c   ****   huart3.Init.Parity = UART_PARITY_NONE;
- 308              		.loc 1 129 3 is_stmt 1 view .LVU80
- 309              		.loc 1 129 22 is_stmt 0 view .LVU81
+ 131:Src/usart.c   ****   huart2.Init.Parity = UART_PARITY_NONE;
+ 308              		.loc 1 131 3 is_stmt 1 view .LVU80
+ 309              		.loc 1 131 22 is_stmt 0 view .LVU81
  310 0014 0361     		str	r3, [r0, #16]
- 130:Src/usart.c   ****   huart3.Init.Mode = UART_MODE_TX_RX;
- 311              		.loc 1 130 3 is_stmt 1 view .LVU82
- 312              		.loc 1 130 20 is_stmt 0 view .LVU83
+ 132:Src/usart.c   ****   huart2.Init.Mode = UART_MODE_TX_RX;
+ 311              		.loc 1 132 3 is_stmt 1 view .LVU82
+ 312              		.loc 1 132 20 is_stmt 0 view .LVU83
  313 0016 0C22     		movs	r2, #12
  314 0018 4261     		str	r2, [r0, #20]
- 131:Src/usart.c   ****   huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
- 315              		.loc 1 131 3 is_stmt 1 view .LVU84
- 316              		.loc 1 131 25 is_stmt 0 view .LVU85
+ 133:Src/usart.c   ****   huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 315              		.loc 1 133 3 is_stmt 1 view .LVU84
+ 316              		.loc 1 133 25 is_stmt 0 view .LVU85
  317 001a 8361     		str	r3, [r0, #24]
- 132:Src/usart.c   ****   huart3.Init.OverSampling = UART_OVERSAMPLING_16;
- 318              		.loc 1 132 3 is_stmt 1 view .LVU86
- 319              		.loc 1 132 28 is_stmt 0 view .LVU87
+ 134:Src/usart.c   ****   huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+ 318              		.loc 1 134 3 is_stmt 1 view .LVU86
+ 319              		.loc 1 134 28 is_stmt 0 view .LVU87
  320 001c C361     		str	r3, [r0, #28]
- 133:Src/usart.c   ****   if (HAL_UART_Init(&huart3) != HAL_OK)
- 321              		.loc 1 133 3 is_stmt 1 view .LVU88
- 322              		.loc 1 133 7 is_stmt 0 view .LVU89
+ 135:Src/usart.c   ****   if (HAL_UART_Init(&huart2) != HAL_OK)
+ 321              		.loc 1 135 3 is_stmt 1 view .LVU88
+ 322              		.loc 1 135 7 is_stmt 0 view .LVU89
  323 001e FFF7FEFF 		bl	HAL_UART_Init
  324              	.LVL14:
- 325              		.loc 1 133 6 view .LVU90
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 9
+
+
+ 325              		.loc 1 135 6 view .LVU90
  326 0022 00B9     		cbnz	r0, .L24
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 9
-
-
  327              	.L21:
- 134:Src/usart.c   ****   {
- 135:Src/usart.c   ****     Error_Handler();
- 136:Src/usart.c   ****   }
- 137:Src/usart.c   ****   /* USER CODE BEGIN USART3_Init 2 */
- 138:Src/usart.c   **** 
- 139:Src/usart.c   ****   /* USER CODE END USART3_Init 2 */
+ 136:Src/usart.c   ****   {
+ 137:Src/usart.c   ****     Error_Handler();
+ 138:Src/usart.c   ****   }
+ 139:Src/usart.c   ****   /* USER CODE BEGIN USART2_Init 2 */
  140:Src/usart.c   **** 
- 141:Src/usart.c   **** }
- 328              		.loc 1 141 1 view .LVU91
+ 141:Src/usart.c   ****   /* USER CODE END USART2_Init 2 */
+ 142:Src/usart.c   **** 
+ 143:Src/usart.c   **** }
+ 328              		.loc 1 143 1 view .LVU91
  329 0024 08BD     		pop	{r3, pc}
  330              	.L24:
- 135:Src/usart.c   ****   }
- 331              		.loc 1 135 5 is_stmt 1 view .LVU92
+ 137:Src/usart.c   ****   }
+ 331              		.loc 1 137 5 is_stmt 1 view .LVU92
  332 0026 FFF7FEFF 		bl	Error_Handler
  333              	.LVL15:
- 334              		.loc 1 141 1 is_stmt 0 view .LVU93
+ 334              		.loc 1 143 1 is_stmt 0 view .LVU93
  335 002a FBE7     		b	.L21
  336              	.L26:
  337              		.align	2
  338              	.L25:
  339 002c 00000000 		.word	.LANCHOR2
- 340 0030 00480040 		.word	1073760256
+ 340 0030 00440040 		.word	1073759232
  341              		.cfi_endproc
  342              	.LFE142:
- 344              		.section	.text.HAL_UART_MspInit,"ax",%progbits
+ 344              		.section	.text.MX_USART3_UART_Init,"ax",%progbits
  345              		.align	1
- 346              		.global	HAL_UART_MspInit
+ 346              		.global	MX_USART3_UART_Init
  347              		.syntax unified
  348              		.thumb
  349              		.thumb_func
  350              		.fpu fpv4-sp-d16
- 352              	HAL_UART_MspInit:
- 353              	.LVL16:
- 354              	.LFB143:
- 142:Src/usart.c   **** 
- 143:Src/usart.c   **** void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
- 144:Src/usart.c   **** {
- 355              		.loc 1 144 1 is_stmt 1 view -0
- 356              		.cfi_startproc
- 357              		@ args = 0, pretend = 0, frame = 48
- 358              		@ frame_needed = 0, uses_anonymous_args = 0
- 359              		.loc 1 144 1 is_stmt 0 view .LVU95
- 360 0000 30B5     		push	{r4, r5, lr}
- 361              	.LCFI7:
- 362              		.cfi_def_cfa_offset 12
- 363              		.cfi_offset 4, -12
- 364              		.cfi_offset 5, -8
- 365              		.cfi_offset 14, -4
- 366 0002 8DB0     		sub	sp, sp, #52
- 367              	.LCFI8:
- 368              		.cfi_def_cfa_offset 64
- 369 0004 0446     		mov	r4, r0
+ 352              	MX_USART3_UART_Init:
+ 353              	.LFB143:
+ 144:Src/usart.c   **** /* USART3 init function */
  145:Src/usart.c   **** 
- 146:Src/usart.c   ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
- 370              		.loc 1 146 3 is_stmt 1 view .LVU96
- 371              		.loc 1 146 20 is_stmt 0 view .LVU97
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 10
-
-
- 372 0006 0023     		movs	r3, #0
- 373 0008 0793     		str	r3, [sp, #28]
- 374 000a 0893     		str	r3, [sp, #32]
- 375 000c 0993     		str	r3, [sp, #36]
- 376 000e 0A93     		str	r3, [sp, #40]
- 377 0010 0B93     		str	r3, [sp, #44]
- 147:Src/usart.c   ****   if(uartHandle->Instance==UART4)
- 378              		.loc 1 147 3 is_stmt 1 view .LVU98
- 379              		.loc 1 147 16 is_stmt 0 view .LVU99
- 380 0012 0368     		ldr	r3, [r0]
- 381              		.loc 1 147 5 view .LVU100
- 382 0014 594A     		ldr	r2, .L39
- 383 0016 9342     		cmp	r3, r2
- 384 0018 07D0     		beq	.L34
- 148:Src/usart.c   ****   {
- 149:Src/usart.c   ****   /* USER CODE BEGIN UART4_MspInit 0 */
+ 146:Src/usart.c   **** void MX_USART3_UART_Init(void)
+ 147:Src/usart.c   **** {
+ 354              		.loc 1 147 1 is_stmt 1 view -0
+ 355              		.cfi_startproc
+ 356              		@ args = 0, pretend = 0, frame = 0
+ 357              		@ frame_needed = 0, uses_anonymous_args = 0
+ 358 0000 08B5     		push	{r3, lr}
+ 359              	.LCFI7:
+ 360              		.cfi_def_cfa_offset 8
+ 361              		.cfi_offset 3, -8
+ 362              		.cfi_offset 14, -4
+ 148:Src/usart.c   **** 
+ 149:Src/usart.c   ****   /* USER CODE BEGIN USART3_Init 0 */
  150:Src/usart.c   **** 
- 151:Src/usart.c   ****   /* USER CODE END UART4_MspInit 0 */
- 152:Src/usart.c   ****     /* UART4 clock enable */
- 153:Src/usart.c   ****     __HAL_RCC_UART4_CLK_ENABLE();
+ 151:Src/usart.c   ****   /* USER CODE END USART3_Init 0 */
+ 152:Src/usart.c   **** 
+ 153:Src/usart.c   ****   /* USER CODE BEGIN USART3_Init 1 */
  154:Src/usart.c   **** 
- 155:Src/usart.c   ****     __HAL_RCC_GPIOC_CLK_ENABLE();
- 156:Src/usart.c   ****     /**UART4 GPIO Configuration
- 157:Src/usart.c   ****     PC10     ------> UART4_TX
- 158:Src/usart.c   ****     PC11     ------> UART4_RX
- 159:Src/usart.c   ****     */
- 160:Src/usart.c   ****     GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_11;
- 161:Src/usart.c   ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
- 162:Src/usart.c   ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
- 163:Src/usart.c   ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
- 164:Src/usart.c   ****     GPIO_InitStruct.Alternate = GPIO_AF8_UART4;
- 165:Src/usart.c   ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
- 166:Src/usart.c   **** 
- 167:Src/usart.c   ****     /* UART4 DMA Init */
- 168:Src/usart.c   ****     /* UART4_RX Init */
- 169:Src/usart.c   ****     hdma_uart4_rx.Instance = DMA1_Stream2;
- 170:Src/usart.c   ****     hdma_uart4_rx.Init.Channel = DMA_CHANNEL_4;
- 171:Src/usart.c   ****     hdma_uart4_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
- 172:Src/usart.c   ****     hdma_uart4_rx.Init.PeriphInc = DMA_PINC_DISABLE;
- 173:Src/usart.c   ****     hdma_uart4_rx.Init.MemInc = DMA_MINC_ENABLE;
- 174:Src/usart.c   ****     hdma_uart4_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
- 175:Src/usart.c   ****     hdma_uart4_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
- 176:Src/usart.c   ****     hdma_uart4_rx.Init.Mode = DMA_NORMAL;
- 177:Src/usart.c   ****     hdma_uart4_rx.Init.Priority = DMA_PRIORITY_LOW;
- 178:Src/usart.c   ****     hdma_uart4_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
- 179:Src/usart.c   ****     if (HAL_DMA_Init(&hdma_uart4_rx) != HAL_OK)
- 180:Src/usart.c   ****     {
- 181:Src/usart.c   ****       Error_Handler();
- 182:Src/usart.c   ****     }
- 183:Src/usart.c   **** 
- 184:Src/usart.c   ****     __HAL_LINKDMA(uartHandle,hdmarx,hdma_uart4_rx);
+ 155:Src/usart.c   ****   /* USER CODE END USART3_Init 1 */
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 10
+
+
+ 156:Src/usart.c   ****   huart3.Instance = USART3;
+ 363              		.loc 1 156 3 view .LVU95
+ 364              		.loc 1 156 19 is_stmt 0 view .LVU96
+ 365 0002 0A48     		ldr	r0, .L31
+ 366 0004 0A4B     		ldr	r3, .L31+4
+ 367 0006 0360     		str	r3, [r0]
+ 157:Src/usart.c   ****   huart3.Init.BaudRate = 115200;
+ 368              		.loc 1 157 3 is_stmt 1 view .LVU97
+ 369              		.loc 1 157 24 is_stmt 0 view .LVU98
+ 370 0008 4FF4E133 		mov	r3, #115200
+ 371 000c 4360     		str	r3, [r0, #4]
+ 158:Src/usart.c   ****   huart3.Init.WordLength = UART_WORDLENGTH_8B;
+ 372              		.loc 1 158 3 is_stmt 1 view .LVU99
+ 373              		.loc 1 158 26 is_stmt 0 view .LVU100
+ 374 000e 0023     		movs	r3, #0
+ 375 0010 8360     		str	r3, [r0, #8]
+ 159:Src/usart.c   ****   huart3.Init.StopBits = UART_STOPBITS_1;
+ 376              		.loc 1 159 3 is_stmt 1 view .LVU101
+ 377              		.loc 1 159 24 is_stmt 0 view .LVU102
+ 378 0012 C360     		str	r3, [r0, #12]
+ 160:Src/usart.c   ****   huart3.Init.Parity = UART_PARITY_NONE;
+ 379              		.loc 1 160 3 is_stmt 1 view .LVU103
+ 380              		.loc 1 160 22 is_stmt 0 view .LVU104
+ 381 0014 0361     		str	r3, [r0, #16]
+ 161:Src/usart.c   ****   huart3.Init.Mode = UART_MODE_TX_RX;
+ 382              		.loc 1 161 3 is_stmt 1 view .LVU105
+ 383              		.loc 1 161 20 is_stmt 0 view .LVU106
+ 384 0016 0C22     		movs	r2, #12
+ 385 0018 4261     		str	r2, [r0, #20]
+ 162:Src/usart.c   ****   huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 386              		.loc 1 162 3 is_stmt 1 view .LVU107
+ 387              		.loc 1 162 25 is_stmt 0 view .LVU108
+ 388 001a 8361     		str	r3, [r0, #24]
+ 163:Src/usart.c   ****   huart3.Init.OverSampling = UART_OVERSAMPLING_16;
+ 389              		.loc 1 163 3 is_stmt 1 view .LVU109
+ 390              		.loc 1 163 28 is_stmt 0 view .LVU110
+ 391 001c C361     		str	r3, [r0, #28]
+ 164:Src/usart.c   ****   if (HAL_UART_Init(&huart3) != HAL_OK)
+ 392              		.loc 1 164 3 is_stmt 1 view .LVU111
+ 393              		.loc 1 164 7 is_stmt 0 view .LVU112
+ 394 001e FFF7FEFF 		bl	HAL_UART_Init
+ 395              	.LVL16:
+ 396              		.loc 1 164 6 view .LVU113
+ 397 0022 00B9     		cbnz	r0, .L30
+ 398              	.L27:
+ 165:Src/usart.c   ****   {
+ 166:Src/usart.c   ****     Error_Handler();
+ 167:Src/usart.c   ****   }
+ 168:Src/usart.c   ****   /* USER CODE BEGIN USART3_Init 2 */
+ 169:Src/usart.c   **** 
+ 170:Src/usart.c   ****   /* USER CODE END USART3_Init 2 */
+ 171:Src/usart.c   **** 
+ 172:Src/usart.c   **** }
+ 399              		.loc 1 172 1 view .LVU114
+ 400 0024 08BD     		pop	{r3, pc}
+ 401              	.L30:
+ 166:Src/usart.c   ****   }
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 11
+
+
+ 402              		.loc 1 166 5 is_stmt 1 view .LVU115
+ 403 0026 FFF7FEFF 		bl	Error_Handler
+ 404              	.LVL17:
+ 405              		.loc 1 172 1 is_stmt 0 view .LVU116
+ 406 002a FBE7     		b	.L27
+ 407              	.L32:
+ 408              		.align	2
+ 409              	.L31:
+ 410 002c 00000000 		.word	.LANCHOR3
+ 411 0030 00480040 		.word	1073760256
+ 412              		.cfi_endproc
+ 413              	.LFE143:
+ 415              		.section	.text.HAL_UART_MspInit,"ax",%progbits
+ 416              		.align	1
+ 417              		.global	HAL_UART_MspInit
+ 418              		.syntax unified
+ 419              		.thumb
+ 420              		.thumb_func
+ 421              		.fpu fpv4-sp-d16
+ 423              	HAL_UART_MspInit:
+ 424              	.LVL18:
+ 425              	.LFB144:
+ 173:Src/usart.c   **** 
+ 174:Src/usart.c   **** void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
+ 175:Src/usart.c   **** {
+ 426              		.loc 1 175 1 is_stmt 1 view -0
+ 427              		.cfi_startproc
+ 428              		@ args = 0, pretend = 0, frame = 56
+ 429              		@ frame_needed = 0, uses_anonymous_args = 0
+ 430              		.loc 1 175 1 is_stmt 0 view .LVU118
+ 431 0000 30B5     		push	{r4, r5, lr}
+ 432              	.LCFI8:
+ 433              		.cfi_def_cfa_offset 12
+ 434              		.cfi_offset 4, -12
+ 435              		.cfi_offset 5, -8
+ 436              		.cfi_offset 14, -4
+ 437 0002 8FB0     		sub	sp, sp, #60
+ 438              	.LCFI9:
+ 439              		.cfi_def_cfa_offset 72
+ 440 0004 0446     		mov	r4, r0
+ 176:Src/usart.c   **** 
+ 177:Src/usart.c   ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
+ 441              		.loc 1 177 3 is_stmt 1 view .LVU119
+ 442              		.loc 1 177 20 is_stmt 0 view .LVU120
+ 443 0006 0023     		movs	r3, #0
+ 444 0008 0993     		str	r3, [sp, #36]
+ 445 000a 0A93     		str	r3, [sp, #40]
+ 446 000c 0B93     		str	r3, [sp, #44]
+ 447 000e 0C93     		str	r3, [sp, #48]
+ 448 0010 0D93     		str	r3, [sp, #52]
+ 178:Src/usart.c   ****   if(uartHandle->Instance==UART4)
+ 449              		.loc 1 178 3 is_stmt 1 view .LVU121
+ 450              		.loc 1 178 16 is_stmt 0 view .LVU122
+ 451 0012 0368     		ldr	r3, [r0]
+ 452              		.loc 1 178 5 view .LVU123
+ 453 0014 7D4A     		ldr	r2, .L49
+ 454 0016 9342     		cmp	r3, r2
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 12
+
+
+ 455 0018 0BD0     		beq	.L42
+ 179:Src/usart.c   ****   {
+ 180:Src/usart.c   ****   /* USER CODE BEGIN UART4_MspInit 0 */
+ 181:Src/usart.c   **** 
+ 182:Src/usart.c   ****   /* USER CODE END UART4_MspInit 0 */
+ 183:Src/usart.c   ****     /* UART4 clock enable */
+ 184:Src/usart.c   ****     __HAL_RCC_UART4_CLK_ENABLE();
  185:Src/usart.c   **** 
- 186:Src/usart.c   ****   /* USER CODE BEGIN UART4_MspInit 1 */
- 187:Src/usart.c   ****   //__HAL_UART_ENABLE_IT(&huart4,UART_IT_IDLE);//enable idle interrupt
- 188:Src/usart.c   ****   /* USER CODE END UART4_MspInit 1 */
- 189:Src/usart.c   ****   }
- 190:Src/usart.c   ****   else if(uartHandle->Instance==USART1)
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 11
-
-
- 385              		.loc 1 190 8 is_stmt 1 view .LVU101
- 386              		.loc 1 190 10 is_stmt 0 view .LVU102
- 387 001a 594A     		ldr	r2, .L39+4
- 388 001c 9342     		cmp	r3, r2
- 389 001e 43D0     		beq	.L35
- 191:Src/usart.c   ****   {
- 192:Src/usart.c   ****   /* USER CODE BEGIN USART1_MspInit 0 */
- 193:Src/usart.c   **** 
- 194:Src/usart.c   ****   /* USER CODE END USART1_MspInit 0 */
- 195:Src/usart.c   ****     /* USART1 clock enable */
- 196:Src/usart.c   ****     __HAL_RCC_USART1_CLK_ENABLE();
+ 186:Src/usart.c   ****     __HAL_RCC_GPIOC_CLK_ENABLE();
+ 187:Src/usart.c   ****     /**UART4 GPIO Configuration
+ 188:Src/usart.c   ****     PC10     ------> UART4_TX
+ 189:Src/usart.c   ****     PC11     ------> UART4_RX
+ 190:Src/usart.c   ****     */
+ 191:Src/usart.c   ****     GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_11;
+ 192:Src/usart.c   ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 193:Src/usart.c   ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 194:Src/usart.c   ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 195:Src/usart.c   ****     GPIO_InitStruct.Alternate = GPIO_AF8_UART4;
+ 196:Src/usart.c   ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
  197:Src/usart.c   **** 
- 198:Src/usart.c   ****     __HAL_RCC_GPIOA_CLK_ENABLE();
- 199:Src/usart.c   ****     /**USART1 GPIO Configuration
- 200:Src/usart.c   ****     PA9     ------> USART1_TX
- 201:Src/usart.c   ****     PA10     ------> USART1_RX
- 202:Src/usart.c   ****     */
- 203:Src/usart.c   ****     GPIO_InitStruct.Pin = GPIO_PIN_9|GPIO_PIN_10;
- 204:Src/usart.c   ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
- 205:Src/usart.c   ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
- 206:Src/usart.c   ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
- 207:Src/usart.c   ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
- 208:Src/usart.c   ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
- 209:Src/usart.c   **** 
- 210:Src/usart.c   ****   /* USER CODE BEGIN USART1_MspInit 1 */
- 211:Src/usart.c   **** 
- 212:Src/usart.c   ****   /* USER CODE END USART1_MspInit 1 */
- 213:Src/usart.c   ****   }
- 214:Src/usart.c   ****   else if(uartHandle->Instance==USART3)
- 390              		.loc 1 214 8 is_stmt 1 view .LVU103
- 391              		.loc 1 214 10 is_stmt 0 view .LVU104
- 392 0020 584A     		ldr	r2, .L39+8
- 393 0022 9342     		cmp	r3, r2
- 394 0024 64D0     		beq	.L36
- 395              	.LVL17:
- 396              	.L27:
- 215:Src/usart.c   ****   {
- 216:Src/usart.c   ****   /* USER CODE BEGIN USART3_MspInit 0 */
- 217:Src/usart.c   **** 
- 218:Src/usart.c   ****   /* USER CODE END USART3_MspInit 0 */
- 219:Src/usart.c   ****     /* USART3 clock enable */
- 220:Src/usart.c   ****     __HAL_RCC_USART3_CLK_ENABLE();
- 221:Src/usart.c   **** 
- 222:Src/usart.c   ****     __HAL_RCC_GPIOD_CLK_ENABLE();
- 223:Src/usart.c   ****     /**USART3 GPIO Configuration
- 224:Src/usart.c   ****     PD8     ------> USART3_TX
- 225:Src/usart.c   ****     PD9     ------> USART3_RX
- 226:Src/usart.c   ****     */
- 227:Src/usart.c   ****     GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
- 228:Src/usart.c   ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
- 229:Src/usart.c   ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
- 230:Src/usart.c   ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
- 231:Src/usart.c   ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART3;
- 232:Src/usart.c   ****     HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
- 233:Src/usart.c   **** 
- 234:Src/usart.c   ****     /* USART3 DMA Init */
- 235:Src/usart.c   ****     /* USART3_RX Init */
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 12
+ 198:Src/usart.c   ****     /* UART4 DMA Init */
+ 199:Src/usart.c   ****     /* UART4_RX Init */
+ 200:Src/usart.c   ****     hdma_uart4_rx.Instance = DMA1_Stream2;
+ 201:Src/usart.c   ****     hdma_uart4_rx.Init.Channel = DMA_CHANNEL_4;
+ 202:Src/usart.c   ****     hdma_uart4_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+ 203:Src/usart.c   ****     hdma_uart4_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+ 204:Src/usart.c   ****     hdma_uart4_rx.Init.MemInc = DMA_MINC_ENABLE;
+ 205:Src/usart.c   ****     hdma_uart4_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+ 206:Src/usart.c   ****     hdma_uart4_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+ 207:Src/usart.c   ****     hdma_uart4_rx.Init.Mode = DMA_NORMAL;
+ 208:Src/usart.c   ****     hdma_uart4_rx.Init.Priority = DMA_PRIORITY_LOW;
+ 209:Src/usart.c   ****     hdma_uart4_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+ 210:Src/usart.c   ****     if (HAL_DMA_Init(&hdma_uart4_rx) != HAL_OK)
+ 211:Src/usart.c   ****     {
+ 212:Src/usart.c   ****       Error_Handler();
+ 213:Src/usart.c   ****     }
+ 214:Src/usart.c   **** 
+ 215:Src/usart.c   ****     __HAL_LINKDMA(uartHandle,hdmarx,hdma_uart4_rx);
+ 216:Src/usart.c   **** 
+ 217:Src/usart.c   ****   /* USER CODE BEGIN UART4_MspInit 1 */
+ 218:Src/usart.c   ****   //__HAL_UART_ENABLE_IT(&huart4,UART_IT_IDLE);//enable idle interrupt
+ 219:Src/usart.c   ****   /* USER CODE END UART4_MspInit 1 */
+ 220:Src/usart.c   ****   }
+ 221:Src/usart.c   ****   else if(uartHandle->Instance==USART1)
+ 456              		.loc 1 221 8 is_stmt 1 view .LVU124
+ 457              		.loc 1 221 10 is_stmt 0 view .LVU125
+ 458 001a 7D4A     		ldr	r2, .L49+4
+ 459 001c 9342     		cmp	r3, r2
+ 460 001e 47D0     		beq	.L43
+ 222:Src/usart.c   ****   {
+ 223:Src/usart.c   ****   /* USER CODE BEGIN USART1_MspInit 0 */
+ 224:Src/usart.c   **** 
+ 225:Src/usart.c   ****   /* USER CODE END USART1_MspInit 0 */
+ 226:Src/usart.c   ****     /* USART1 clock enable */
+ 227:Src/usart.c   ****     __HAL_RCC_USART1_CLK_ENABLE();
+ 228:Src/usart.c   **** 
+ 229:Src/usart.c   ****     __HAL_RCC_GPIOA_CLK_ENABLE();
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 13
 
 
- 236:Src/usart.c   ****     hdma_usart3_rx.Instance = DMA1_Stream1;
- 237:Src/usart.c   ****     hdma_usart3_rx.Init.Channel = DMA_CHANNEL_4;
- 238:Src/usart.c   ****     hdma_usart3_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
- 239:Src/usart.c   ****     hdma_usart3_rx.Init.PeriphInc = DMA_PINC_DISABLE;
- 240:Src/usart.c   ****     hdma_usart3_rx.Init.MemInc = DMA_MINC_ENABLE;
- 241:Src/usart.c   ****     hdma_usart3_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
- 242:Src/usart.c   ****     hdma_usart3_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
- 243:Src/usart.c   ****     hdma_usart3_rx.Init.Mode = DMA_NORMAL;
- 244:Src/usart.c   ****     hdma_usart3_rx.Init.Priority = DMA_PRIORITY_LOW;
- 245:Src/usart.c   ****     hdma_usart3_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
- 246:Src/usart.c   ****     if (HAL_DMA_Init(&hdma_usart3_rx) != HAL_OK)
- 247:Src/usart.c   ****     {
- 248:Src/usart.c   ****       Error_Handler();
- 249:Src/usart.c   ****     }
- 250:Src/usart.c   **** 
- 251:Src/usart.c   ****     __HAL_LINKDMA(uartHandle,hdmarx,hdma_usart3_rx);
+ 230:Src/usart.c   ****     /**USART1 GPIO Configuration
+ 231:Src/usart.c   ****     PA9     ------> USART1_TX
+ 232:Src/usart.c   ****     PA10     ------> USART1_RX
+ 233:Src/usart.c   ****     */
+ 234:Src/usart.c   ****     GPIO_InitStruct.Pin = GPIO_PIN_9|GPIO_PIN_10;
+ 235:Src/usart.c   ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 236:Src/usart.c   ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 237:Src/usart.c   ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 238:Src/usart.c   ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
+ 239:Src/usart.c   ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 240:Src/usart.c   **** 
+ 241:Src/usart.c   ****   /* USER CODE BEGIN USART1_MspInit 1 */
+ 242:Src/usart.c   **** 
+ 243:Src/usart.c   ****   /* USER CODE END USART1_MspInit 1 */
+ 244:Src/usart.c   ****   }
+ 245:Src/usart.c   ****   else if(uartHandle->Instance==USART2)
+ 461              		.loc 1 245 8 is_stmt 1 view .LVU126
+ 462              		.loc 1 245 10 is_stmt 0 view .LVU127
+ 463 0020 7C4A     		ldr	r2, .L49+8
+ 464 0022 9342     		cmp	r3, r2
+ 465 0024 68D0     		beq	.L44
+ 246:Src/usart.c   ****   {
+ 247:Src/usart.c   ****   /* USER CODE BEGIN USART2_MspInit 0 */
+ 248:Src/usart.c   **** 
+ 249:Src/usart.c   ****   /* USER CODE END USART2_MspInit 0 */
+ 250:Src/usart.c   ****     /* USART2 clock enable */
+ 251:Src/usart.c   ****     __HAL_RCC_USART2_CLK_ENABLE();
  252:Src/usart.c   **** 
- 253:Src/usart.c   ****     /* USART3 interrupt Init */
- 254:Src/usart.c   ****     HAL_NVIC_SetPriority(USART3_IRQn, 5, 0);
- 255:Src/usart.c   ****     HAL_NVIC_EnableIRQ(USART3_IRQn);
- 256:Src/usart.c   ****   /* USER CODE BEGIN USART3_MspInit 1 */
- 257:Src/usart.c   **** 
- 258:Src/usart.c   ****   /* USER CODE END USART3_MspInit 1 */
- 259:Src/usart.c   ****   }
- 260:Src/usart.c   **** }
- 397              		.loc 1 260 1 view .LVU105
- 398 0026 0DB0     		add	sp, sp, #52
- 399              	.LCFI9:
- 400              		.cfi_remember_state
- 401              		.cfi_def_cfa_offset 12
- 402              		@ sp needed
- 403 0028 30BD     		pop	{r4, r5, pc}
- 404              	.LVL18:
- 405              	.L34:
- 406              	.LCFI10:
- 407              		.cfi_restore_state
- 153:Src/usart.c   **** 
- 408              		.loc 1 153 5 is_stmt 1 view .LVU106
- 409              	.LBB2:
- 153:Src/usart.c   **** 
- 410              		.loc 1 153 5 view .LVU107
- 411 002a 0025     		movs	r5, #0
- 412 002c 0195     		str	r5, [sp, #4]
- 153:Src/usart.c   **** 
- 413              		.loc 1 153 5 view .LVU108
- 414 002e 564B     		ldr	r3, .L39+12
- 415 0030 1A6C     		ldr	r2, [r3, #64]
- 416 0032 42F40022 		orr	r2, r2, #524288
- 417 0036 1A64     		str	r2, [r3, #64]
- 153:Src/usart.c   **** 
- 418              		.loc 1 153 5 view .LVU109
- 419 0038 1A6C     		ldr	r2, [r3, #64]
- 420 003a 02F40022 		and	r2, r2, #524288
- 421 003e 0192     		str	r2, [sp, #4]
- 153:Src/usart.c   **** 
- 422              		.loc 1 153 5 view .LVU110
- 423 0040 019A     		ldr	r2, [sp, #4]
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 13
-
-
- 424              	.LBE2:
- 153:Src/usart.c   **** 
- 425              		.loc 1 153 5 view .LVU111
- 155:Src/usart.c   ****     /**UART4 GPIO Configuration
- 426              		.loc 1 155 5 view .LVU112
- 427              	.LBB3:
- 155:Src/usart.c   ****     /**UART4 GPIO Configuration
- 428              		.loc 1 155 5 view .LVU113
- 429 0042 0295     		str	r5, [sp, #8]
- 155:Src/usart.c   ****     /**UART4 GPIO Configuration
- 430              		.loc 1 155 5 view .LVU114
- 431 0044 1A6B     		ldr	r2, [r3, #48]
- 432 0046 42F00402 		orr	r2, r2, #4
- 433 004a 1A63     		str	r2, [r3, #48]
- 155:Src/usart.c   ****     /**UART4 GPIO Configuration
- 434              		.loc 1 155 5 view .LVU115
- 435 004c 1B6B     		ldr	r3, [r3, #48]
- 436 004e 03F00403 		and	r3, r3, #4
- 437 0052 0293     		str	r3, [sp, #8]
- 155:Src/usart.c   ****     /**UART4 GPIO Configuration
- 438              		.loc 1 155 5 view .LVU116
- 439 0054 029B     		ldr	r3, [sp, #8]
- 440              	.LBE3:
- 155:Src/usart.c   ****     /**UART4 GPIO Configuration
- 441              		.loc 1 155 5 view .LVU117
- 160:Src/usart.c   ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
- 442              		.loc 1 160 5 view .LVU118
- 160:Src/usart.c   ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
- 443              		.loc 1 160 25 is_stmt 0 view .LVU119
- 444 0056 4FF44063 		mov	r3, #3072
- 445 005a 0793     		str	r3, [sp, #28]
- 161:Src/usart.c   ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
- 446              		.loc 1 161 5 is_stmt 1 view .LVU120
- 161:Src/usart.c   ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
- 447              		.loc 1 161 26 is_stmt 0 view .LVU121
- 448 005c 0223     		movs	r3, #2
- 449 005e 0893     		str	r3, [sp, #32]
- 162:Src/usart.c   ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
- 450              		.loc 1 162 5 is_stmt 1 view .LVU122
- 162:Src/usart.c   ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
- 451              		.loc 1 162 26 is_stmt 0 view .LVU123
- 452 0060 0123     		movs	r3, #1
- 453 0062 0993     		str	r3, [sp, #36]
- 163:Src/usart.c   ****     GPIO_InitStruct.Alternate = GPIO_AF8_UART4;
- 454              		.loc 1 163 5 is_stmt 1 view .LVU124
- 163:Src/usart.c   ****     GPIO_InitStruct.Alternate = GPIO_AF8_UART4;
- 455              		.loc 1 163 27 is_stmt 0 view .LVU125
- 456 0064 0323     		movs	r3, #3
- 457 0066 0A93     		str	r3, [sp, #40]
- 164:Src/usart.c   ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
- 458              		.loc 1 164 5 is_stmt 1 view .LVU126
- 164:Src/usart.c   ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
- 459              		.loc 1 164 31 is_stmt 0 view .LVU127
- 460 0068 0823     		movs	r3, #8
- 461 006a 0B93     		str	r3, [sp, #44]
- 165:Src/usart.c   **** 
- 462              		.loc 1 165 5 is_stmt 1 view .LVU128
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 14
-
-
- 463 006c 07A9     		add	r1, sp, #28
- 464 006e 4748     		ldr	r0, .L39+16
- 465              	.LVL19:
- 165:Src/usart.c   **** 
- 466              		.loc 1 165 5 is_stmt 0 view .LVU129
- 467 0070 FFF7FEFF 		bl	HAL_GPIO_Init
- 468              	.LVL20:
- 169:Src/usart.c   ****     hdma_uart4_rx.Init.Channel = DMA_CHANNEL_4;
- 469              		.loc 1 169 5 is_stmt 1 view .LVU130
- 169:Src/usart.c   ****     hdma_uart4_rx.Init.Channel = DMA_CHANNEL_4;
- 470              		.loc 1 169 28 is_stmt 0 view .LVU131
- 471 0074 4648     		ldr	r0, .L39+20
- 472 0076 474B     		ldr	r3, .L39+24
- 473 0078 0360     		str	r3, [r0]
- 170:Src/usart.c   ****     hdma_uart4_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
- 474              		.loc 1 170 5 is_stmt 1 view .LVU132
- 170:Src/usart.c   ****     hdma_uart4_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
- 475              		.loc 1 170 32 is_stmt 0 view .LVU133
- 476 007a 4FF00063 		mov	r3, #134217728
- 477 007e 4360     		str	r3, [r0, #4]
- 171:Src/usart.c   ****     hdma_uart4_rx.Init.PeriphInc = DMA_PINC_DISABLE;
- 478              		.loc 1 171 5 is_stmt 1 view .LVU134
- 171:Src/usart.c   ****     hdma_uart4_rx.Init.PeriphInc = DMA_PINC_DISABLE;
- 479              		.loc 1 171 34 is_stmt 0 view .LVU135
- 480 0080 8560     		str	r5, [r0, #8]
- 172:Src/usart.c   ****     hdma_uart4_rx.Init.MemInc = DMA_MINC_ENABLE;
- 481              		.loc 1 172 5 is_stmt 1 view .LVU136
- 172:Src/usart.c   ****     hdma_uart4_rx.Init.MemInc = DMA_MINC_ENABLE;
- 482              		.loc 1 172 34 is_stmt 0 view .LVU137
- 483 0082 C560     		str	r5, [r0, #12]
- 173:Src/usart.c   ****     hdma_uart4_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
- 484              		.loc 1 173 5 is_stmt 1 view .LVU138
- 173:Src/usart.c   ****     hdma_uart4_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
- 485              		.loc 1 173 31 is_stmt 0 view .LVU139
- 486 0084 4FF48063 		mov	r3, #1024
- 487 0088 0361     		str	r3, [r0, #16]
- 174:Src/usart.c   ****     hdma_uart4_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
- 488              		.loc 1 174 5 is_stmt 1 view .LVU140
- 174:Src/usart.c   ****     hdma_uart4_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
- 489              		.loc 1 174 44 is_stmt 0 view .LVU141
- 490 008a 4561     		str	r5, [r0, #20]
- 175:Src/usart.c   ****     hdma_uart4_rx.Init.Mode = DMA_NORMAL;
- 491              		.loc 1 175 5 is_stmt 1 view .LVU142
- 175:Src/usart.c   ****     hdma_uart4_rx.Init.Mode = DMA_NORMAL;
- 492              		.loc 1 175 41 is_stmt 0 view .LVU143
- 493 008c 8561     		str	r5, [r0, #24]
- 176:Src/usart.c   ****     hdma_uart4_rx.Init.Priority = DMA_PRIORITY_LOW;
- 494              		.loc 1 176 5 is_stmt 1 view .LVU144
- 176:Src/usart.c   ****     hdma_uart4_rx.Init.Priority = DMA_PRIORITY_LOW;
- 495              		.loc 1 176 29 is_stmt 0 view .LVU145
- 496 008e C561     		str	r5, [r0, #28]
- 177:Src/usart.c   ****     hdma_uart4_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
- 497              		.loc 1 177 5 is_stmt 1 view .LVU146
- 177:Src/usart.c   ****     hdma_uart4_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
- 498              		.loc 1 177 33 is_stmt 0 view .LVU147
- 499 0090 0562     		str	r5, [r0, #32]
- 178:Src/usart.c   ****     if (HAL_DMA_Init(&hdma_uart4_rx) != HAL_OK)
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 15
-
-
- 500              		.loc 1 178 5 is_stmt 1 view .LVU148
- 178:Src/usart.c   ****     if (HAL_DMA_Init(&hdma_uart4_rx) != HAL_OK)
- 501              		.loc 1 178 33 is_stmt 0 view .LVU149
- 502 0092 4562     		str	r5, [r0, #36]
- 179:Src/usart.c   ****     {
- 503              		.loc 1 179 5 is_stmt 1 view .LVU150
- 179:Src/usart.c   ****     {
- 504              		.loc 1 179 9 is_stmt 0 view .LVU151
- 505 0094 FFF7FEFF 		bl	HAL_DMA_Init
- 506              	.LVL21:
- 179:Src/usart.c   ****     {
- 507              		.loc 1 179 8 view .LVU152
- 508 0098 18B9     		cbnz	r0, .L37
- 509              	.L29:
- 184:Src/usart.c   **** 
- 510              		.loc 1 184 5 is_stmt 1 view .LVU153
- 184:Src/usart.c   **** 
- 511              		.loc 1 184 5 view .LVU154
- 512 009a 3D4B     		ldr	r3, .L39+20
- 513 009c A363     		str	r3, [r4, #56]
- 184:Src/usart.c   **** 
- 514              		.loc 1 184 5 view .LVU155
- 515 009e 9C63     		str	r4, [r3, #56]
- 184:Src/usart.c   **** 
- 516              		.loc 1 184 5 view .LVU156
- 517 00a0 C1E7     		b	.L27
- 518              	.L37:
- 181:Src/usart.c   ****     }
- 519              		.loc 1 181 7 view .LVU157
- 520 00a2 FFF7FEFF 		bl	Error_Handler
- 521              	.LVL22:
- 522 00a6 F8E7     		b	.L29
- 523              	.LVL23:
- 524              	.L35:
- 196:Src/usart.c   **** 
- 525              		.loc 1 196 5 view .LVU158
- 526              	.LBB4:
- 196:Src/usart.c   **** 
- 527              		.loc 1 196 5 view .LVU159
- 528 00a8 0021     		movs	r1, #0
- 529 00aa 0391     		str	r1, [sp, #12]
- 196:Src/usart.c   **** 
- 530              		.loc 1 196 5 view .LVU160
- 531 00ac 364B     		ldr	r3, .L39+12
- 532 00ae 5A6C     		ldr	r2, [r3, #68]
- 533 00b0 42F01002 		orr	r2, r2, #16
- 534 00b4 5A64     		str	r2, [r3, #68]
- 196:Src/usart.c   **** 
- 535              		.loc 1 196 5 view .LVU161
- 536 00b6 5A6C     		ldr	r2, [r3, #68]
- 537 00b8 02F01002 		and	r2, r2, #16
- 538 00bc 0392     		str	r2, [sp, #12]
- 196:Src/usart.c   **** 
- 539              		.loc 1 196 5 view .LVU162
- 540 00be 039A     		ldr	r2, [sp, #12]
- 541              	.LBE4:
- 196:Src/usart.c   **** 
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 16
-
-
- 542              		.loc 1 196 5 view .LVU163
- 198:Src/usart.c   ****     /**USART1 GPIO Configuration
- 543              		.loc 1 198 5 view .LVU164
- 544              	.LBB5:
- 198:Src/usart.c   ****     /**USART1 GPIO Configuration
- 545              		.loc 1 198 5 view .LVU165
- 546 00c0 0491     		str	r1, [sp, #16]
- 198:Src/usart.c   ****     /**USART1 GPIO Configuration
- 547              		.loc 1 198 5 view .LVU166
- 548 00c2 1A6B     		ldr	r2, [r3, #48]
- 549 00c4 42F00102 		orr	r2, r2, #1
- 550 00c8 1A63     		str	r2, [r3, #48]
- 198:Src/usart.c   ****     /**USART1 GPIO Configuration
- 551              		.loc 1 198 5 view .LVU167
- 552 00ca 1B6B     		ldr	r3, [r3, #48]
- 553 00cc 03F00103 		and	r3, r3, #1
- 554 00d0 0493     		str	r3, [sp, #16]
- 198:Src/usart.c   ****     /**USART1 GPIO Configuration
- 555              		.loc 1 198 5 view .LVU168
- 556 00d2 049B     		ldr	r3, [sp, #16]
- 557              	.LBE5:
- 198:Src/usart.c   ****     /**USART1 GPIO Configuration
- 558              		.loc 1 198 5 view .LVU169
- 203:Src/usart.c   ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
- 559              		.loc 1 203 5 view .LVU170
- 203:Src/usart.c   ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
- 560              		.loc 1 203 25 is_stmt 0 view .LVU171
- 561 00d4 4FF4C063 		mov	r3, #1536
- 562 00d8 0793     		str	r3, [sp, #28]
- 204:Src/usart.c   ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
- 563              		.loc 1 204 5 is_stmt 1 view .LVU172
- 204:Src/usart.c   ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
- 564              		.loc 1 204 26 is_stmt 0 view .LVU173
- 565 00da 0223     		movs	r3, #2
- 566 00dc 0893     		str	r3, [sp, #32]
- 205:Src/usart.c   ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
- 567              		.loc 1 205 5 is_stmt 1 view .LVU174
- 206:Src/usart.c   ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
- 568              		.loc 1 206 5 view .LVU175
- 206:Src/usart.c   ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
- 569              		.loc 1 206 27 is_stmt 0 view .LVU176
- 570 00de 0323     		movs	r3, #3
- 571 00e0 0A93     		str	r3, [sp, #40]
- 207:Src/usart.c   ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
- 572              		.loc 1 207 5 is_stmt 1 view .LVU177
- 207:Src/usart.c   ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
- 573              		.loc 1 207 31 is_stmt 0 view .LVU178
- 574 00e2 0723     		movs	r3, #7
- 575 00e4 0B93     		str	r3, [sp, #44]
- 208:Src/usart.c   **** 
- 576              		.loc 1 208 5 is_stmt 1 view .LVU179
- 577 00e6 07A9     		add	r1, sp, #28
- 578 00e8 2B48     		ldr	r0, .L39+28
- 579              	.LVL24:
- 208:Src/usart.c   **** 
- 580              		.loc 1 208 5 is_stmt 0 view .LVU180
- 581 00ea FFF7FEFF 		bl	HAL_GPIO_Init
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 17
-
-
- 582              	.LVL25:
- 583 00ee 9AE7     		b	.L27
- 584              	.LVL26:
- 585              	.L36:
- 220:Src/usart.c   **** 
- 586              		.loc 1 220 5 is_stmt 1 view .LVU181
- 587              	.LBB6:
- 220:Src/usart.c   **** 
- 588              		.loc 1 220 5 view .LVU182
- 589 00f0 0025     		movs	r5, #0
- 590 00f2 0595     		str	r5, [sp, #20]
- 220:Src/usart.c   **** 
- 591              		.loc 1 220 5 view .LVU183
- 592 00f4 244B     		ldr	r3, .L39+12
- 593 00f6 1A6C     		ldr	r2, [r3, #64]
- 594 00f8 42F48022 		orr	r2, r2, #262144
- 595 00fc 1A64     		str	r2, [r3, #64]
- 220:Src/usart.c   **** 
- 596              		.loc 1 220 5 view .LVU184
- 597 00fe 1A6C     		ldr	r2, [r3, #64]
- 598 0100 02F48022 		and	r2, r2, #262144
- 599 0104 0592     		str	r2, [sp, #20]
- 220:Src/usart.c   **** 
- 600              		.loc 1 220 5 view .LVU185
- 601 0106 059A     		ldr	r2, [sp, #20]
- 602              	.LBE6:
- 220:Src/usart.c   **** 
- 603              		.loc 1 220 5 view .LVU186
- 222:Src/usart.c   ****     /**USART3 GPIO Configuration
- 604              		.loc 1 222 5 view .LVU187
- 605              	.LBB7:
- 222:Src/usart.c   ****     /**USART3 GPIO Configuration
- 606              		.loc 1 222 5 view .LVU188
- 607 0108 0695     		str	r5, [sp, #24]
- 222:Src/usart.c   ****     /**USART3 GPIO Configuration
- 608              		.loc 1 222 5 view .LVU189
- 609 010a 1A6B     		ldr	r2, [r3, #48]
- 610 010c 42F00802 		orr	r2, r2, #8
- 611 0110 1A63     		str	r2, [r3, #48]
- 222:Src/usart.c   ****     /**USART3 GPIO Configuration
- 612              		.loc 1 222 5 view .LVU190
- 613 0112 1B6B     		ldr	r3, [r3, #48]
- 614 0114 03F00803 		and	r3, r3, #8
- 615 0118 0693     		str	r3, [sp, #24]
- 222:Src/usart.c   ****     /**USART3 GPIO Configuration
- 616              		.loc 1 222 5 view .LVU191
- 617 011a 069B     		ldr	r3, [sp, #24]
- 618              	.LBE7:
- 222:Src/usart.c   ****     /**USART3 GPIO Configuration
- 619              		.loc 1 222 5 view .LVU192
- 227:Src/usart.c   ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
- 620              		.loc 1 227 5 view .LVU193
- 227:Src/usart.c   ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
- 621              		.loc 1 227 25 is_stmt 0 view .LVU194
- 622 011c 4FF44073 		mov	r3, #768
- 623 0120 0793     		str	r3, [sp, #28]
- 228:Src/usart.c   ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 18
-
-
- 624              		.loc 1 228 5 is_stmt 1 view .LVU195
- 228:Src/usart.c   ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
- 625              		.loc 1 228 26 is_stmt 0 view .LVU196
- 626 0122 0223     		movs	r3, #2
- 627 0124 0893     		str	r3, [sp, #32]
- 229:Src/usart.c   ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
- 628              		.loc 1 229 5 is_stmt 1 view .LVU197
- 230:Src/usart.c   ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART3;
- 629              		.loc 1 230 5 view .LVU198
- 230:Src/usart.c   ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART3;
- 630              		.loc 1 230 27 is_stmt 0 view .LVU199
- 631 0126 0323     		movs	r3, #3
- 632 0128 0A93     		str	r3, [sp, #40]
- 231:Src/usart.c   ****     HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
- 633              		.loc 1 231 5 is_stmt 1 view .LVU200
- 231:Src/usart.c   ****     HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
- 634              		.loc 1 231 31 is_stmt 0 view .LVU201
- 635 012a 0723     		movs	r3, #7
- 636 012c 0B93     		str	r3, [sp, #44]
- 232:Src/usart.c   **** 
- 637              		.loc 1 232 5 is_stmt 1 view .LVU202
- 638 012e 07A9     		add	r1, sp, #28
- 639 0130 1A48     		ldr	r0, .L39+32
- 640              	.LVL27:
- 232:Src/usart.c   **** 
- 641              		.loc 1 232 5 is_stmt 0 view .LVU203
- 642 0132 FFF7FEFF 		bl	HAL_GPIO_Init
- 643              	.LVL28:
- 236:Src/usart.c   ****     hdma_usart3_rx.Init.Channel = DMA_CHANNEL_4;
- 644              		.loc 1 236 5 is_stmt 1 view .LVU204
- 236:Src/usart.c   ****     hdma_usart3_rx.Init.Channel = DMA_CHANNEL_4;
- 645              		.loc 1 236 29 is_stmt 0 view .LVU205
- 646 0136 1A48     		ldr	r0, .L39+36
- 647 0138 1A4B     		ldr	r3, .L39+40
- 648 013a 0360     		str	r3, [r0]
- 237:Src/usart.c   ****     hdma_usart3_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
- 649              		.loc 1 237 5 is_stmt 1 view .LVU206
- 237:Src/usart.c   ****     hdma_usart3_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
- 650              		.loc 1 237 33 is_stmt 0 view .LVU207
- 651 013c 4FF00063 		mov	r3, #134217728
- 652 0140 4360     		str	r3, [r0, #4]
- 238:Src/usart.c   ****     hdma_usart3_rx.Init.PeriphInc = DMA_PINC_DISABLE;
- 653              		.loc 1 238 5 is_stmt 1 view .LVU208
- 238:Src/usart.c   ****     hdma_usart3_rx.Init.PeriphInc = DMA_PINC_DISABLE;
- 654              		.loc 1 238 35 is_stmt 0 view .LVU209
- 655 0142 8560     		str	r5, [r0, #8]
- 239:Src/usart.c   ****     hdma_usart3_rx.Init.MemInc = DMA_MINC_ENABLE;
- 656              		.loc 1 239 5 is_stmt 1 view .LVU210
- 239:Src/usart.c   ****     hdma_usart3_rx.Init.MemInc = DMA_MINC_ENABLE;
- 657              		.loc 1 239 35 is_stmt 0 view .LVU211
- 658 0144 C560     		str	r5, [r0, #12]
- 240:Src/usart.c   ****     hdma_usart3_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
- 659              		.loc 1 240 5 is_stmt 1 view .LVU212
- 240:Src/usart.c   ****     hdma_usart3_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
- 660              		.loc 1 240 32 is_stmt 0 view .LVU213
- 661 0146 4FF48063 		mov	r3, #1024
- 662 014a 0361     		str	r3, [r0, #16]
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 19
-
-
- 241:Src/usart.c   ****     hdma_usart3_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
- 663              		.loc 1 241 5 is_stmt 1 view .LVU214
- 241:Src/usart.c   ****     hdma_usart3_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
- 664              		.loc 1 241 45 is_stmt 0 view .LVU215
- 665 014c 4561     		str	r5, [r0, #20]
- 242:Src/usart.c   ****     hdma_usart3_rx.Init.Mode = DMA_NORMAL;
- 666              		.loc 1 242 5 is_stmt 1 view .LVU216
- 242:Src/usart.c   ****     hdma_usart3_rx.Init.Mode = DMA_NORMAL;
- 667              		.loc 1 242 42 is_stmt 0 view .LVU217
- 668 014e 8561     		str	r5, [r0, #24]
- 243:Src/usart.c   ****     hdma_usart3_rx.Init.Priority = DMA_PRIORITY_LOW;
- 669              		.loc 1 243 5 is_stmt 1 view .LVU218
- 243:Src/usart.c   ****     hdma_usart3_rx.Init.Priority = DMA_PRIORITY_LOW;
- 670              		.loc 1 243 30 is_stmt 0 view .LVU219
- 671 0150 C561     		str	r5, [r0, #28]
- 244:Src/usart.c   ****     hdma_usart3_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
- 672              		.loc 1 244 5 is_stmt 1 view .LVU220
- 244:Src/usart.c   ****     hdma_usart3_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
- 673              		.loc 1 244 34 is_stmt 0 view .LVU221
- 674 0152 0562     		str	r5, [r0, #32]
- 245:Src/usart.c   ****     if (HAL_DMA_Init(&hdma_usart3_rx) != HAL_OK)
- 675              		.loc 1 245 5 is_stmt 1 view .LVU222
- 245:Src/usart.c   ****     if (HAL_DMA_Init(&hdma_usart3_rx) != HAL_OK)
- 676              		.loc 1 245 34 is_stmt 0 view .LVU223
- 677 0154 4562     		str	r5, [r0, #36]
- 246:Src/usart.c   ****     {
- 678              		.loc 1 246 5 is_stmt 1 view .LVU224
- 246:Src/usart.c   ****     {
- 679              		.loc 1 246 9 is_stmt 0 view .LVU225
- 680 0156 FFF7FEFF 		bl	HAL_DMA_Init
- 681              	.LVL29:
- 246:Src/usart.c   ****     {
- 682              		.loc 1 246 8 view .LVU226
- 683 015a 58B9     		cbnz	r0, .L38
- 684              	.L32:
- 251:Src/usart.c   **** 
- 685              		.loc 1 251 5 is_stmt 1 view .LVU227
- 251:Src/usart.c   **** 
- 686              		.loc 1 251 5 view .LVU228
- 687 015c 104B     		ldr	r3, .L39+36
- 688 015e A363     		str	r3, [r4, #56]
- 251:Src/usart.c   **** 
- 689              		.loc 1 251 5 view .LVU229
- 690 0160 9C63     		str	r4, [r3, #56]
- 251:Src/usart.c   **** 
- 691              		.loc 1 251 5 view .LVU230
- 254:Src/usart.c   ****     HAL_NVIC_EnableIRQ(USART3_IRQn);
- 692              		.loc 1 254 5 view .LVU231
- 693 0162 0022     		movs	r2, #0
- 694 0164 0521     		movs	r1, #5
- 695 0166 2720     		movs	r0, #39
- 696 0168 FFF7FEFF 		bl	HAL_NVIC_SetPriority
- 697              	.LVL30:
- 255:Src/usart.c   ****   /* USER CODE BEGIN USART3_MspInit 1 */
- 698              		.loc 1 255 5 view .LVU232
- 699 016c 2720     		movs	r0, #39
- 700 016e FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 20
-
-
- 701              	.LVL31:
- 702              		.loc 1 260 1 is_stmt 0 view .LVU233
- 703 0172 58E7     		b	.L27
- 704              	.L38:
- 248:Src/usart.c   ****     }
- 705              		.loc 1 248 7 is_stmt 1 view .LVU234
- 706 0174 FFF7FEFF 		bl	Error_Handler
- 707              	.LVL32:
- 708 0178 F0E7     		b	.L32
- 709              	.L40:
- 710 017a 00BF     		.align	2
- 711              	.L39:
- 712 017c 004C0040 		.word	1073761280
- 713 0180 00100140 		.word	1073811456
- 714 0184 00480040 		.word	1073760256
- 715 0188 00380240 		.word	1073887232
- 716 018c 00080240 		.word	1073874944
- 717 0190 00000000 		.word	.LANCHOR3
- 718 0194 40600240 		.word	1073897536
- 719 0198 00000240 		.word	1073872896
- 720 019c 000C0240 		.word	1073875968
- 721 01a0 00000000 		.word	.LANCHOR4
- 722 01a4 28600240 		.word	1073897512
- 723              		.cfi_endproc
- 724              	.LFE143:
- 726              		.section	.text.HAL_UART_MspDeInit,"ax",%progbits
- 727              		.align	1
- 728              		.global	HAL_UART_MspDeInit
- 729              		.syntax unified
- 730              		.thumb
- 731              		.thumb_func
- 732              		.fpu fpv4-sp-d16
- 734              	HAL_UART_MspDeInit:
- 735              	.LVL33:
- 736              	.LFB144:
- 261:Src/usart.c   **** 
- 262:Src/usart.c   **** void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
- 263:Src/usart.c   **** {
- 737              		.loc 1 263 1 view -0
- 738              		.cfi_startproc
- 739              		@ args = 0, pretend = 0, frame = 0
- 740              		@ frame_needed = 0, uses_anonymous_args = 0
- 741              		.loc 1 263 1 is_stmt 0 view .LVU236
- 742 0000 10B5     		push	{r4, lr}
- 743              	.LCFI11:
- 744              		.cfi_def_cfa_offset 8
- 745              		.cfi_offset 4, -8
- 746              		.cfi_offset 14, -4
- 747 0002 0446     		mov	r4, r0
+ 253:Src/usart.c   ****     __HAL_RCC_GPIOA_CLK_ENABLE();
+ 254:Src/usart.c   ****     /**USART2 GPIO Configuration
+ 255:Src/usart.c   ****     PA2     ------> USART2_TX
+ 256:Src/usart.c   ****     PA3     ------> USART2_RX
+ 257:Src/usart.c   ****     */
+ 258:Src/usart.c   ****     GPIO_InitStruct.Pin = GPIO_PIN_2|GPIO_PIN_3;
+ 259:Src/usart.c   ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 260:Src/usart.c   ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 261:Src/usart.c   ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 262:Src/usart.c   ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
+ 263:Src/usart.c   ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
  264:Src/usart.c   **** 
- 265:Src/usart.c   ****   if(uartHandle->Instance==UART4)
- 748              		.loc 1 265 3 is_stmt 1 view .LVU237
- 749              		.loc 1 265 16 is_stmt 0 view .LVU238
- 750 0004 0368     		ldr	r3, [r0]
- 751              		.loc 1 265 5 view .LVU239
- 752 0006 1D4A     		ldr	r2, .L49
- 753 0008 9342     		cmp	r3, r2
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 21
-
-
- 754 000a 06D0     		beq	.L46
- 266:Src/usart.c   ****   {
- 267:Src/usart.c   ****   /* USER CODE BEGIN UART4_MspDeInit 0 */
- 268:Src/usart.c   **** 
- 269:Src/usart.c   ****   /* USER CODE END UART4_MspDeInit 0 */
- 270:Src/usart.c   ****     /* Peripheral clock disable */
- 271:Src/usart.c   ****     __HAL_RCC_UART4_CLK_DISABLE();
- 272:Src/usart.c   **** 
- 273:Src/usart.c   ****     /**UART4 GPIO Configuration
- 274:Src/usart.c   ****     PC10     ------> UART4_TX
- 275:Src/usart.c   ****     PC11     ------> UART4_RX
- 276:Src/usart.c   ****     */
- 277:Src/usart.c   ****     HAL_GPIO_DeInit(GPIOC, GPIO_PIN_10|GPIO_PIN_11);
- 278:Src/usart.c   **** 
- 279:Src/usart.c   ****     /* UART4 DMA DeInit */
- 280:Src/usart.c   ****     HAL_DMA_DeInit(uartHandle->hdmarx);
+ 265:Src/usart.c   ****     /* USART2 DMA Init */
+ 266:Src/usart.c   ****     /* USART2_RX Init */
+ 267:Src/usart.c   ****     hdma_usart2_rx.Instance = DMA1_Stream5;
+ 268:Src/usart.c   ****     hdma_usart2_rx.Init.Channel = DMA_CHANNEL_4;
+ 269:Src/usart.c   ****     hdma_usart2_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+ 270:Src/usart.c   ****     hdma_usart2_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+ 271:Src/usart.c   ****     hdma_usart2_rx.Init.MemInc = DMA_MINC_ENABLE;
+ 272:Src/usart.c   ****     hdma_usart2_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+ 273:Src/usart.c   ****     hdma_usart2_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+ 274:Src/usart.c   ****     hdma_usart2_rx.Init.Mode = DMA_NORMAL;
+ 275:Src/usart.c   ****     hdma_usart2_rx.Init.Priority = DMA_PRIORITY_LOW;
+ 276:Src/usart.c   ****     hdma_usart2_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+ 277:Src/usart.c   ****     if (HAL_DMA_Init(&hdma_usart2_rx) != HAL_OK)
+ 278:Src/usart.c   ****     {
+ 279:Src/usart.c   ****       Error_Handler();
+ 280:Src/usart.c   ****     }
  281:Src/usart.c   **** 
- 282:Src/usart.c   ****     /* UART4 interrupt Deinit */
- 283:Src/usart.c   ****     HAL_NVIC_DisableIRQ(UART4_IRQn);
- 284:Src/usart.c   ****   /* USER CODE BEGIN UART4_MspDeInit 1 */
- 285:Src/usart.c   **** 
- 286:Src/usart.c   ****   /* USER CODE END UART4_MspDeInit 1 */
- 287:Src/usart.c   ****   }
- 288:Src/usart.c   ****   else if(uartHandle->Instance==USART1)
- 755              		.loc 1 288 8 is_stmt 1 view .LVU240
- 756              		.loc 1 288 10 is_stmt 0 view .LVU241
- 757 000c 1C4A     		ldr	r2, .L49+4
- 758 000e 9342     		cmp	r3, r2
- 759 0010 15D0     		beq	.L47
- 289:Src/usart.c   ****   {
- 290:Src/usart.c   ****   /* USER CODE BEGIN USART1_MspDeInit 0 */
- 291:Src/usart.c   **** 
- 292:Src/usart.c   ****   /* USER CODE END USART1_MspDeInit 0 */
- 293:Src/usart.c   ****     /* Peripheral clock disable */
- 294:Src/usart.c   ****     __HAL_RCC_USART1_CLK_DISABLE();
- 295:Src/usart.c   **** 
- 296:Src/usart.c   ****     /**USART1 GPIO Configuration
- 297:Src/usart.c   ****     PA9     ------> USART1_TX
- 298:Src/usart.c   ****     PA10     ------> USART1_RX
- 299:Src/usart.c   ****     */
- 300:Src/usart.c   ****     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_9|GPIO_PIN_10);
- 301:Src/usart.c   **** 
- 302:Src/usart.c   ****   /* USER CODE BEGIN USART1_MspDeInit 1 */
- 303:Src/usart.c   **** 
- 304:Src/usart.c   ****   /* USER CODE END USART1_MspDeInit 1 */
- 305:Src/usart.c   ****   }
- 306:Src/usart.c   ****   else if(uartHandle->Instance==USART3)
- 760              		.loc 1 306 8 is_stmt 1 view .LVU242
- 761              		.loc 1 306 10 is_stmt 0 view .LVU243
- 762 0012 1C4A     		ldr	r2, .L49+8
- 763 0014 9342     		cmp	r3, r2
- 764 0016 1ED0     		beq	.L48
- 765              	.LVL34:
- 766              	.L41:
- 307:Src/usart.c   ****   {
- 308:Src/usart.c   ****   /* USER CODE BEGIN USART3_MspDeInit 0 */
- 309:Src/usart.c   **** 
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 22
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 14
 
 
- 310:Src/usart.c   ****   /* USER CODE END USART3_MspDeInit 0 */
- 311:Src/usart.c   ****     /* Peripheral clock disable */
- 312:Src/usart.c   ****     __HAL_RCC_USART3_CLK_DISABLE();
- 313:Src/usart.c   **** 
- 314:Src/usart.c   ****     /**USART3 GPIO Configuration
- 315:Src/usart.c   ****     PD8     ------> USART3_TX
- 316:Src/usart.c   ****     PD9     ------> USART3_RX
- 317:Src/usart.c   ****     */
- 318:Src/usart.c   ****     HAL_GPIO_DeInit(GPIOD, GPIO_PIN_8|GPIO_PIN_9);
- 319:Src/usart.c   **** 
- 320:Src/usart.c   ****     /* USART3 DMA DeInit */
- 321:Src/usart.c   ****     HAL_DMA_DeInit(uartHandle->hdmarx);
- 322:Src/usart.c   **** 
- 323:Src/usart.c   ****     /* USART3 interrupt Deinit */
- 324:Src/usart.c   ****     HAL_NVIC_DisableIRQ(USART3_IRQn);
- 325:Src/usart.c   ****   /* USER CODE BEGIN USART3_MspDeInit 1 */
- 326:Src/usart.c   **** 
- 327:Src/usart.c   ****   /* USER CODE END USART3_MspDeInit 1 */
- 328:Src/usart.c   ****   }
- 329:Src/usart.c   **** }
- 767              		.loc 1 329 1 view .LVU244
- 768 0018 10BD     		pop	{r4, pc}
- 769              	.LVL35:
- 770              	.L46:
- 271:Src/usart.c   **** 
- 771              		.loc 1 271 5 is_stmt 1 view .LVU245
- 772 001a 02F5F632 		add	r2, r2, #125952
- 773 001e 136C     		ldr	r3, [r2, #64]
- 774 0020 23F40023 		bic	r3, r3, #524288
- 775 0024 1364     		str	r3, [r2, #64]
- 277:Src/usart.c   **** 
- 776              		.loc 1 277 5 view .LVU246
- 777 0026 4FF44061 		mov	r1, #3072
- 778 002a 1748     		ldr	r0, .L49+12
- 779              	.LVL36:
- 277:Src/usart.c   **** 
- 780              		.loc 1 277 5 is_stmt 0 view .LVU247
- 781 002c FFF7FEFF 		bl	HAL_GPIO_DeInit
- 782              	.LVL37:
- 280:Src/usart.c   **** 
- 783              		.loc 1 280 5 is_stmt 1 view .LVU248
- 784 0030 A06B     		ldr	r0, [r4, #56]
- 785 0032 FFF7FEFF 		bl	HAL_DMA_DeInit
- 786              	.LVL38:
- 283:Src/usart.c   ****   /* USER CODE BEGIN UART4_MspDeInit 1 */
- 787              		.loc 1 283 5 view .LVU249
- 788 0036 3420     		movs	r0, #52
- 789 0038 FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
- 790              	.LVL39:
- 791 003c ECE7     		b	.L41
- 792              	.LVL40:
- 793              	.L47:
+ 282:Src/usart.c   ****     __HAL_LINKDMA(uartHandle,hdmarx,hdma_usart2_rx);
+ 283:Src/usart.c   **** 
+ 284:Src/usart.c   ****     /* USART2 interrupt Init */
+ 285:Src/usart.c   ****     HAL_NVIC_SetPriority(USART2_IRQn, 5, 0);
+ 286:Src/usart.c   ****     HAL_NVIC_EnableIRQ(USART2_IRQn);
+ 287:Src/usart.c   ****   /* USER CODE BEGIN USART2_MspInit 1 */
+ 288:Src/usart.c   **** 
+ 289:Src/usart.c   ****   /* USER CODE END USART2_MspInit 1 */
+ 290:Src/usart.c   ****   }
+ 291:Src/usart.c   ****   else if(uartHandle->Instance==USART3)
+ 466              		.loc 1 291 8 is_stmt 1 view .LVU128
+ 467              		.loc 1 291 10 is_stmt 0 view .LVU129
+ 468 0026 7C4A     		ldr	r2, .L49+12
+ 469 0028 9342     		cmp	r3, r2
+ 470 002a 00F0A980 		beq	.L45
+ 471              	.LVL19:
+ 472              	.L33:
+ 292:Src/usart.c   ****   {
+ 293:Src/usart.c   ****   /* USER CODE BEGIN USART3_MspInit 0 */
  294:Src/usart.c   **** 
- 794              		.loc 1 294 5 view .LVU250
- 795 003e 02F59432 		add	r2, r2, #75776
- 796 0042 536C     		ldr	r3, [r2, #68]
- 797 0044 23F01003 		bic	r3, r3, #16
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 23
+ 295:Src/usart.c   ****   /* USER CODE END USART3_MspInit 0 */
+ 296:Src/usart.c   ****     /* USART3 clock enable */
+ 297:Src/usart.c   ****     __HAL_RCC_USART3_CLK_ENABLE();
+ 298:Src/usart.c   **** 
+ 299:Src/usart.c   ****     __HAL_RCC_GPIOD_CLK_ENABLE();
+ 300:Src/usart.c   ****     /**USART3 GPIO Configuration
+ 301:Src/usart.c   ****     PD8     ------> USART3_TX
+ 302:Src/usart.c   ****     PD9     ------> USART3_RX
+ 303:Src/usart.c   ****     */
+ 304:Src/usart.c   ****     GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
+ 305:Src/usart.c   ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 306:Src/usart.c   ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 307:Src/usart.c   ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 308:Src/usart.c   ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART3;
+ 309:Src/usart.c   ****     HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+ 310:Src/usart.c   **** 
+ 311:Src/usart.c   ****     /* USART3 DMA Init */
+ 312:Src/usart.c   ****     /* USART3_RX Init */
+ 313:Src/usart.c   ****     hdma_usart3_rx.Instance = DMA1_Stream1;
+ 314:Src/usart.c   ****     hdma_usart3_rx.Init.Channel = DMA_CHANNEL_4;
+ 315:Src/usart.c   ****     hdma_usart3_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+ 316:Src/usart.c   ****     hdma_usart3_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+ 317:Src/usart.c   ****     hdma_usart3_rx.Init.MemInc = DMA_MINC_ENABLE;
+ 318:Src/usart.c   ****     hdma_usart3_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+ 319:Src/usart.c   ****     hdma_usart3_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+ 320:Src/usart.c   ****     hdma_usart3_rx.Init.Mode = DMA_NORMAL;
+ 321:Src/usart.c   ****     hdma_usart3_rx.Init.Priority = DMA_PRIORITY_LOW;
+ 322:Src/usart.c   ****     hdma_usart3_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+ 323:Src/usart.c   ****     if (HAL_DMA_Init(&hdma_usart3_rx) != HAL_OK)
+ 324:Src/usart.c   ****     {
+ 325:Src/usart.c   ****       Error_Handler();
+ 326:Src/usart.c   ****     }
+ 327:Src/usart.c   **** 
+ 328:Src/usart.c   ****     __HAL_LINKDMA(uartHandle,hdmarx,hdma_usart3_rx);
+ 329:Src/usart.c   **** 
+ 330:Src/usart.c   ****     /* USART3 interrupt Init */
+ 331:Src/usart.c   ****     HAL_NVIC_SetPriority(USART3_IRQn, 5, 0);
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 15
 
 
- 798 0048 5364     		str	r3, [r2, #68]
- 300:Src/usart.c   **** 
- 799              		.loc 1 300 5 view .LVU251
- 800 004a 4FF4C061 		mov	r1, #1536
- 801 004e 0F48     		ldr	r0, .L49+16
- 802              	.LVL41:
- 300:Src/usart.c   **** 
- 803              		.loc 1 300 5 is_stmt 0 view .LVU252
- 804 0050 FFF7FEFF 		bl	HAL_GPIO_DeInit
- 805              	.LVL42:
- 806 0054 E0E7     		b	.L41
- 807              	.LVL43:
- 808              	.L48:
- 312:Src/usart.c   **** 
- 809              		.loc 1 312 5 is_stmt 1 view .LVU253
- 810 0056 02F5F832 		add	r2, r2, #126976
- 811 005a 136C     		ldr	r3, [r2, #64]
- 812 005c 23F48023 		bic	r3, r3, #262144
- 813 0060 1364     		str	r3, [r2, #64]
- 318:Src/usart.c   **** 
- 814              		.loc 1 318 5 view .LVU254
- 815 0062 4FF44071 		mov	r1, #768
- 816 0066 0A48     		ldr	r0, .L49+20
- 817              	.LVL44:
- 318:Src/usart.c   **** 
- 818              		.loc 1 318 5 is_stmt 0 view .LVU255
- 819 0068 FFF7FEFF 		bl	HAL_GPIO_DeInit
- 820              	.LVL45:
- 321:Src/usart.c   **** 
- 821              		.loc 1 321 5 is_stmt 1 view .LVU256
- 822 006c A06B     		ldr	r0, [r4, #56]
- 823 006e FFF7FEFF 		bl	HAL_DMA_DeInit
- 824              	.LVL46:
- 324:Src/usart.c   ****   /* USER CODE BEGIN USART3_MspDeInit 1 */
- 825              		.loc 1 324 5 view .LVU257
- 826 0072 2720     		movs	r0, #39
- 827 0074 FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
- 828              	.LVL47:
- 829              		.loc 1 329 1 is_stmt 0 view .LVU258
- 830 0078 CEE7     		b	.L41
- 831              	.L50:
- 832 007a 00BF     		.align	2
- 833              	.L49:
- 834 007c 004C0040 		.word	1073761280
- 835 0080 00100140 		.word	1073811456
- 836 0084 00480040 		.word	1073760256
- 837 0088 00080240 		.word	1073874944
- 838 008c 00000240 		.word	1073872896
- 839 0090 000C0240 		.word	1073875968
- 840              		.cfi_endproc
- 841              	.LFE144:
- 843              		.global	hdma_usart3_rx
- 844              		.global	hdma_uart4_rx
- 845              		.global	huart3
- 846              		.global	huart1
- 847              		.global	huart4
- 848              		.section	.bss.hdma_uart4_rx,"aw",%nobits
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 24
+ 332:Src/usart.c   ****     HAL_NVIC_EnableIRQ(USART3_IRQn);
+ 333:Src/usart.c   ****   /* USER CODE BEGIN USART3_MspInit 1 */
+ 334:Src/usart.c   **** 
+ 335:Src/usart.c   ****   /* USER CODE END USART3_MspInit 1 */
+ 336:Src/usart.c   ****   }
+ 337:Src/usart.c   **** }
+ 473              		.loc 1 337 1 view .LVU130
+ 474 002e 0FB0     		add	sp, sp, #60
+ 475              	.LCFI10:
+ 476              		.cfi_remember_state
+ 477              		.cfi_def_cfa_offset 12
+ 478              		@ sp needed
+ 479 0030 30BD     		pop	{r4, r5, pc}
+ 480              	.LVL20:
+ 481              	.L42:
+ 482              	.LCFI11:
+ 483              		.cfi_restore_state
+ 184:Src/usart.c   **** 
+ 484              		.loc 1 184 5 is_stmt 1 view .LVU131
+ 485              	.LBB2:
+ 184:Src/usart.c   **** 
+ 486              		.loc 1 184 5 view .LVU132
+ 487 0032 0025     		movs	r5, #0
+ 488 0034 0195     		str	r5, [sp, #4]
+ 184:Src/usart.c   **** 
+ 489              		.loc 1 184 5 view .LVU133
+ 490 0036 794B     		ldr	r3, .L49+16
+ 491 0038 1A6C     		ldr	r2, [r3, #64]
+ 492 003a 42F40022 		orr	r2, r2, #524288
+ 493 003e 1A64     		str	r2, [r3, #64]
+ 184:Src/usart.c   **** 
+ 494              		.loc 1 184 5 view .LVU134
+ 495 0040 1A6C     		ldr	r2, [r3, #64]
+ 496 0042 02F40022 		and	r2, r2, #524288
+ 497 0046 0192     		str	r2, [sp, #4]
+ 184:Src/usart.c   **** 
+ 498              		.loc 1 184 5 view .LVU135
+ 499 0048 019A     		ldr	r2, [sp, #4]
+ 500              	.LBE2:
+ 184:Src/usart.c   **** 
+ 501              		.loc 1 184 5 view .LVU136
+ 186:Src/usart.c   ****     /**UART4 GPIO Configuration
+ 502              		.loc 1 186 5 view .LVU137
+ 503              	.LBB3:
+ 186:Src/usart.c   ****     /**UART4 GPIO Configuration
+ 504              		.loc 1 186 5 view .LVU138
+ 505 004a 0295     		str	r5, [sp, #8]
+ 186:Src/usart.c   ****     /**UART4 GPIO Configuration
+ 506              		.loc 1 186 5 view .LVU139
+ 507 004c 1A6B     		ldr	r2, [r3, #48]
+ 508 004e 42F00402 		orr	r2, r2, #4
+ 509 0052 1A63     		str	r2, [r3, #48]
+ 186:Src/usart.c   ****     /**UART4 GPIO Configuration
+ 510              		.loc 1 186 5 view .LVU140
+ 511 0054 1B6B     		ldr	r3, [r3, #48]
+ 512 0056 03F00403 		and	r3, r3, #4
+ 513 005a 0293     		str	r3, [sp, #8]
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 16
 
 
- 849              		.align	2
- 850              		.set	.LANCHOR3,. + 0
- 853              	hdma_uart4_rx:
- 854 0000 00000000 		.space	96
- 854      00000000 
- 854      00000000 
- 854      00000000 
- 854      00000000 
- 855              		.section	.bss.hdma_usart3_rx,"aw",%nobits
- 856              		.align	2
- 857              		.set	.LANCHOR4,. + 0
- 860              	hdma_usart3_rx:
- 861 0000 00000000 		.space	96
- 861      00000000 
- 861      00000000 
- 861      00000000 
- 861      00000000 
- 862              		.section	.bss.huart1,"aw",%nobits
- 863              		.align	2
- 864              		.set	.LANCHOR0,. + 0
- 867              	huart1:
- 868 0000 00000000 		.space	68
- 868      00000000 
- 868      00000000 
- 868      00000000 
- 868      00000000 
- 869              		.section	.bss.huart3,"aw",%nobits
- 870              		.align	2
- 871              		.set	.LANCHOR2,. + 0
- 874              	huart3:
- 875 0000 00000000 		.space	68
- 875      00000000 
- 875      00000000 
- 875      00000000 
- 875      00000000 
- 876              		.section	.bss.huart4,"aw",%nobits
- 877              		.align	2
- 878              		.set	.LANCHOR1,. + 0
- 881              	huart4:
- 882 0000 00000000 		.space	68
- 882      00000000 
- 882      00000000 
- 882      00000000 
- 882      00000000 
- 883              		.text
- 884              	.Letext0:
- 885              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2020-q4-major\\arm-none-eabi\\inc
- 886              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2020-q4-major\\arm-none-eabi\\inc
- 887              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
- 888              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 889              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
- 890              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 891              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
- 892              		.file 9 "Inc/usart.h"
- 893              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
- 894              		.file 11 "Inc/main.h"
-ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s 			page 25
+ 186:Src/usart.c   ****     /**UART4 GPIO Configuration
+ 514              		.loc 1 186 5 view .LVU141
+ 515 005c 029B     		ldr	r3, [sp, #8]
+ 516              	.LBE3:
+ 186:Src/usart.c   ****     /**UART4 GPIO Configuration
+ 517              		.loc 1 186 5 view .LVU142
+ 191:Src/usart.c   ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 518              		.loc 1 191 5 view .LVU143
+ 191:Src/usart.c   ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 519              		.loc 1 191 25 is_stmt 0 view .LVU144
+ 520 005e 4FF44063 		mov	r3, #3072
+ 521 0062 0993     		str	r3, [sp, #36]
+ 192:Src/usart.c   ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 522              		.loc 1 192 5 is_stmt 1 view .LVU145
+ 192:Src/usart.c   ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 523              		.loc 1 192 26 is_stmt 0 view .LVU146
+ 524 0064 0223     		movs	r3, #2
+ 525 0066 0A93     		str	r3, [sp, #40]
+ 193:Src/usart.c   ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 526              		.loc 1 193 5 is_stmt 1 view .LVU147
+ 193:Src/usart.c   ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 527              		.loc 1 193 26 is_stmt 0 view .LVU148
+ 528 0068 0123     		movs	r3, #1
+ 529 006a 0B93     		str	r3, [sp, #44]
+ 194:Src/usart.c   ****     GPIO_InitStruct.Alternate = GPIO_AF8_UART4;
+ 530              		.loc 1 194 5 is_stmt 1 view .LVU149
+ 194:Src/usart.c   ****     GPIO_InitStruct.Alternate = GPIO_AF8_UART4;
+ 531              		.loc 1 194 27 is_stmt 0 view .LVU150
+ 532 006c 0323     		movs	r3, #3
+ 533 006e 0C93     		str	r3, [sp, #48]
+ 195:Src/usart.c   ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 534              		.loc 1 195 5 is_stmt 1 view .LVU151
+ 195:Src/usart.c   ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 535              		.loc 1 195 31 is_stmt 0 view .LVU152
+ 536 0070 0823     		movs	r3, #8
+ 537 0072 0D93     		str	r3, [sp, #52]
+ 196:Src/usart.c   **** 
+ 538              		.loc 1 196 5 is_stmt 1 view .LVU153
+ 539 0074 09A9     		add	r1, sp, #36
+ 540 0076 6A48     		ldr	r0, .L49+20
+ 541              	.LVL21:
+ 196:Src/usart.c   **** 
+ 542              		.loc 1 196 5 is_stmt 0 view .LVU154
+ 543 0078 FFF7FEFF 		bl	HAL_GPIO_Init
+ 544              	.LVL22:
+ 200:Src/usart.c   ****     hdma_uart4_rx.Init.Channel = DMA_CHANNEL_4;
+ 545              		.loc 1 200 5 is_stmt 1 view .LVU155
+ 200:Src/usart.c   ****     hdma_uart4_rx.Init.Channel = DMA_CHANNEL_4;
+ 546              		.loc 1 200 28 is_stmt 0 view .LVU156
+ 547 007c 6948     		ldr	r0, .L49+24
+ 548 007e 6A4B     		ldr	r3, .L49+28
+ 549 0080 0360     		str	r3, [r0]
+ 201:Src/usart.c   ****     hdma_uart4_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+ 550              		.loc 1 201 5 is_stmt 1 view .LVU157
+ 201:Src/usart.c   ****     hdma_uart4_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+ 551              		.loc 1 201 32 is_stmt 0 view .LVU158
+ 552 0082 4FF00063 		mov	r3, #134217728
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 17
+
+
+ 553 0086 4360     		str	r3, [r0, #4]
+ 202:Src/usart.c   ****     hdma_uart4_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+ 554              		.loc 1 202 5 is_stmt 1 view .LVU159
+ 202:Src/usart.c   ****     hdma_uart4_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+ 555              		.loc 1 202 34 is_stmt 0 view .LVU160
+ 556 0088 8560     		str	r5, [r0, #8]
+ 203:Src/usart.c   ****     hdma_uart4_rx.Init.MemInc = DMA_MINC_ENABLE;
+ 557              		.loc 1 203 5 is_stmt 1 view .LVU161
+ 203:Src/usart.c   ****     hdma_uart4_rx.Init.MemInc = DMA_MINC_ENABLE;
+ 558              		.loc 1 203 34 is_stmt 0 view .LVU162
+ 559 008a C560     		str	r5, [r0, #12]
+ 204:Src/usart.c   ****     hdma_uart4_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+ 560              		.loc 1 204 5 is_stmt 1 view .LVU163
+ 204:Src/usart.c   ****     hdma_uart4_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+ 561              		.loc 1 204 31 is_stmt 0 view .LVU164
+ 562 008c 4FF48063 		mov	r3, #1024
+ 563 0090 0361     		str	r3, [r0, #16]
+ 205:Src/usart.c   ****     hdma_uart4_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+ 564              		.loc 1 205 5 is_stmt 1 view .LVU165
+ 205:Src/usart.c   ****     hdma_uart4_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+ 565              		.loc 1 205 44 is_stmt 0 view .LVU166
+ 566 0092 4561     		str	r5, [r0, #20]
+ 206:Src/usart.c   ****     hdma_uart4_rx.Init.Mode = DMA_NORMAL;
+ 567              		.loc 1 206 5 is_stmt 1 view .LVU167
+ 206:Src/usart.c   ****     hdma_uart4_rx.Init.Mode = DMA_NORMAL;
+ 568              		.loc 1 206 41 is_stmt 0 view .LVU168
+ 569 0094 8561     		str	r5, [r0, #24]
+ 207:Src/usart.c   ****     hdma_uart4_rx.Init.Priority = DMA_PRIORITY_LOW;
+ 570              		.loc 1 207 5 is_stmt 1 view .LVU169
+ 207:Src/usart.c   ****     hdma_uart4_rx.Init.Priority = DMA_PRIORITY_LOW;
+ 571              		.loc 1 207 29 is_stmt 0 view .LVU170
+ 572 0096 C561     		str	r5, [r0, #28]
+ 208:Src/usart.c   ****     hdma_uart4_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+ 573              		.loc 1 208 5 is_stmt 1 view .LVU171
+ 208:Src/usart.c   ****     hdma_uart4_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+ 574              		.loc 1 208 33 is_stmt 0 view .LVU172
+ 575 0098 0562     		str	r5, [r0, #32]
+ 209:Src/usart.c   ****     if (HAL_DMA_Init(&hdma_uart4_rx) != HAL_OK)
+ 576              		.loc 1 209 5 is_stmt 1 view .LVU173
+ 209:Src/usart.c   ****     if (HAL_DMA_Init(&hdma_uart4_rx) != HAL_OK)
+ 577              		.loc 1 209 33 is_stmt 0 view .LVU174
+ 578 009a 4562     		str	r5, [r0, #36]
+ 210:Src/usart.c   ****     {
+ 579              		.loc 1 210 5 is_stmt 1 view .LVU175
+ 210:Src/usart.c   ****     {
+ 580              		.loc 1 210 9 is_stmt 0 view .LVU176
+ 581 009c FFF7FEFF 		bl	HAL_DMA_Init
+ 582              	.LVL23:
+ 210:Src/usart.c   ****     {
+ 583              		.loc 1 210 8 view .LVU177
+ 584 00a0 18B9     		cbnz	r0, .L46
+ 585              	.L35:
+ 215:Src/usart.c   **** 
+ 586              		.loc 1 215 5 is_stmt 1 view .LVU178
+ 215:Src/usart.c   **** 
+ 587              		.loc 1 215 5 view .LVU179
+ 588 00a2 604B     		ldr	r3, .L49+24
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 18
+
+
+ 589 00a4 A363     		str	r3, [r4, #56]
+ 215:Src/usart.c   **** 
+ 590              		.loc 1 215 5 view .LVU180
+ 591 00a6 9C63     		str	r4, [r3, #56]
+ 215:Src/usart.c   **** 
+ 592              		.loc 1 215 5 view .LVU181
+ 593 00a8 C1E7     		b	.L33
+ 594              	.L46:
+ 212:Src/usart.c   ****     }
+ 595              		.loc 1 212 7 view .LVU182
+ 596 00aa FFF7FEFF 		bl	Error_Handler
+ 597              	.LVL24:
+ 598 00ae F8E7     		b	.L35
+ 599              	.LVL25:
+ 600              	.L43:
+ 227:Src/usart.c   **** 
+ 601              		.loc 1 227 5 view .LVU183
+ 602              	.LBB4:
+ 227:Src/usart.c   **** 
+ 603              		.loc 1 227 5 view .LVU184
+ 604 00b0 0021     		movs	r1, #0
+ 605 00b2 0391     		str	r1, [sp, #12]
+ 227:Src/usart.c   **** 
+ 606              		.loc 1 227 5 view .LVU185
+ 607 00b4 594B     		ldr	r3, .L49+16
+ 608 00b6 5A6C     		ldr	r2, [r3, #68]
+ 609 00b8 42F01002 		orr	r2, r2, #16
+ 610 00bc 5A64     		str	r2, [r3, #68]
+ 227:Src/usart.c   **** 
+ 611              		.loc 1 227 5 view .LVU186
+ 612 00be 5A6C     		ldr	r2, [r3, #68]
+ 613 00c0 02F01002 		and	r2, r2, #16
+ 614 00c4 0392     		str	r2, [sp, #12]
+ 227:Src/usart.c   **** 
+ 615              		.loc 1 227 5 view .LVU187
+ 616 00c6 039A     		ldr	r2, [sp, #12]
+ 617              	.LBE4:
+ 227:Src/usart.c   **** 
+ 618              		.loc 1 227 5 view .LVU188
+ 229:Src/usart.c   ****     /**USART1 GPIO Configuration
+ 619              		.loc 1 229 5 view .LVU189
+ 620              	.LBB5:
+ 229:Src/usart.c   ****     /**USART1 GPIO Configuration
+ 621              		.loc 1 229 5 view .LVU190
+ 622 00c8 0491     		str	r1, [sp, #16]
+ 229:Src/usart.c   ****     /**USART1 GPIO Configuration
+ 623              		.loc 1 229 5 view .LVU191
+ 624 00ca 1A6B     		ldr	r2, [r3, #48]
+ 625 00cc 42F00102 		orr	r2, r2, #1
+ 626 00d0 1A63     		str	r2, [r3, #48]
+ 229:Src/usart.c   ****     /**USART1 GPIO Configuration
+ 627              		.loc 1 229 5 view .LVU192
+ 628 00d2 1B6B     		ldr	r3, [r3, #48]
+ 629 00d4 03F00103 		and	r3, r3, #1
+ 630 00d8 0493     		str	r3, [sp, #16]
+ 229:Src/usart.c   ****     /**USART1 GPIO Configuration
+ 631              		.loc 1 229 5 view .LVU193
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 19
+
+
+ 632 00da 049B     		ldr	r3, [sp, #16]
+ 633              	.LBE5:
+ 229:Src/usart.c   ****     /**USART1 GPIO Configuration
+ 634              		.loc 1 229 5 view .LVU194
+ 234:Src/usart.c   ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 635              		.loc 1 234 5 view .LVU195
+ 234:Src/usart.c   ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 636              		.loc 1 234 25 is_stmt 0 view .LVU196
+ 637 00dc 4FF4C063 		mov	r3, #1536
+ 638 00e0 0993     		str	r3, [sp, #36]
+ 235:Src/usart.c   ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 639              		.loc 1 235 5 is_stmt 1 view .LVU197
+ 235:Src/usart.c   ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 640              		.loc 1 235 26 is_stmt 0 view .LVU198
+ 641 00e2 0223     		movs	r3, #2
+ 642 00e4 0A93     		str	r3, [sp, #40]
+ 236:Src/usart.c   ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 643              		.loc 1 236 5 is_stmt 1 view .LVU199
+ 237:Src/usart.c   ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
+ 644              		.loc 1 237 5 view .LVU200
+ 237:Src/usart.c   ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
+ 645              		.loc 1 237 27 is_stmt 0 view .LVU201
+ 646 00e6 0323     		movs	r3, #3
+ 647 00e8 0C93     		str	r3, [sp, #48]
+ 238:Src/usart.c   ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 648              		.loc 1 238 5 is_stmt 1 view .LVU202
+ 238:Src/usart.c   ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 649              		.loc 1 238 31 is_stmt 0 view .LVU203
+ 650 00ea 0723     		movs	r3, #7
+ 651 00ec 0D93     		str	r3, [sp, #52]
+ 239:Src/usart.c   **** 
+ 652              		.loc 1 239 5 is_stmt 1 view .LVU204
+ 653 00ee 09A9     		add	r1, sp, #36
+ 654 00f0 4E48     		ldr	r0, .L49+32
+ 655              	.LVL26:
+ 239:Src/usart.c   **** 
+ 656              		.loc 1 239 5 is_stmt 0 view .LVU205
+ 657 00f2 FFF7FEFF 		bl	HAL_GPIO_Init
+ 658              	.LVL27:
+ 659 00f6 9AE7     		b	.L33
+ 660              	.LVL28:
+ 661              	.L44:
+ 251:Src/usart.c   **** 
+ 662              		.loc 1 251 5 is_stmt 1 view .LVU206
+ 663              	.LBB6:
+ 251:Src/usart.c   **** 
+ 664              		.loc 1 251 5 view .LVU207
+ 665 00f8 0025     		movs	r5, #0
+ 666 00fa 0595     		str	r5, [sp, #20]
+ 251:Src/usart.c   **** 
+ 667              		.loc 1 251 5 view .LVU208
+ 668 00fc 474B     		ldr	r3, .L49+16
+ 669 00fe 1A6C     		ldr	r2, [r3, #64]
+ 670 0100 42F40032 		orr	r2, r2, #131072
+ 671 0104 1A64     		str	r2, [r3, #64]
+ 251:Src/usart.c   **** 
+ 672              		.loc 1 251 5 view .LVU209
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 20
+
+
+ 673 0106 1A6C     		ldr	r2, [r3, #64]
+ 674 0108 02F40032 		and	r2, r2, #131072
+ 675 010c 0592     		str	r2, [sp, #20]
+ 251:Src/usart.c   **** 
+ 676              		.loc 1 251 5 view .LVU210
+ 677 010e 059A     		ldr	r2, [sp, #20]
+ 678              	.LBE6:
+ 251:Src/usart.c   **** 
+ 679              		.loc 1 251 5 view .LVU211
+ 253:Src/usart.c   ****     /**USART2 GPIO Configuration
+ 680              		.loc 1 253 5 view .LVU212
+ 681              	.LBB7:
+ 253:Src/usart.c   ****     /**USART2 GPIO Configuration
+ 682              		.loc 1 253 5 view .LVU213
+ 683 0110 0695     		str	r5, [sp, #24]
+ 253:Src/usart.c   ****     /**USART2 GPIO Configuration
+ 684              		.loc 1 253 5 view .LVU214
+ 685 0112 1A6B     		ldr	r2, [r3, #48]
+ 686 0114 42F00102 		orr	r2, r2, #1
+ 687 0118 1A63     		str	r2, [r3, #48]
+ 253:Src/usart.c   ****     /**USART2 GPIO Configuration
+ 688              		.loc 1 253 5 view .LVU215
+ 689 011a 1B6B     		ldr	r3, [r3, #48]
+ 690 011c 03F00103 		and	r3, r3, #1
+ 691 0120 0693     		str	r3, [sp, #24]
+ 253:Src/usart.c   ****     /**USART2 GPIO Configuration
+ 692              		.loc 1 253 5 view .LVU216
+ 693 0122 069B     		ldr	r3, [sp, #24]
+ 694              	.LBE7:
+ 253:Src/usart.c   ****     /**USART2 GPIO Configuration
+ 695              		.loc 1 253 5 view .LVU217
+ 258:Src/usart.c   ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 696              		.loc 1 258 5 view .LVU218
+ 258:Src/usart.c   ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 697              		.loc 1 258 25 is_stmt 0 view .LVU219
+ 698 0124 0C23     		movs	r3, #12
+ 699 0126 0993     		str	r3, [sp, #36]
+ 259:Src/usart.c   ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 700              		.loc 1 259 5 is_stmt 1 view .LVU220
+ 259:Src/usart.c   ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 701              		.loc 1 259 26 is_stmt 0 view .LVU221
+ 702 0128 0223     		movs	r3, #2
+ 703 012a 0A93     		str	r3, [sp, #40]
+ 260:Src/usart.c   ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 704              		.loc 1 260 5 is_stmt 1 view .LVU222
+ 261:Src/usart.c   ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
+ 705              		.loc 1 261 5 view .LVU223
+ 261:Src/usart.c   ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
+ 706              		.loc 1 261 27 is_stmt 0 view .LVU224
+ 707 012c 0323     		movs	r3, #3
+ 708 012e 0C93     		str	r3, [sp, #48]
+ 262:Src/usart.c   ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 709              		.loc 1 262 5 is_stmt 1 view .LVU225
+ 262:Src/usart.c   ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 710              		.loc 1 262 31 is_stmt 0 view .LVU226
+ 711 0130 0723     		movs	r3, #7
+ 712 0132 0D93     		str	r3, [sp, #52]
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 21
+
+
+ 263:Src/usart.c   **** 
+ 713              		.loc 1 263 5 is_stmt 1 view .LVU227
+ 714 0134 09A9     		add	r1, sp, #36
+ 715 0136 3D48     		ldr	r0, .L49+32
+ 716              	.LVL29:
+ 263:Src/usart.c   **** 
+ 717              		.loc 1 263 5 is_stmt 0 view .LVU228
+ 718 0138 FFF7FEFF 		bl	HAL_GPIO_Init
+ 719              	.LVL30:
+ 267:Src/usart.c   ****     hdma_usart2_rx.Init.Channel = DMA_CHANNEL_4;
+ 720              		.loc 1 267 5 is_stmt 1 view .LVU229
+ 267:Src/usart.c   ****     hdma_usart2_rx.Init.Channel = DMA_CHANNEL_4;
+ 721              		.loc 1 267 29 is_stmt 0 view .LVU230
+ 722 013c 3C48     		ldr	r0, .L49+36
+ 723 013e 3D4B     		ldr	r3, .L49+40
+ 724 0140 0360     		str	r3, [r0]
+ 268:Src/usart.c   ****     hdma_usart2_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+ 725              		.loc 1 268 5 is_stmt 1 view .LVU231
+ 268:Src/usart.c   ****     hdma_usart2_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+ 726              		.loc 1 268 33 is_stmt 0 view .LVU232
+ 727 0142 4FF00063 		mov	r3, #134217728
+ 728 0146 4360     		str	r3, [r0, #4]
+ 269:Src/usart.c   ****     hdma_usart2_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+ 729              		.loc 1 269 5 is_stmt 1 view .LVU233
+ 269:Src/usart.c   ****     hdma_usart2_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+ 730              		.loc 1 269 35 is_stmt 0 view .LVU234
+ 731 0148 8560     		str	r5, [r0, #8]
+ 270:Src/usart.c   ****     hdma_usart2_rx.Init.MemInc = DMA_MINC_ENABLE;
+ 732              		.loc 1 270 5 is_stmt 1 view .LVU235
+ 270:Src/usart.c   ****     hdma_usart2_rx.Init.MemInc = DMA_MINC_ENABLE;
+ 733              		.loc 1 270 35 is_stmt 0 view .LVU236
+ 734 014a C560     		str	r5, [r0, #12]
+ 271:Src/usart.c   ****     hdma_usart2_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+ 735              		.loc 1 271 5 is_stmt 1 view .LVU237
+ 271:Src/usart.c   ****     hdma_usart2_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+ 736              		.loc 1 271 32 is_stmt 0 view .LVU238
+ 737 014c 4FF48063 		mov	r3, #1024
+ 738 0150 0361     		str	r3, [r0, #16]
+ 272:Src/usart.c   ****     hdma_usart2_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+ 739              		.loc 1 272 5 is_stmt 1 view .LVU239
+ 272:Src/usart.c   ****     hdma_usart2_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+ 740              		.loc 1 272 45 is_stmt 0 view .LVU240
+ 741 0152 4561     		str	r5, [r0, #20]
+ 273:Src/usart.c   ****     hdma_usart2_rx.Init.Mode = DMA_NORMAL;
+ 742              		.loc 1 273 5 is_stmt 1 view .LVU241
+ 273:Src/usart.c   ****     hdma_usart2_rx.Init.Mode = DMA_NORMAL;
+ 743              		.loc 1 273 42 is_stmt 0 view .LVU242
+ 744 0154 8561     		str	r5, [r0, #24]
+ 274:Src/usart.c   ****     hdma_usart2_rx.Init.Priority = DMA_PRIORITY_LOW;
+ 745              		.loc 1 274 5 is_stmt 1 view .LVU243
+ 274:Src/usart.c   ****     hdma_usart2_rx.Init.Priority = DMA_PRIORITY_LOW;
+ 746              		.loc 1 274 30 is_stmt 0 view .LVU244
+ 747 0156 C561     		str	r5, [r0, #28]
+ 275:Src/usart.c   ****     hdma_usart2_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+ 748              		.loc 1 275 5 is_stmt 1 view .LVU245
+ 275:Src/usart.c   ****     hdma_usart2_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+ 749              		.loc 1 275 34 is_stmt 0 view .LVU246
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 22
+
+
+ 750 0158 0562     		str	r5, [r0, #32]
+ 276:Src/usart.c   ****     if (HAL_DMA_Init(&hdma_usart2_rx) != HAL_OK)
+ 751              		.loc 1 276 5 is_stmt 1 view .LVU247
+ 276:Src/usart.c   ****     if (HAL_DMA_Init(&hdma_usart2_rx) != HAL_OK)
+ 752              		.loc 1 276 34 is_stmt 0 view .LVU248
+ 753 015a 4562     		str	r5, [r0, #36]
+ 277:Src/usart.c   ****     {
+ 754              		.loc 1 277 5 is_stmt 1 view .LVU249
+ 277:Src/usart.c   ****     {
+ 755              		.loc 1 277 9 is_stmt 0 view .LVU250
+ 756 015c FFF7FEFF 		bl	HAL_DMA_Init
+ 757              	.LVL31:
+ 277:Src/usart.c   ****     {
+ 758              		.loc 1 277 8 view .LVU251
+ 759 0160 58B9     		cbnz	r0, .L47
+ 760              	.L39:
+ 282:Src/usart.c   **** 
+ 761              		.loc 1 282 5 is_stmt 1 view .LVU252
+ 282:Src/usart.c   **** 
+ 762              		.loc 1 282 5 view .LVU253
+ 763 0162 334B     		ldr	r3, .L49+36
+ 764 0164 A363     		str	r3, [r4, #56]
+ 282:Src/usart.c   **** 
+ 765              		.loc 1 282 5 view .LVU254
+ 766 0166 9C63     		str	r4, [r3, #56]
+ 282:Src/usart.c   **** 
+ 767              		.loc 1 282 5 view .LVU255
+ 285:Src/usart.c   ****     HAL_NVIC_EnableIRQ(USART2_IRQn);
+ 768              		.loc 1 285 5 view .LVU256
+ 769 0168 0022     		movs	r2, #0
+ 770 016a 0521     		movs	r1, #5
+ 771 016c 2620     		movs	r0, #38
+ 772 016e FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 773              	.LVL32:
+ 286:Src/usart.c   ****   /* USER CODE BEGIN USART2_MspInit 1 */
+ 774              		.loc 1 286 5 view .LVU257
+ 775 0172 2620     		movs	r0, #38
+ 776 0174 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 777              	.LVL33:
+ 778 0178 59E7     		b	.L33
+ 779              	.L47:
+ 279:Src/usart.c   ****     }
+ 780              		.loc 1 279 7 view .LVU258
+ 781 017a FFF7FEFF 		bl	Error_Handler
+ 782              	.LVL34:
+ 783 017e F0E7     		b	.L39
+ 784              	.LVL35:
+ 785              	.L45:
+ 297:Src/usart.c   **** 
+ 786              		.loc 1 297 5 view .LVU259
+ 787              	.LBB8:
+ 297:Src/usart.c   **** 
+ 788              		.loc 1 297 5 view .LVU260
+ 789 0180 0025     		movs	r5, #0
+ 790 0182 0795     		str	r5, [sp, #28]
+ 297:Src/usart.c   **** 
+ 791              		.loc 1 297 5 view .LVU261
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 23
+
+
+ 792 0184 254B     		ldr	r3, .L49+16
+ 793 0186 1A6C     		ldr	r2, [r3, #64]
+ 794 0188 42F48022 		orr	r2, r2, #262144
+ 795 018c 1A64     		str	r2, [r3, #64]
+ 297:Src/usart.c   **** 
+ 796              		.loc 1 297 5 view .LVU262
+ 797 018e 1A6C     		ldr	r2, [r3, #64]
+ 798 0190 02F48022 		and	r2, r2, #262144
+ 799 0194 0792     		str	r2, [sp, #28]
+ 297:Src/usart.c   **** 
+ 800              		.loc 1 297 5 view .LVU263
+ 801 0196 079A     		ldr	r2, [sp, #28]
+ 802              	.LBE8:
+ 297:Src/usart.c   **** 
+ 803              		.loc 1 297 5 view .LVU264
+ 299:Src/usart.c   ****     /**USART3 GPIO Configuration
+ 804              		.loc 1 299 5 view .LVU265
+ 805              	.LBB9:
+ 299:Src/usart.c   ****     /**USART3 GPIO Configuration
+ 806              		.loc 1 299 5 view .LVU266
+ 807 0198 0895     		str	r5, [sp, #32]
+ 299:Src/usart.c   ****     /**USART3 GPIO Configuration
+ 808              		.loc 1 299 5 view .LVU267
+ 809 019a 1A6B     		ldr	r2, [r3, #48]
+ 810 019c 42F00802 		orr	r2, r2, #8
+ 811 01a0 1A63     		str	r2, [r3, #48]
+ 299:Src/usart.c   ****     /**USART3 GPIO Configuration
+ 812              		.loc 1 299 5 view .LVU268
+ 813 01a2 1B6B     		ldr	r3, [r3, #48]
+ 814 01a4 03F00803 		and	r3, r3, #8
+ 815 01a8 0893     		str	r3, [sp, #32]
+ 299:Src/usart.c   ****     /**USART3 GPIO Configuration
+ 816              		.loc 1 299 5 view .LVU269
+ 817 01aa 089B     		ldr	r3, [sp, #32]
+ 818              	.LBE9:
+ 299:Src/usart.c   ****     /**USART3 GPIO Configuration
+ 819              		.loc 1 299 5 view .LVU270
+ 304:Src/usart.c   ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 820              		.loc 1 304 5 view .LVU271
+ 304:Src/usart.c   ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 821              		.loc 1 304 25 is_stmt 0 view .LVU272
+ 822 01ac 4FF44073 		mov	r3, #768
+ 823 01b0 0993     		str	r3, [sp, #36]
+ 305:Src/usart.c   ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 824              		.loc 1 305 5 is_stmt 1 view .LVU273
+ 305:Src/usart.c   ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 825              		.loc 1 305 26 is_stmt 0 view .LVU274
+ 826 01b2 0223     		movs	r3, #2
+ 827 01b4 0A93     		str	r3, [sp, #40]
+ 306:Src/usart.c   ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 828              		.loc 1 306 5 is_stmt 1 view .LVU275
+ 307:Src/usart.c   ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART3;
+ 829              		.loc 1 307 5 view .LVU276
+ 307:Src/usart.c   ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART3;
+ 830              		.loc 1 307 27 is_stmt 0 view .LVU277
+ 831 01b6 0323     		movs	r3, #3
+ 832 01b8 0C93     		str	r3, [sp, #48]
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 24
+
+
+ 308:Src/usart.c   ****     HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+ 833              		.loc 1 308 5 is_stmt 1 view .LVU278
+ 308:Src/usart.c   ****     HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+ 834              		.loc 1 308 31 is_stmt 0 view .LVU279
+ 835 01ba 0723     		movs	r3, #7
+ 836 01bc 0D93     		str	r3, [sp, #52]
+ 309:Src/usart.c   **** 
+ 837              		.loc 1 309 5 is_stmt 1 view .LVU280
+ 838 01be 09A9     		add	r1, sp, #36
+ 839 01c0 1D48     		ldr	r0, .L49+44
+ 840              	.LVL36:
+ 309:Src/usart.c   **** 
+ 841              		.loc 1 309 5 is_stmt 0 view .LVU281
+ 842 01c2 FFF7FEFF 		bl	HAL_GPIO_Init
+ 843              	.LVL37:
+ 313:Src/usart.c   ****     hdma_usart3_rx.Init.Channel = DMA_CHANNEL_4;
+ 844              		.loc 1 313 5 is_stmt 1 view .LVU282
+ 313:Src/usart.c   ****     hdma_usart3_rx.Init.Channel = DMA_CHANNEL_4;
+ 845              		.loc 1 313 29 is_stmt 0 view .LVU283
+ 846 01c6 1D48     		ldr	r0, .L49+48
+ 847 01c8 1D4B     		ldr	r3, .L49+52
+ 848 01ca 0360     		str	r3, [r0]
+ 314:Src/usart.c   ****     hdma_usart3_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+ 849              		.loc 1 314 5 is_stmt 1 view .LVU284
+ 314:Src/usart.c   ****     hdma_usart3_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+ 850              		.loc 1 314 33 is_stmt 0 view .LVU285
+ 851 01cc 4FF00063 		mov	r3, #134217728
+ 852 01d0 4360     		str	r3, [r0, #4]
+ 315:Src/usart.c   ****     hdma_usart3_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+ 853              		.loc 1 315 5 is_stmt 1 view .LVU286
+ 315:Src/usart.c   ****     hdma_usart3_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+ 854              		.loc 1 315 35 is_stmt 0 view .LVU287
+ 855 01d2 8560     		str	r5, [r0, #8]
+ 316:Src/usart.c   ****     hdma_usart3_rx.Init.MemInc = DMA_MINC_ENABLE;
+ 856              		.loc 1 316 5 is_stmt 1 view .LVU288
+ 316:Src/usart.c   ****     hdma_usart3_rx.Init.MemInc = DMA_MINC_ENABLE;
+ 857              		.loc 1 316 35 is_stmt 0 view .LVU289
+ 858 01d4 C560     		str	r5, [r0, #12]
+ 317:Src/usart.c   ****     hdma_usart3_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+ 859              		.loc 1 317 5 is_stmt 1 view .LVU290
+ 317:Src/usart.c   ****     hdma_usart3_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+ 860              		.loc 1 317 32 is_stmt 0 view .LVU291
+ 861 01d6 4FF48063 		mov	r3, #1024
+ 862 01da 0361     		str	r3, [r0, #16]
+ 318:Src/usart.c   ****     hdma_usart3_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+ 863              		.loc 1 318 5 is_stmt 1 view .LVU292
+ 318:Src/usart.c   ****     hdma_usart3_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+ 864              		.loc 1 318 45 is_stmt 0 view .LVU293
+ 865 01dc 4561     		str	r5, [r0, #20]
+ 319:Src/usart.c   ****     hdma_usart3_rx.Init.Mode = DMA_NORMAL;
+ 866              		.loc 1 319 5 is_stmt 1 view .LVU294
+ 319:Src/usart.c   ****     hdma_usart3_rx.Init.Mode = DMA_NORMAL;
+ 867              		.loc 1 319 42 is_stmt 0 view .LVU295
+ 868 01de 8561     		str	r5, [r0, #24]
+ 320:Src/usart.c   ****     hdma_usart3_rx.Init.Priority = DMA_PRIORITY_LOW;
+ 869              		.loc 1 320 5 is_stmt 1 view .LVU296
+ 320:Src/usart.c   ****     hdma_usart3_rx.Init.Priority = DMA_PRIORITY_LOW;
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 25
+
+
+ 870              		.loc 1 320 30 is_stmt 0 view .LVU297
+ 871 01e0 C561     		str	r5, [r0, #28]
+ 321:Src/usart.c   ****     hdma_usart3_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+ 872              		.loc 1 321 5 is_stmt 1 view .LVU298
+ 321:Src/usart.c   ****     hdma_usart3_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+ 873              		.loc 1 321 34 is_stmt 0 view .LVU299
+ 874 01e2 0562     		str	r5, [r0, #32]
+ 322:Src/usart.c   ****     if (HAL_DMA_Init(&hdma_usart3_rx) != HAL_OK)
+ 875              		.loc 1 322 5 is_stmt 1 view .LVU300
+ 322:Src/usart.c   ****     if (HAL_DMA_Init(&hdma_usart3_rx) != HAL_OK)
+ 876              		.loc 1 322 34 is_stmt 0 view .LVU301
+ 877 01e4 4562     		str	r5, [r0, #36]
+ 323:Src/usart.c   ****     {
+ 878              		.loc 1 323 5 is_stmt 1 view .LVU302
+ 323:Src/usart.c   ****     {
+ 879              		.loc 1 323 9 is_stmt 0 view .LVU303
+ 880 01e6 FFF7FEFF 		bl	HAL_DMA_Init
+ 881              	.LVL38:
+ 323:Src/usart.c   ****     {
+ 882              		.loc 1 323 8 view .LVU304
+ 883 01ea 58B9     		cbnz	r0, .L48
+ 884              	.L40:
+ 328:Src/usart.c   **** 
+ 885              		.loc 1 328 5 is_stmt 1 view .LVU305
+ 328:Src/usart.c   **** 
+ 886              		.loc 1 328 5 view .LVU306
+ 887 01ec 134B     		ldr	r3, .L49+48
+ 888 01ee A363     		str	r3, [r4, #56]
+ 328:Src/usart.c   **** 
+ 889              		.loc 1 328 5 view .LVU307
+ 890 01f0 9C63     		str	r4, [r3, #56]
+ 328:Src/usart.c   **** 
+ 891              		.loc 1 328 5 view .LVU308
+ 331:Src/usart.c   ****     HAL_NVIC_EnableIRQ(USART3_IRQn);
+ 892              		.loc 1 331 5 view .LVU309
+ 893 01f2 0022     		movs	r2, #0
+ 894 01f4 0521     		movs	r1, #5
+ 895 01f6 2720     		movs	r0, #39
+ 896 01f8 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 897              	.LVL39:
+ 332:Src/usart.c   ****   /* USER CODE BEGIN USART3_MspInit 1 */
+ 898              		.loc 1 332 5 view .LVU310
+ 899 01fc 2720     		movs	r0, #39
+ 900 01fe FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 901              	.LVL40:
+ 902              		.loc 1 337 1 is_stmt 0 view .LVU311
+ 903 0202 14E7     		b	.L33
+ 904              	.L48:
+ 325:Src/usart.c   ****     }
+ 905              		.loc 1 325 7 is_stmt 1 view .LVU312
+ 906 0204 FFF7FEFF 		bl	Error_Handler
+ 907              	.LVL41:
+ 908 0208 F0E7     		b	.L40
+ 909              	.L50:
+ 910 020a 00BF     		.align	2
+ 911              	.L49:
+ 912 020c 004C0040 		.word	1073761280
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 26
+
+
+ 913 0210 00100140 		.word	1073811456
+ 914 0214 00440040 		.word	1073759232
+ 915 0218 00480040 		.word	1073760256
+ 916 021c 00380240 		.word	1073887232
+ 917 0220 00080240 		.word	1073874944
+ 918 0224 00000000 		.word	.LANCHOR4
+ 919 0228 40600240 		.word	1073897536
+ 920 022c 00000240 		.word	1073872896
+ 921 0230 00000000 		.word	.LANCHOR5
+ 922 0234 88600240 		.word	1073897608
+ 923 0238 000C0240 		.word	1073875968
+ 924 023c 00000000 		.word	.LANCHOR6
+ 925 0240 28600240 		.word	1073897512
+ 926              		.cfi_endproc
+ 927              	.LFE144:
+ 929              		.section	.text.HAL_UART_MspDeInit,"ax",%progbits
+ 930              		.align	1
+ 931              		.global	HAL_UART_MspDeInit
+ 932              		.syntax unified
+ 933              		.thumb
+ 934              		.thumb_func
+ 935              		.fpu fpv4-sp-d16
+ 937              	HAL_UART_MspDeInit:
+ 938              	.LVL42:
+ 939              	.LFB145:
+ 338:Src/usart.c   **** 
+ 339:Src/usart.c   **** void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
+ 340:Src/usart.c   **** {
+ 940              		.loc 1 340 1 view -0
+ 941              		.cfi_startproc
+ 942              		@ args = 0, pretend = 0, frame = 0
+ 943              		@ frame_needed = 0, uses_anonymous_args = 0
+ 944              		.loc 1 340 1 is_stmt 0 view .LVU314
+ 945 0000 10B5     		push	{r4, lr}
+ 946              	.LCFI12:
+ 947              		.cfi_def_cfa_offset 8
+ 948              		.cfi_offset 4, -8
+ 949              		.cfi_offset 14, -4
+ 950 0002 0446     		mov	r4, r0
+ 341:Src/usart.c   **** 
+ 342:Src/usart.c   ****   if(uartHandle->Instance==UART4)
+ 951              		.loc 1 342 3 is_stmt 1 view .LVU315
+ 952              		.loc 1 342 16 is_stmt 0 view .LVU316
+ 953 0004 0368     		ldr	r3, [r0]
+ 954              		.loc 1 342 5 view .LVU317
+ 955 0006 274A     		ldr	r2, .L61
+ 956 0008 9342     		cmp	r3, r2
+ 957 000a 09D0     		beq	.L57
+ 343:Src/usart.c   ****   {
+ 344:Src/usart.c   ****   /* USER CODE BEGIN UART4_MspDeInit 0 */
+ 345:Src/usart.c   **** 
+ 346:Src/usart.c   ****   /* USER CODE END UART4_MspDeInit 0 */
+ 347:Src/usart.c   ****     /* Peripheral clock disable */
+ 348:Src/usart.c   ****     __HAL_RCC_UART4_CLK_DISABLE();
+ 349:Src/usart.c   **** 
+ 350:Src/usart.c   ****     /**UART4 GPIO Configuration
+ 351:Src/usart.c   ****     PC10     ------> UART4_TX
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 27
+
+
+ 352:Src/usart.c   ****     PC11     ------> UART4_RX
+ 353:Src/usart.c   ****     */
+ 354:Src/usart.c   ****     HAL_GPIO_DeInit(GPIOC, GPIO_PIN_10|GPIO_PIN_11);
+ 355:Src/usart.c   **** 
+ 356:Src/usart.c   ****     /* UART4 DMA DeInit */
+ 357:Src/usart.c   ****     HAL_DMA_DeInit(uartHandle->hdmarx);
+ 358:Src/usart.c   **** 
+ 359:Src/usart.c   ****     /* UART4 interrupt Deinit */
+ 360:Src/usart.c   ****     HAL_NVIC_DisableIRQ(UART4_IRQn);
+ 361:Src/usart.c   ****   /* USER CODE BEGIN UART4_MspDeInit 1 */
+ 362:Src/usart.c   **** 
+ 363:Src/usart.c   ****   /* USER CODE END UART4_MspDeInit 1 */
+ 364:Src/usart.c   ****   }
+ 365:Src/usart.c   ****   else if(uartHandle->Instance==USART1)
+ 958              		.loc 1 365 8 is_stmt 1 view .LVU318
+ 959              		.loc 1 365 10 is_stmt 0 view .LVU319
+ 960 000c 264A     		ldr	r2, .L61+4
+ 961 000e 9342     		cmp	r3, r2
+ 962 0010 18D0     		beq	.L58
+ 366:Src/usart.c   ****   {
+ 367:Src/usart.c   ****   /* USER CODE BEGIN USART1_MspDeInit 0 */
+ 368:Src/usart.c   **** 
+ 369:Src/usart.c   ****   /* USER CODE END USART1_MspDeInit 0 */
+ 370:Src/usart.c   ****     /* Peripheral clock disable */
+ 371:Src/usart.c   ****     __HAL_RCC_USART1_CLK_DISABLE();
+ 372:Src/usart.c   **** 
+ 373:Src/usart.c   ****     /**USART1 GPIO Configuration
+ 374:Src/usart.c   ****     PA9     ------> USART1_TX
+ 375:Src/usart.c   ****     PA10     ------> USART1_RX
+ 376:Src/usart.c   ****     */
+ 377:Src/usart.c   ****     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_9|GPIO_PIN_10);
+ 378:Src/usart.c   **** 
+ 379:Src/usart.c   ****   /* USER CODE BEGIN USART1_MspDeInit 1 */
+ 380:Src/usart.c   **** 
+ 381:Src/usart.c   ****   /* USER CODE END USART1_MspDeInit 1 */
+ 382:Src/usart.c   ****   }
+ 383:Src/usart.c   ****   else if(uartHandle->Instance==USART2)
+ 963              		.loc 1 383 8 is_stmt 1 view .LVU320
+ 964              		.loc 1 383 10 is_stmt 0 view .LVU321
+ 965 0012 264A     		ldr	r2, .L61+8
+ 966 0014 9342     		cmp	r3, r2
+ 967 0016 21D0     		beq	.L59
+ 384:Src/usart.c   ****   {
+ 385:Src/usart.c   ****   /* USER CODE BEGIN USART2_MspDeInit 0 */
+ 386:Src/usart.c   **** 
+ 387:Src/usart.c   ****   /* USER CODE END USART2_MspDeInit 0 */
+ 388:Src/usart.c   ****     /* Peripheral clock disable */
+ 389:Src/usart.c   ****     __HAL_RCC_USART2_CLK_DISABLE();
+ 390:Src/usart.c   **** 
+ 391:Src/usart.c   ****     /**USART2 GPIO Configuration
+ 392:Src/usart.c   ****     PA2     ------> USART2_TX
+ 393:Src/usart.c   ****     PA3     ------> USART2_RX
+ 394:Src/usart.c   ****     */
+ 395:Src/usart.c   ****     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_2|GPIO_PIN_3);
+ 396:Src/usart.c   **** 
+ 397:Src/usart.c   ****     /* USART2 DMA DeInit */
+ 398:Src/usart.c   ****     HAL_DMA_DeInit(uartHandle->hdmarx);
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 28
+
+
+ 399:Src/usart.c   **** 
+ 400:Src/usart.c   ****     /* USART2 interrupt Deinit */
+ 401:Src/usart.c   ****     HAL_NVIC_DisableIRQ(USART2_IRQn);
+ 402:Src/usart.c   ****   /* USER CODE BEGIN USART2_MspDeInit 1 */
+ 403:Src/usart.c   **** 
+ 404:Src/usart.c   ****   /* USER CODE END USART2_MspDeInit 1 */
+ 405:Src/usart.c   ****   }
+ 406:Src/usart.c   ****   else if(uartHandle->Instance==USART3)
+ 968              		.loc 1 406 8 is_stmt 1 view .LVU322
+ 969              		.loc 1 406 10 is_stmt 0 view .LVU323
+ 970 0018 254A     		ldr	r2, .L61+12
+ 971 001a 9342     		cmp	r3, r2
+ 972 001c 2FD0     		beq	.L60
+ 973              	.LVL43:
+ 974              	.L51:
+ 407:Src/usart.c   ****   {
+ 408:Src/usart.c   ****   /* USER CODE BEGIN USART3_MspDeInit 0 */
+ 409:Src/usart.c   **** 
+ 410:Src/usart.c   ****   /* USER CODE END USART3_MspDeInit 0 */
+ 411:Src/usart.c   ****     /* Peripheral clock disable */
+ 412:Src/usart.c   ****     __HAL_RCC_USART3_CLK_DISABLE();
+ 413:Src/usart.c   **** 
+ 414:Src/usart.c   ****     /**USART3 GPIO Configuration
+ 415:Src/usart.c   ****     PD8     ------> USART3_TX
+ 416:Src/usart.c   ****     PD9     ------> USART3_RX
+ 417:Src/usart.c   ****     */
+ 418:Src/usart.c   ****     HAL_GPIO_DeInit(GPIOD, GPIO_PIN_8|GPIO_PIN_9);
+ 419:Src/usart.c   **** 
+ 420:Src/usart.c   ****     /* USART3 DMA DeInit */
+ 421:Src/usart.c   ****     HAL_DMA_DeInit(uartHandle->hdmarx);
+ 422:Src/usart.c   **** 
+ 423:Src/usart.c   ****     /* USART3 interrupt Deinit */
+ 424:Src/usart.c   ****     HAL_NVIC_DisableIRQ(USART3_IRQn);
+ 425:Src/usart.c   ****   /* USER CODE BEGIN USART3_MspDeInit 1 */
+ 426:Src/usart.c   **** 
+ 427:Src/usart.c   ****   /* USER CODE END USART3_MspDeInit 1 */
+ 428:Src/usart.c   ****   }
+ 429:Src/usart.c   **** }
+ 975              		.loc 1 429 1 view .LVU324
+ 976 001e 10BD     		pop	{r4, pc}
+ 977              	.LVL44:
+ 978              	.L57:
+ 348:Src/usart.c   **** 
+ 979              		.loc 1 348 5 is_stmt 1 view .LVU325
+ 980 0020 02F5F632 		add	r2, r2, #125952
+ 981 0024 136C     		ldr	r3, [r2, #64]
+ 982 0026 23F40023 		bic	r3, r3, #524288
+ 983 002a 1364     		str	r3, [r2, #64]
+ 354:Src/usart.c   **** 
+ 984              		.loc 1 354 5 view .LVU326
+ 985 002c 4FF44061 		mov	r1, #3072
+ 986 0030 2048     		ldr	r0, .L61+16
+ 987              	.LVL45:
+ 354:Src/usart.c   **** 
+ 988              		.loc 1 354 5 is_stmt 0 view .LVU327
+ 989 0032 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 990              	.LVL46:
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 29
+
+
+ 357:Src/usart.c   **** 
+ 991              		.loc 1 357 5 is_stmt 1 view .LVU328
+ 992 0036 A06B     		ldr	r0, [r4, #56]
+ 993 0038 FFF7FEFF 		bl	HAL_DMA_DeInit
+ 994              	.LVL47:
+ 360:Src/usart.c   ****   /* USER CODE BEGIN UART4_MspDeInit 1 */
+ 995              		.loc 1 360 5 view .LVU329
+ 996 003c 3420     		movs	r0, #52
+ 997 003e FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
+ 998              	.LVL48:
+ 999 0042 ECE7     		b	.L51
+ 1000              	.LVL49:
+ 1001              	.L58:
+ 371:Src/usart.c   **** 
+ 1002              		.loc 1 371 5 view .LVU330
+ 1003 0044 02F59432 		add	r2, r2, #75776
+ 1004 0048 536C     		ldr	r3, [r2, #68]
+ 1005 004a 23F01003 		bic	r3, r3, #16
+ 1006 004e 5364     		str	r3, [r2, #68]
+ 377:Src/usart.c   **** 
+ 1007              		.loc 1 377 5 view .LVU331
+ 1008 0050 4FF4C061 		mov	r1, #1536
+ 1009 0054 1848     		ldr	r0, .L61+20
+ 1010              	.LVL50:
+ 377:Src/usart.c   **** 
+ 1011              		.loc 1 377 5 is_stmt 0 view .LVU332
+ 1012 0056 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 1013              	.LVL51:
+ 1014 005a E0E7     		b	.L51
+ 1015              	.LVL52:
+ 1016              	.L59:
+ 389:Src/usart.c   **** 
+ 1017              		.loc 1 389 5 is_stmt 1 view .LVU333
+ 1018 005c 02F5FA32 		add	r2, r2, #128000
+ 1019 0060 136C     		ldr	r3, [r2, #64]
+ 1020 0062 23F40033 		bic	r3, r3, #131072
+ 1021 0066 1364     		str	r3, [r2, #64]
+ 395:Src/usart.c   **** 
+ 1022              		.loc 1 395 5 view .LVU334
+ 1023 0068 0C21     		movs	r1, #12
+ 1024 006a 1348     		ldr	r0, .L61+20
+ 1025              	.LVL53:
+ 395:Src/usart.c   **** 
+ 1026              		.loc 1 395 5 is_stmt 0 view .LVU335
+ 1027 006c FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 1028              	.LVL54:
+ 398:Src/usart.c   **** 
+ 1029              		.loc 1 398 5 is_stmt 1 view .LVU336
+ 1030 0070 A06B     		ldr	r0, [r4, #56]
+ 1031 0072 FFF7FEFF 		bl	HAL_DMA_DeInit
+ 1032              	.LVL55:
+ 401:Src/usart.c   ****   /* USER CODE BEGIN USART2_MspDeInit 1 */
+ 1033              		.loc 1 401 5 view .LVU337
+ 1034 0076 2620     		movs	r0, #38
+ 1035 0078 FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
+ 1036              	.LVL56:
+ 1037 007c CFE7     		b	.L51
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 30
+
+
+ 1038              	.LVL57:
+ 1039              	.L60:
+ 412:Src/usart.c   **** 
+ 1040              		.loc 1 412 5 view .LVU338
+ 1041 007e 02F5F832 		add	r2, r2, #126976
+ 1042 0082 136C     		ldr	r3, [r2, #64]
+ 1043 0084 23F48023 		bic	r3, r3, #262144
+ 1044 0088 1364     		str	r3, [r2, #64]
+ 418:Src/usart.c   **** 
+ 1045              		.loc 1 418 5 view .LVU339
+ 1046 008a 4FF44071 		mov	r1, #768
+ 1047 008e 0B48     		ldr	r0, .L61+24
+ 1048              	.LVL58:
+ 418:Src/usart.c   **** 
+ 1049              		.loc 1 418 5 is_stmt 0 view .LVU340
+ 1050 0090 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 1051              	.LVL59:
+ 421:Src/usart.c   **** 
+ 1052              		.loc 1 421 5 is_stmt 1 view .LVU341
+ 1053 0094 A06B     		ldr	r0, [r4, #56]
+ 1054 0096 FFF7FEFF 		bl	HAL_DMA_DeInit
+ 1055              	.LVL60:
+ 424:Src/usart.c   ****   /* USER CODE BEGIN USART3_MspDeInit 1 */
+ 1056              		.loc 1 424 5 view .LVU342
+ 1057 009a 2720     		movs	r0, #39
+ 1058 009c FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
+ 1059              	.LVL61:
+ 1060              		.loc 1 429 1 is_stmt 0 view .LVU343
+ 1061 00a0 BDE7     		b	.L51
+ 1062              	.L62:
+ 1063 00a2 00BF     		.align	2
+ 1064              	.L61:
+ 1065 00a4 004C0040 		.word	1073761280
+ 1066 00a8 00100140 		.word	1073811456
+ 1067 00ac 00440040 		.word	1073759232
+ 1068 00b0 00480040 		.word	1073760256
+ 1069 00b4 00080240 		.word	1073874944
+ 1070 00b8 00000240 		.word	1073872896
+ 1071 00bc 000C0240 		.word	1073875968
+ 1072              		.cfi_endproc
+ 1073              	.LFE145:
+ 1075              		.global	hdma_usart3_rx
+ 1076              		.global	hdma_usart2_rx
+ 1077              		.global	hdma_uart4_rx
+ 1078              		.global	huart3
+ 1079              		.global	huart2
+ 1080              		.global	huart1
+ 1081              		.global	huart4
+ 1082              		.section	.bss.hdma_uart4_rx,"aw",%nobits
+ 1083              		.align	2
+ 1084              		.set	.LANCHOR4,. + 0
+ 1087              	hdma_uart4_rx:
+ 1088 0000 00000000 		.space	96
+ 1088      00000000 
+ 1088      00000000 
+ 1088      00000000 
+ 1088      00000000 
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 31
+
+
+ 1089              		.section	.bss.hdma_usart2_rx,"aw",%nobits
+ 1090              		.align	2
+ 1091              		.set	.LANCHOR5,. + 0
+ 1094              	hdma_usart2_rx:
+ 1095 0000 00000000 		.space	96
+ 1095      00000000 
+ 1095      00000000 
+ 1095      00000000 
+ 1095      00000000 
+ 1096              		.section	.bss.hdma_usart3_rx,"aw",%nobits
+ 1097              		.align	2
+ 1098              		.set	.LANCHOR6,. + 0
+ 1101              	hdma_usart3_rx:
+ 1102 0000 00000000 		.space	96
+ 1102      00000000 
+ 1102      00000000 
+ 1102      00000000 
+ 1102      00000000 
+ 1103              		.section	.bss.huart1,"aw",%nobits
+ 1104              		.align	2
+ 1105              		.set	.LANCHOR0,. + 0
+ 1108              	huart1:
+ 1109 0000 00000000 		.space	68
+ 1109      00000000 
+ 1109      00000000 
+ 1109      00000000 
+ 1109      00000000 
+ 1110              		.section	.bss.huart2,"aw",%nobits
+ 1111              		.align	2
+ 1112              		.set	.LANCHOR2,. + 0
+ 1115              	huart2:
+ 1116 0000 00000000 		.space	68
+ 1116      00000000 
+ 1116      00000000 
+ 1116      00000000 
+ 1116      00000000 
+ 1117              		.section	.bss.huart3,"aw",%nobits
+ 1118              		.align	2
+ 1119              		.set	.LANCHOR3,. + 0
+ 1122              	huart3:
+ 1123 0000 00000000 		.space	68
+ 1123      00000000 
+ 1123      00000000 
+ 1123      00000000 
+ 1123      00000000 
+ 1124              		.section	.bss.huart4,"aw",%nobits
+ 1125              		.align	2
+ 1126              		.set	.LANCHOR1,. + 0
+ 1129              	huart4:
+ 1130 0000 00000000 		.space	68
+ 1130      00000000 
+ 1130      00000000 
+ 1130      00000000 
+ 1130      00000000 
+ 1131              		.text
+ 1132              	.Letext0:
+ 1133              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2020-q4-major\\arm-none-eabi\\inc
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 32
+
+
+ 1134              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2020-q4-major\\arm-none-eabi\\inc
+ 1135              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 1136              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 1137              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 1138              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 1139              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 1140              		.file 9 "Inc/usart.h"
+ 1141              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+ 1142              		.file 11 "Inc/main.h"
+ARM GAS  C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s 			page 33
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 usart.c
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:18     .text.__io_putchar:00000000 $t
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:26     .text.__io_putchar:00000000 __io_putchar
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:69     .text.__io_putchar:00000020 $d
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:74     .text._write:00000000 $t
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:81     .text._write:00000000 _write
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:132    .text.MX_UART4_Init:00000000 $t
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:139    .text.MX_UART4_Init:00000000 MX_UART4_Init
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:197    .text.MX_UART4_Init:0000002c $d
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:203    .text.MX_USART1_UART_Init:00000000 $t
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:210    .text.MX_USART1_UART_Init:00000000 MX_USART1_UART_Init
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:268    .text.MX_USART1_UART_Init:0000002c $d
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:274    .text.MX_USART3_UART_Init:00000000 $t
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:281    .text.MX_USART3_UART_Init:00000000 MX_USART3_UART_Init
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:339    .text.MX_USART3_UART_Init:0000002c $d
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:345    .text.HAL_UART_MspInit:00000000 $t
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:352    .text.HAL_UART_MspInit:00000000 HAL_UART_MspInit
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:712    .text.HAL_UART_MspInit:0000017c $d
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:727    .text.HAL_UART_MspDeInit:00000000 $t
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:734    .text.HAL_UART_MspDeInit:00000000 HAL_UART_MspDeInit
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:834    .text.HAL_UART_MspDeInit:0000007c $d
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:860    .bss.hdma_usart3_rx:00000000 hdma_usart3_rx
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:853    .bss.hdma_uart4_rx:00000000 hdma_uart4_rx
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:874    .bss.huart3:00000000 huart3
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:867    .bss.huart1:00000000 huart1
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:881    .bss.huart4:00000000 huart4
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:849    .bss.hdma_uart4_rx:00000000 $d
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:856    .bss.hdma_usart3_rx:00000000 $d
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:863    .bss.huart1:00000000 $d
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:870    .bss.huart3:00000000 $d
-C:\Users\Welbot PC-3\AppData\Local\Temp\ccEvQ9Tk.s:877    .bss.huart4:00000000 $d
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:18     .text.__io_putchar:00000000 $t
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:26     .text.__io_putchar:00000000 __io_putchar
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:69     .text.__io_putchar:00000020 $d
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:74     .text._write:00000000 $t
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:81     .text._write:00000000 _write
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:132    .text.MX_UART4_Init:00000000 $t
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:139    .text.MX_UART4_Init:00000000 MX_UART4_Init
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:197    .text.MX_UART4_Init:0000002c $d
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:203    .text.MX_USART1_UART_Init:00000000 $t
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:210    .text.MX_USART1_UART_Init:00000000 MX_USART1_UART_Init
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:268    .text.MX_USART1_UART_Init:0000002c $d
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:274    .text.MX_USART2_UART_Init:00000000 $t
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:281    .text.MX_USART2_UART_Init:00000000 MX_USART2_UART_Init
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:339    .text.MX_USART2_UART_Init:0000002c $d
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:345    .text.MX_USART3_UART_Init:00000000 $t
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:352    .text.MX_USART3_UART_Init:00000000 MX_USART3_UART_Init
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:410    .text.MX_USART3_UART_Init:0000002c $d
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:416    .text.HAL_UART_MspInit:00000000 $t
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:423    .text.HAL_UART_MspInit:00000000 HAL_UART_MspInit
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:912    .text.HAL_UART_MspInit:0000020c $d
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:930    .text.HAL_UART_MspDeInit:00000000 $t
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:937    .text.HAL_UART_MspDeInit:00000000 HAL_UART_MspDeInit
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:1065   .text.HAL_UART_MspDeInit:000000a4 $d
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:1101   .bss.hdma_usart3_rx:00000000 hdma_usart3_rx
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:1094   .bss.hdma_usart2_rx:00000000 hdma_usart2_rx
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:1087   .bss.hdma_uart4_rx:00000000 hdma_uart4_rx
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:1122   .bss.huart3:00000000 huart3
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:1115   .bss.huart2:00000000 huart2
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:1108   .bss.huart1:00000000 huart1
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:1129   .bss.huart4:00000000 huart4
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:1083   .bss.hdma_uart4_rx:00000000 $d
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:1090   .bss.hdma_usart2_rx:00000000 $d
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:1097   .bss.hdma_usart3_rx:00000000 $d
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:1104   .bss.huart1:00000000 $d
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:1111   .bss.huart2:00000000 $d
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:1118   .bss.huart3:00000000 $d
+C:\Users\Welbot PC-3\AppData\Local\Temp\ccHykpO0.s:1125   .bss.huart4:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_UART_Transmit

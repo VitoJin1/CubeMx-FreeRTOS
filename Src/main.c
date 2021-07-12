@@ -21,13 +21,13 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "dma.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "imu.h"
-#include "remoter.h"
+
 
 /* USER CODE END Includes */
 
@@ -38,42 +38,101 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+
 #define START_TASK_PIRO 1// smaller the number is lower the piority is
 #define START_STACK_SIZE 128
 TaskHandle_t Start_Task_Handler;
 void start_task(void *pvParameters);
+
+#define TASK_STATE_DISPLAY_PIRO 0
+#define TASK_STATE_DISPLAY_STACK_SIZE 256
+TaskHandle_t Task_State_Handler;
+void task_state_display(void *pvParameters);
 
 #define LED_TASK_PIRO 2
 #define LED_STACK_SZIE 64
 TaskHandle_t LED_TASK_Handler;
 void led_task(void *pvParameters);
 
-#define MOSFET_TASK_PIRO 3
-#define MOSFET_STACK_SIZE 64
-TaskHandle_t MOSFET_TASK_Handler;
-void mosfet_task(void *pvParameters);
+#define ESC_INIT_TASK_PIRO 1
+#define ESC_INIT_STACK_SIZE 128
+TaskHandle_t ESC_TASK_Handler;
+void esc_init_task(void *pvParameters);
+
+#define ROBOT_UNLOCK_TASK_PIRO 1
+#define ROBOT_UNLOCK_STACK_SIZE 64
+TaskHandle_t ROBOT_UNLOCK_Handler;
+void unlockRobotDectect(void *pvParameters);
 
 #define VALVE_TASK_PIRO 4
 #define VALVE_STACK_SIZE 64
 TaskHandle_t VALVE_TASK_Handler;
-void valve_task(void *pvParameters);
+void valve_task(void *pvParameters );
 
-#define PRINT_TASK_PIRO 5
-#define PRINT_STACK_SIZE 64
+#define PUTTER_TASK_PIRO 2         
+#define PUTTER_STACK_SIZE 64        
+TaskHandle_t PUTTER_TASK_Handler;   
+void putter_task( void *pvParamters );
+                                   
+#define PRINT_TASK_PIRO 5          
+#define PRINT_STACK_SIZE 64        
 TaskHandle_t PRINT_TASK_Handler;
-void print_task(void * pvParameters);
+void print_task( void * pvParameters );
 
 #define IMU_RECEIVE_TASK_PRIO 6
-#define IMU_RECEIVE_STACK_SIZE 1024
+#define IMU_RECEIVE_STACK_SIZE 512
 TaskHandle_t IMU_RECEIVE_TASK_Handler;
-void imu_receive_task(void *pvParameters);
+void imu_receive_task(void *pvParameters );
 
-#define LORA_RECEIVE_TASK_PRIO 7
+#define LORA_RECEIVE_TASK_PRIO 6
 #define LORA_RECEIVE_STACK_SIZE 512
 TaskHandle_t LORA_RECEIVE_TASK_Handler;
 void lora_receive_task(void *pvParameters);
 
+#define MODBUS_TASK_PIRO 5
+#define MODBUS_TASK_STACK_SIZE 256
+TaskHandle_t MODBUS_TASK_Handler;
+void modbus_move_task(void *pvParameters);
 
+#define PUMP_TASK_PIRO 2
+#define PUMP_STACK_SIZE 64
+TaskHandle_t PUMP_TASK_Handler;
+void pump_task(void *pvParameters);
+
+#define MODBUS_SAFECHECK_TASK_PIRO 5
+#define MODBUS_SAFECHECK_STACK_SIZE 128
+TaskHandle_t MODBUS_TASK_Handler;
+void modbus_safecheck_task(void *pvParameters); 
+
+#define ROLLER_TASK_PIRO 3
+#define ROLLER_TASK_STACK_SIZE 64
+TaskHandle_t ROLLER_TASK_Handler;
+void roller_task(void *pvParameters);
+
+#define INNER_LOOP_TASK_PIRO 4
+#define INNER_LOOP_TASK_STACK_SIZE 128
+TaskHandle_t INNER_TASK_Handler;
+void inner_loop(void *pvParameters);
+
+#define OUTER_LOOP_TASK_PIRO 4
+#define OUTER_LOOP_TASK_STACK_SIZE 128
+TaskHandle_t OUTER_TASK_Handler;
+void outer_loop(void *pvParameters);
+
+#define MANUAL_CALI_TASK_PIRO 5
+#define MANUAL_CALI_TASK_STACK_SIZE 128
+TaskHandle_t MANUAL_TASK_Handler;
+void manual_cali(void * pvParameters);
+
+#define BALANCE_CHECK_TASK_PIRO 3
+#define BALANCE_CHEKC_TASK_STACK_SIZE 128
+TaskHandle_t BALANCE_TASK_Handler;
+void balance_check(void * pvParameters);
+
+#define PROP_CONTROL_TASK_PIRO 3
+#define PROP_CONTROL_TASK_STACK_SIZE 128
+TaskHandle_t PROP_TASK_Handler;
+void propeller_control(void * pvParameters);
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -85,6 +144,9 @@ void lora_receive_task(void *pvParameters);
 
 /* USER CODE BEGIN PV */
 SemaphoreHandle_t IMUReadyToRECEIVE_Semaphore;
+SemaphoreHandle_t LORARedyToRECEIVE_Semaphore;
+SemaphoreHandle_t MODBUSReadyToRECEIVE_Semaphore;
+TimerHandle_t FiveSecModbusProtectTimer;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -132,16 +194,49 @@ int main(void)
   MX_USART1_UART_Init();
   MX_UART4_Init();
   MX_USART3_UART_Init();
+  MX_TIM2_Init();
+  MX_TIM4_Init();
+  MX_TIM3_Init();
+  MX_USART2_UART_Init();
+  MX_TIM10_Init();
+  MX_TIM11_Init();
 
   /* Initialize interrupts */
   MX_NVIC_Init();
   /* USER CODE BEGIN 2 */
+  IMUReadyToRECEIVE_Semaphore=xSemaphoreCreateBinary();
+  LORARedyToRECEIVE_Semaphore=xSemaphoreCreateBinary();
+  MODBUSReadyToRECEIVE_Semaphore=xSemaphoreCreateBinary();
+  xTaskCreate((TaskFunction_t)esc_init_task,
+              (const char *)"esc_init_task",
+              (uint16_t)ESC_INIT_STACK_SIZE,
+              (void *)NULL,
+              (UBaseType_t)ESC_INIT_TASK_PIRO,
+              (TaskHandle_t *)&ESC_TASK_Handler);
+
+
+  xTaskCreate((TaskFunction_t)lora_receive_task,
+              (const char *)"lora_receive_task",
+              (uint16_t)LORA_RECEIVE_STACK_SIZE,
+              (void * )NULL,
+              (UBaseType_t)LORA_RECEIVE_TASK_PRIO,
+              (TaskHandle_t * )&LORA_RECEIVE_TASK_Handler);
+
   xTaskCreate((TaskFunction_t)start_task,
               (const char *)"start_task",
               (uint16_t)START_STACK_SIZE,
               (void*)NULL,
               (UBaseType_t)START_TASK_PIRO,
               (TaskHandle_t *)&Start_Task_Handler);
+
+  xTaskCreate((TaskFunction_t)unlockRobotDectect,
+                (const char *)"robot_unlock_task",
+                (uint16_t)ROBOT_UNLOCK_STACK_SIZE,
+                (void *)NULL,
+                (UBaseType_t)ROBOT_UNLOCK_TASK_PIRO,
+                (TaskHandle_t *)&ROBOT_UNLOCK_Handler);
+
+
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
@@ -154,7 +249,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -220,30 +314,138 @@ static void MX_NVIC_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
 void start_task(void *pvParameters){
-  taskENTER_CRITICAL();
-  IMUReadyToRECEIVE_Semaphore=xSemaphoreCreateBinary();
-  xTaskCreate((TaskFunction_t)led_task,
-              (const char *)"led_task",
-              (uint16_t)LED_STACK_SZIE,
-              (void *)NULL,
-              (UBaseType_t)LED_TASK_PIRO,
-              (TaskHandle_t*)&LED_TASK_Handler);
-  xTaskCreate((TaskFunction_t)imu_receive_task,
-              (const char*)"imu_receive_task",
-              (uint16_t)IMU_RECEIVE_STACK_SIZE,
-              (void *)NULL,
-              (UBaseType_t)IMU_RECEIVE_TASK_PRIO,
-              (TaskHandle_t *)&IMU_RECEIVE_TASK_Handler);
-              /*
-  xTaskCreate((TaskFunction_t)lora_receive_task,
-          (const char *)"lora_receive_task",
-          (uint16_t)LOTA_RECEIVE_STACK_SIZE,
-          (void * )NULL,
-          (UBaseType_t)LORA_RECEIVE_TASK_PRIO,
-          (TaskHandle_t)&LORA_RECEIVE_TASK_Handler);*/
-  vTaskDelete(Start_Task_Handler);
-  taskEXIT_CRITICAL();
+  uint32_t NotifyValue=0;
+  for(;;){
+    NotifyValue=ulTaskNotifyTake(pdTRUE,100);
+    if(NotifyValue!=0){
+      vTaskDelete(ROBOT_UNLOCK_Handler);
+      taskENTER_CRITICAL( );
+      xTaskCreate((TaskFunction_t)led_task,
+                  (const char *)"led_task",
+                  (uint16_t)LED_STACK_SZIE,
+                  (void *)NULL,
+                  (UBaseType_t)LED_TASK_PIRO,
+                  (TaskHandle_t*)&LED_TASK_Handler);
+
+      xTaskCreate((TaskFunction_t)modbus_move_task,
+                  (const char *)"modbus_move_task",
+                  (uint16_t)MODBUS_TASK_STACK_SIZE,
+                  (void *)NULL,
+                  (UBaseType_t)MODBUS_TASK_PIRO,
+                  (TaskHandle_t *)&MODBUS_TASK_Handler);
+                  
+                  /*
+      xTaskCreate((TaskFunction_t)imu_receive_task,
+                  (const char*)"imu_receive_task",
+                  (uint16_t)IMU_RECEIVE_STACK_SIZE,
+                  (void *)NULL,
+                  (UBaseType_t)IMU_RECEIVE_TASK_PRIO,
+                  (TaskHandle_t *)&IMU_RECEIVE_TASK_Handler);
+                  */
+ /*
+      xTaskCreate((TaskFunction_t)modbus_safecheck_task,
+                  (const char *)"modbus_safecheck_task",
+                  (uint16_t)MODBUS_SAFECHECK_STACK_SIZE,
+                  (void *)NULL,
+                  (UBaseType_t)MODBUS_SAFECHECK_TASK_PIRO,
+                  (TaskHandle_t *)&MODBUS_TASK_Handler);
+      */
+     /*
+      FiveSecModbusProtectTimer=xTimerCreate((const char*)"5s timer",
+                                            (TickType_t)5000,
+                                            (UBaseType_t)pdFALSE,
+                                            (void *)0,
+                                            (TimerCallbackFunction_t)FiveSecModbusProtectCallback);
+    */
+    //valve task
+    /*
+      xTaskCreate((TaskFunction_t)valve_task,
+                  (const char *)"valve_control_task",
+                  (uint16_t)VALVE_STACK_SIZE,                               
+                  (void *)NULL,
+                  (UBaseType_t)VALVE_TASK_PIRO,
+                  (TaskHandle_t *)&VALVE_TASK_Handler);
+    */
+    /*
+      xTaskCreate((TaskFunction_t)task_state_display,
+                  (const char * )"task_state_display",
+                  (uint16_t)TASK_STATE_DISPLAY_STACK_SIZE,
+                  (void *)NULL,
+                  (UBaseType_t)TASK_STATE_DISPLAY_PIRO,
+                  (TaskHandle_t * )&Task_State_Handler);
+
+      */
+
+      //putter task
+      /*
+      xTaskCreate((TaskFunction_t)putter_task,
+                  (const char *)"putter_task",
+                  (uint16_t)PUTTER_STACK_SIZE,
+                  (void *)NULL,
+                  (UBaseType_t)PUTTER_TASK_PIRO,
+                  (TaskHandle_t *)&PUTTER_TASK_Handler);
+                  */
+    
+      //pump task
+      /*
+      xTaskCreate((TaskFunction_t)pump_task,
+                  (const char *)"pump_task",
+                  (uint16_t)PUMP_STACK_SIZE,
+                  (void *)NULL,
+                  (UBaseType_t)PUMP_TASK_PIRO,
+                  (TaskHandle_t *)&PUMP_TASK_Handler);
+                  */
+      //roller task
+      /*
+      xTaskCreate((TaskFunction_t)roller_task,
+                  (const char *)"roller_task",
+                  (uint16_t)ROLLER_TASK_STACK_SIZE,
+                  (void *)NULL,
+                  (UBaseType_t)ROLLER_TASK_PIRO,
+                  (TaskHandle_t *)&ROLLER_TASK_Handler);
+
+      xTaskCreate((TaskFunction_t)balance_check,
+                  (const char *)"balance_check",
+                  (uint16_t)BALANCE_CHEKC_TASK_STACK_SIZE,
+                  (void*)NULL,
+                  (UBaseType_t)BALANCE_CHECK_TASK_PIRO,
+                  (TaskHandle_t *)&BALANCE_TASK_Handler);
+
+      xTaskCreate((TaskFunction_t)manual_cali,
+                  (const char *)"manual_cali",
+                  (uint16_t)MANUAL_CALI_TASK_STACK_SIZE,
+                  (void *)NULL,
+                  (UBaseType_t)MANUAL_CALI_TASK_PIRO,
+                  (TaskHandle_t*)&MANUAL_TASK_Handler);
+
+      xTaskCreate((TaskFunction_t)inner_loop,
+                  (const char *)"inner_loop",
+                  (uint16_t)INNER_LOOP_TASK_STACK_SIZE,
+                  (void *)NULL,
+                  (UBaseType_t)INNER_LOOP_TASK_PIRO,
+                  (TaskHandle_t*)&INNER_TASK_Handler);
+      
+      xTaskCreate((TaskFunction_t)outer_loop,
+                  (const char *)"outer_loop",
+                  (uint16_t)OUTER_LOOP_TASK_STACK_SIZE,
+                  (void *)NULL,
+                  (UBaseType_t)OUTER_LOOP_TASK_PIRO,
+                  (TaskHandle_t *)&OUTER_TASK_Handler);
+      
+      xTaskCreate((TaskFunction_t)propeller_control,
+                  (const char *)"propeller_control",
+                  (uint16_t)PROP_CONTROL_TASK_STACK_SIZE,
+                  (void *)NULL,
+                  (UBaseType_t)PROP_CONTROL_TASK_PIRO,
+                  (TaskHandle_t* )&PROP_TASK_Handler);
+                  */
+      vTaskDelete(Start_Task_Handler);
+      taskEXIT_CRITICAL();
+    }
+    else vTaskDelay(1000); 
+  }
 }
 /* USER CODE END 4 */
 

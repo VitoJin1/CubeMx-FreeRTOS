@@ -35,10 +35,18 @@ build/stm32f4xx_it.o: Src/stm32f4xx_it.c Inc/main.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
- Inc/stm32f4xx_it.h Inc/usart.h Inc/main.h Inc/remoter.h Inc/usart.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/task.h Inc/imu.h \
- Inc/common.h Inc/stm32f4xx_it.h
+ Middlewares/Third_Party/FreeRTOS/Source/include/list.h Inc/unlock.h \
+ Inc/main.h Inc/remoter.h Inc/usart.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/task.h Inc/common.h \
+ Inc/imu.h Inc/stm32f4xx_it.h Inc/dma.h Inc/tim.h Inc/gpio.h \
+ Inc/taskstatedisplay.h Inc/modbus.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/timers.h Inc/led.h \
+ Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/timers.h Inc/balance.h \
+ Inc/stm32f4xx_it.h Inc/usart.h Inc/remoter.h Inc/imu.h \
+ Inc/taskstatedisplay.h Inc/modbus.h
 Inc/main.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 Inc/stm32f4xx_hal_conf.h:
@@ -79,12 +87,29 @@ Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
-Inc/stm32f4xx_it.h:
-Inc/usart.h:
+Inc/unlock.h:
 Inc/main.h:
 Inc/remoter.h:
 Inc/usart.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
-Inc/imu.h:
 Inc/common.h:
+Inc/imu.h:
 Inc/stm32f4xx_it.h:
+Inc/dma.h:
+Inc/tim.h:
+Inc/gpio.h:
+Inc/taskstatedisplay.h:
+Inc/modbus.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
+Inc/led.h:
+Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
+Inc/balance.h:
+Inc/stm32f4xx_it.h:
+Inc/usart.h:
+Inc/remoter.h:
+Inc/imu.h:
+Inc/taskstatedisplay.h:
+Inc/modbus.h:

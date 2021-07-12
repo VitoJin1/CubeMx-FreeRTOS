@@ -28,6 +28,8 @@
 #include "stdint.h"
 #include "remoter.h"
 #include "imu.h"
+#include "taskstatedisplay.h"
+#include "modbus.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -61,9 +63,13 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
+extern TIM_HandleTypeDef htim3;
+extern TIM_HandleTypeDef htim10;
 extern DMA_HandleTypeDef hdma_uart4_rx;
+extern DMA_HandleTypeDef hdma_usart2_rx;
 extern DMA_HandleTypeDef hdma_usart3_rx;
 extern UART_HandleTypeDef huart4;
+extern UART_HandleTypeDef huart2;
 extern UART_HandleTypeDef huart3;
 extern TIM_HandleTypeDef htim1;
 
@@ -199,6 +205,20 @@ void DMA1_Stream2_IRQHandler(void)
 }
 
 /**
+  * @brief This function handles DMA1 stream5 global interrupt.
+  */
+void DMA1_Stream5_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA1_Stream5_IRQn 0 */
+
+  /* USER CODE END DMA1_Stream5_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_usart2_rx);
+  /* USER CODE BEGIN DMA1_Stream5_IRQn 1 */
+
+  /* USER CODE END DMA1_Stream5_IRQn 1 */
+}
+
+/**
   * @brief This function handles TIM1 update interrupt and TIM10 global interrupt.
   */
 void TIM1_UP_TIM10_IRQHandler(void)
@@ -208,9 +228,56 @@ void TIM1_UP_TIM10_IRQHandler(void)
   
   /* USER CODE END TIM1_UP_TIM10_IRQn 0 */
   HAL_TIM_IRQHandler(&htim1);
+  HAL_TIM_IRQHandler(&htim10);
   /* USER CODE BEGIN TIM1_UP_TIM10_IRQn 1 */
   
   /* USER CODE END TIM1_UP_TIM10_IRQn 1 */
+}
+
+/**
+  * @brief This function handles TIM3 global interrupt.
+  */
+void TIM3_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM3_IRQn 0 */
+
+  /* USER CODE END TIM3_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim3);
+  /* USER CODE BEGIN TIM3_IRQn 1 */
+  FreeRTOSRunTimeTicks++;
+  /* USER CODE END TIM3_IRQn 1 */
+}
+
+/**
+  * @brief This function handles USART2 global interrupt.
+  */
+void USART2_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART2_IRQn 0 */
+  int32_t temp,receive_cnt;
+  BaseType_t xHigherPriorityTaskWoken;
+  if(__HAL_UART_GET_FLAG(&huart2,UART_FLAG_IDLE)!=RESET){
+    __HAL_UART_CLEAR_IDLEFLAG(&huart2);
+    temp=huart2.Instance->SR;
+    temp=huart2.Instance->DR;
+    temp=hdma_usart2_rx.Instance->NDTR;
+    receive_cnt=MODBUS_DMA_RECEIVE_BUFFER-temp;
+    if(receive_cnt!=7){ 
+      HAL_UART_DMAStop(&huart2);
+      HAL_UART_Receive_DMA(&huart2,RS485_RX_BUFF,MODBUS_DMA_RECEIVE_BUFFER);
+      memset(RS485_RX_BUFF,0,MODBUS_DMA_RECEIVE_BUFFER);
+    }
+    else{
+     HAL_UART_DMAStop(&huart2);
+      xSemaphoreGiveFromISR(MODBUSReadyToRECEIVE_Semaphore,&xHigherPriorityTaskWoken);
+      portYIELD_FROM_ISR(&xHigherPriorityTaskWoken);
+    }
+  }
+  /* USER CODE END USART2_IRQn 0 */
+  HAL_UART_IRQHandler(&huart2);
+  /* USER CODE BEGIN USART2_IRQn 1 */
+
+  /* USER CODE END USART2_IRQn 1 */
 }
 
 /**
@@ -219,17 +286,22 @@ void TIM1_UP_TIM10_IRQHandler(void)
 void USART3_IRQHandler(void)
 {
   /* USER CODE BEGIN USART3_IRQn 0 */
-  // uint32_t temp,temp_flag;
-  // temp_flag=__HAL_UART_GET_FLAG(&huart3,UART_FLAG_IDLE);
-  // if(temp_flag!=RESET){
-  //   __HAL_UART_CLEAR_IDLEFLAG(&huart3);
-  //   temp=huart3.Instance->SR;
-  //   temp=huart3.Instance->DR;
-  //   HAL_UART_DMAStop(&huart3);
-  //   temp=hdma_usart3_rx.Instance->NDTR;
-  //   Uart3_Rx_Len=UART3_DMA_RECEIVE_BUFFER-temp;
-  //   Uart3_Rx_End_Flag=1;
-  //}
+  BaseType_t xHigherPriorityTaskWoken;
+  uint32_t temp,receive_cnt;
+  if(__HAL_UART_GET_FLAG(&huart3,UART_FLAG_IDLE)!=RESET){
+    __HAL_UART_CLEAR_IDLEFLAG(&huart3);
+    temp=huart3.Instance->SR;
+    temp=huart3.Instance->DR;
+    if(Request_lora_flag==1){
+      temp=hdma_usart3_rx.Instance->NDTR;
+      receive_cnt=UART3_DMA_RECEIVE_BUFFER-temp;
+      if(receive_cnt>=22 ){
+        HAL_UART_DMAStop(&huart3);
+        xSemaphoreGiveFromISR(LORARedyToRECEIVE_Semaphore,&xHigherPriorityTaskWoken);
+        portYIELD_FROM_ISR(&xHigherPriorityTaskWoken);
+      }
+    }
+  }
   /* USER CODE END USART3_IRQn 0 */
   HAL_UART_IRQHandler(&huart3);
   /* USER CODE BEGIN USART3_IRQn 1 */
@@ -242,9 +314,8 @@ void USART3_IRQHandler(void)
 void UART4_IRQHandler(void)
 {
   /* USER CODE BEGIN UART4_IRQn 0 */
-  BaseType_t err=pdFALSE;
   BaseType_t xHigherPriorityTaskWoken;
-  uint32_t temp_flag,temp=0;
+  uint32_t temp=0;
   uint32_t receive_cnt;
   if(__HAL_UART_GET_FLAG(&huart4,UART_FLAG_IDLE)!=RESET){
     __HAL_UART_CLEAR_IDLEFLAG(&huart4);
@@ -260,7 +331,6 @@ void UART4_IRQHandler(void)
       }
     }
   }
-  
   /* USER CODE END UART4_IRQn 0 */
   HAL_UART_IRQHandler(&huart4);
   /* USER CODE BEGIN UART4_IRQn 1 */

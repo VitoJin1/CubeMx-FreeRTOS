@@ -36,12 +36,15 @@ build/freertos.o: Src/freertos.c \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
- Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/task.h Inc/unlock.h \
+ Inc/main.h Inc/remoter.h Inc/usart.h Inc/common.h Inc/imu.h \
+ Inc/stm32f4xx_it.h Inc/dma.h Inc/tim.h Inc/gpio.h Inc/taskstatedisplay.h \
+ Inc/modbus.h Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
+ Inc/led.h Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
+ Middlewares/Third_Party/FreeRTOS/Source/include/timers.h Inc/balance.h \
+ Inc/imu.h Inc/taskstatedisplay.h
 Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 Inc/FreeRTOSConfig.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
@@ -83,8 +86,24 @@ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
-Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:
+Inc/unlock.h:
+Inc/main.h:
+Inc/remoter.h:
+Inc/usart.h:
+Inc/common.h:
+Inc/imu.h:
+Inc/stm32f4xx_it.h:
+Inc/dma.h:
+Inc/tim.h:
+Inc/gpio.h:
+Inc/taskstatedisplay.h:
+Inc/modbus.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
+Inc/led.h:
+Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
+Inc/balance.h:
+Inc/imu.h:
+Inc/taskstatedisplay.h:

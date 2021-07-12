@@ -16,7 +16,23 @@
         "string.h": "c",
         "stdint.h": "c",
         "stdio.h": "c",
-        "stm32f4xx_it.h": "c"
+        "stm32f4xx_it.h": "c",
+        "valve.h": "c",
+        "taskstatedisplay.h": "c",
+        "bsp.h": "c",
+        "timers.h": "c",
+        "tim.h": "c",
+        "time.h": "c",
+        "putter.h": "c",
+        "pump.h": "c",
+        "balance.h": "c",
+        "roller.h": "c",
+        "unlock.h": "c",
+        "modbus.h": "c",
+        "propeller.h": "c",
+        "semphr.h": "c",
+        "stddef.h": "c",
+        "freertosconfig.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

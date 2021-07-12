@@ -3,20 +3,25 @@
 
 void led_task(void *pvParameters){
     //BaseType_t err;
-    while(1){
+    for(;;){
         // err=xTaskNotifyWait((uint32_t)0x00,
         //                     (uint32_t)ULONG_MAX)
-        HAL_GPIO_TogglePin(GPIOC,LEDR_Pin);
+        if(LoseLoraSignalFlag==0){
+            HAL_GPIO_TogglePin(LEDB_GPIO_Port,LEDB_Pin);
+            HAL_GPIO_WritePin(LEDR_GPIO_Port,LEDR_Pin,GPIO_PIN_SET);
+            HAL_GPIO_WritePin(LEDG_GPIO_Port,LEDG_Pin,GPIO_PIN_SET);
+            HAL_GPIO_WritePin(LEDY_GPIO_Port,LEDY_Pin,GPIO_PIN_SET);
+        }
+        if(LoseLoraSignalFlag==1){
+            HAL_GPIO_WritePin(LEDR_GPIO_Port,LEDR_Pin,GPIO_PIN_RESET);
+            HAL_GPIO_WritePin(LEDG_GPIO_Port,LEDG_Pin,GPIO_PIN_SET);
+            HAL_GPIO_WritePin(LEDB_GPIO_Port,LEDB_Pin,GPIO_PIN_SET);
+            HAL_GPIO_WritePin(LEDY_GPIO_Port,LEDY_Pin,GPIO_PIN_SET);
+        }
         vTaskDelay(500);
-        HAL_GPIO_TogglePin(GPIOC,LEDG_Pin);
-        vTaskDelay(500);
-        HAL_GPIO_TogglePin(GPIOC,LEDB_Pin);
-        vTaskDelay(500);
-        HAL_GPIO_TogglePin(GPIOC,LEDY_Pin);
-        vTaskDelay(500);
-        printf("hello\r\n");
+
     }
-}
+}                                                                                                            
 void print_task(void * pvParameters){
     
 }
